@@ -86,7 +86,10 @@
                                                         <td align="left" class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">Mobile App</td>
                                                         <td align="left">
-                                                            <asp:TextBox CssClass="textbox" ID="txtMobileApp" runat="server" Text="0" /></td>
+                                                            <asp:TextBox CssClass="textbox" ID="txtMobileApp" runat="server" Text="0" MaxLength="3" />
+                                                            <asp:RegularExpressionValidator ID="regmob" runat="server" ErrorMessage="Mobile App Amount Should Be less Than 100 Or Equal To 100" ControlToValidate="txtMobileApp" ValidationExpression="^([0-9]|[1-9][0-9]|100)$"></asp:RegularExpressionValidator>
+                                                        
+                                                        </td>
                                                         <td align="left">&nbsp;</td>
                                                     </tr>
                                                     <tr>

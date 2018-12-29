@@ -36,7 +36,7 @@ namespace betplayer.poweruser
         public string toTime(object DateTimefromDB)
         {
             DateTime oDate = DateTime.Parse(DateTimefromDB.ToString());
-            return oDate.TimeOfDay.ToString();
+            return oDate.ToString("hh:mm:ss tt");
         }
         public string toDateString(object date)
         {

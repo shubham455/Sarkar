@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8">
-    <title>livegame25 Dashboard</title>
+    <title>sarkar50 Dashboard</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="description">
     <meta content="" name="author">
@@ -37,7 +37,7 @@
             <div class="container-fluid">
                 <!-- BEGIN LOGO -->
                 <a class="brand">
-                    <img src="../poweruser/img/logo.png" alt="livegame25">
+                    <img src="../poweruser/img/logo.png" alt="sarkar50">
                 </a>
                 <!-- END LOGO -->
                 <!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -102,6 +102,8 @@
                     <ul class="sub">
                         <li><a class="" href="CreateMatch.aspx">Create Matches </a></li>
                         <li><a class="" href="ModifyMatches.aspx">Modify Matches</a></li>
+                        <li><a class="" href="sendmatchdetails.aspx">Match Sechdule</a></li>
+                   
                     </ul>
                 </li>
                 <li class="has-sub">
@@ -125,7 +127,7 @@
     </form>
 
     <div id="footer">
-        2018 © livegame25 Dashboard.
+        2018 © sarkar50 Dashboard.
 	
         <div class="span pull-right">
             <span class="go-top"><i class="icon-arrow-up"></i></span>

@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8">
-    <title>Livegame Dashboard</title>
+    <title>sarkar50 Dashboard</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="description">
     <meta content="" name="author">
@@ -16,10 +16,11 @@
     <link href="../superagent/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="../superagent/css/style.css" rel="stylesheet">
     <link href="../superagent/css/style_responsive.css" rel="stylesheet">
+    <link href="../superagent/css/style_session.css" rel="stylesheet">
     <link href="../superagent/css/style_default.css" rel="stylesheet" id="style_color">
 
     <link href="../superagent/assets/fancybox/source/jquery.fancybox.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assets/uniform/css/uniform.default.css">
+    <link rel ="stylesheet" type="text/css" href="assets/uniform/css/uniform.default.css">
     <link href="../superagent/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet">
     <link href="../superagent/assets/jqvmap/jqvmap/jqvmap.css" media="screen" rel="stylesheet" type="text/css">
 </head>
@@ -33,7 +34,7 @@
             <div class="container-fluid">
                 <!-- BEGIN LOGO -->
                 <a class="brand">
-                    <img src="../superagent/img/logo.png" alt="Admin Lab">
+                    <img src="../superagent/img/logo.png" alt="">
                 </a>
                 <!-- END LOGO -->
                 <!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -100,7 +101,7 @@
                     </a>
                     <ul class="sub">
                         <li><a class="" href="AgentDetails.aspx">Agent Master</a></li>
-                        <li><a class="" href="CollectionDetail.aspx">Collection Master</a></li>
+                        <li><a class="" href="CollectionDetails.aspx">Collection Master</a></li>
                     </ul>
                 </li>
                 <li class="has-sub">
@@ -146,7 +147,7 @@
     </form>
 
     <div id="footer">
-        2018 © LiveGame25 Dashboard.
+        2018 © sarkar50 Dashboard.
 	
         <div class="span pull-right">
             <span class="go-top"><i class="icon-arrow-up"></i></span>
@@ -186,8 +187,7 @@
         });
 
     </script>
-    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
-    <script src="js/LiveMatch.js"></script>
+    
     <!-- END JAVASCRIPTS -->
 
     <!-- END BODY -->

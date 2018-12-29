@@ -73,7 +73,7 @@ namespace betplayer.Client
                         int ClientID = Convert.ToInt16(dt.Rows[0]["ClientID"]);
                         string  status = (dt.Rows[0]["status"]).ToString();
                         Decimal ClientLimit = Convert.ToDecimal(dt.Rows[0]["Client_Limit"]);
-                        if(ClientLimit > 200 && status == "Active")
+                        if(ClientLimit >= 0 && status == "Active")
                         {
                             string ht = (string)HttpContext.Current.Application["SESSION_LIST"];
                             string sID = HttpContext.Current.Session.SessionID;

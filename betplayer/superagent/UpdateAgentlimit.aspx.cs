@@ -63,7 +63,7 @@ namespace betplayer.superagent
                         decimal TotalusedLimit = 0;
                         for (int a = 0; a < AgentUsedLimitdt.Rows.Count; a++)
                         {
-                            int usedLimit = Convert.ToInt32(AgentUsedLimitdt.Rows[a]["CurrentLimit"]);
+                            Decimal usedLimit = Convert.ToDecimal(AgentUsedLimitdt.Rows[a]["CurrentLimit"]);
                             TotalusedLimit = TotalusedLimit + usedLimit;
                         }
                         row["UsedLimit"] = TotalusedLimit;
@@ -83,10 +83,7 @@ namespace betplayer.superagent
                     Agentlimitadp.Fill(Agentlimitdt);
 
                     SuperAgentLimit.Value = Agentlimitdt.Rows[0]["Currentlimit"].ToString();
-
-
-
-
+                
                 }
             }
         }

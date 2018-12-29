@@ -31,12 +31,23 @@ namespace betplayer.Agent
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
+
+                string Agentlimit = "Select * From AgentMaster where AgentID = '" + Session["AgentID"] + "'";
+                MySqlCommand Agentlimitcmd = new MySqlCommand(Agentlimit, cn);
+                MySqlDataAdapter Agentlimitadp = new MySqlDataAdapter(Agentlimitcmd);
+                DataTable Agentlimitdt = new DataTable();
+                Agentlimitadp.Fill(Agentlimitdt);
+
+                agentlimit.Value = Agentlimitdt.Rows[0]["Currentlimit"].ToString();
+
+
                 string Select = "Select * From ClientMaster where  CreatedBy = '" + Session["Agentcode"] + "'";
                 MySqlCommand cmd = new MySqlCommand(Select, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
                 Decimal Total = 0;
+
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     int ClientID = Convert.ToInt16(dt.Rows[i]["ClientID"]);
@@ -50,22 +61,18 @@ namespace betplayer.Agent
                     row["Fixlimit"] = FixLimit;
                     row["Currentlimit"] = ClientCurrentLimit;
 
-                    
-                    string Agentlimit = "Select * From AgentMaster where AgentID = '" + Session["AgentID"] + "'";
-                    MySqlCommand Agentlimitcmd = new MySqlCommand(Agentlimit, cn);
-                    MySqlDataAdapter Agentlimitadp = new MySqlDataAdapter(Agentlimitcmd);
-                    DataTable Agentlimitdt = new DataTable();
-                    Agentlimitadp.Fill(Agentlimitdt);
+                    string undeclarematches = "Select * From Matches where declear = '0' and Active = '1'";
+                    MySqlCommand undeclarematchescmd = new MySqlCommand(undeclarematches, cn);
 
-                    agentlimit.Value = Agentlimitdt.Rows[0]["Currentlimit"].ToString();
-
-                    for (int j = 0; j < dt.Rows.Count;)
+                    MySqlDataAdapter undeclarematchesadp = new MySqlDataAdapter(undeclarematchescmd);
+                    DataTable undeclarematchesdt = new DataTable();
+                    undeclarematchesadp.Fill(undeclarematchesdt);
+                    int finalTotalPosition = 0;
+                    for (int k = 0; k < undeclarematchesdt.Rows.Count; k++)
                     {
+                        int MatchID = Convert.ToInt32(undeclarematchesdt.Rows[k]["apiID"]);
 
-                        
-
-                        //int ClientID = Convert.ToInt32(dt.Rows[j]["ClientID"]);
-                        string Runner = "Select Position1,Position2 From Runner where ClientID = '" + ClientID + "' order by DateTime DESC ";
+                        string Runner = "Select Position1,Position2 From Runner where ClientID = '" + ClientID + "' and MatchID = '" + MatchID + "' order by DateTime DESC ";
                         MySqlCommand Runnercmd = new MySqlCommand(Runner, cn);
                         MySqlDataAdapter Runneradp = new MySqlDataAdapter(Runnercmd);
                         DataTable Runnerdt = new DataTable();
@@ -77,11 +84,12 @@ namespace betplayer.Agent
                             int Position2 = Convert.ToInt32(Runnerdt.Rows[0]["Position2"]);
 
                             int TotalPosition = 0;
-                            if(Position1<0 && Position2 <0 )
+                            if (Position1 < 0 && Position2 < 0)
                             {
-                                if(Position1 > Position2)
+                                if (Position1 > Position2)
                                 {
                                     TotalPosition = Position2;
+                                    
                                 }
                                 else if (Position2 > Position1)
                                 {
@@ -109,22 +117,105 @@ namespace betplayer.Agent
                                 TotalPosition = Position2;
                             }
 
-                           
-                             
-
-                            row["Usedlimit"] =  TotalPosition;
+                            finalTotalPosition = finalTotalPosition + TotalPosition;
+                            decimal finalsessionamount= SessionCalculation(ClientID, MatchID);
+                            decimal finaldeclaresessionamount = declareSessionAmount(ClientID, MatchID);
+                            decimal finalusedlimit = finalTotalPosition - finalsessionamount + finaldeclaresessionamount;
+                            row["Usedlimit"] = finalusedlimit;
                         }
+
                         else
                         {
-                            row["Usedlimit"] = 0;
+                            decimal finalsessionamount = SessionCalculation(ClientID, MatchID);
+                            decimal finaldeclaresessionamount = declareSessionAmount(ClientID, MatchID);
+                            decimal finalusedlimit = finalsessionamount - finaldeclaresessionamount;
+                            row["Usedlimit"] = finalusedlimit;
+
                         }
-                        UpdateTable.Rows.Add(row.ItemArray);
-                        break;
+
                     }
+                    UpdateTable.Rows.Add(row.ItemArray);
                     TotalLimit.Value = String.Format("{0:C0}", Total);
                 }
             }
         }
+        public decimal SessionCalculation(Decimal ClientID, int apiID)
+        {
+            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+            using (MySqlConnection cn = new MySqlConnection(CN))
+            {
+                cn.Open();
+
+                string CheckSession = "Select * From Session where  ClientID = '" + ClientID + "' && MatchID  = '" + apiID + "' Group By Session";
+                MySqlCommand Sessioncmd = new MySqlCommand(CheckSession, cn);
+                MySqlDataAdapter Sessionadp = new MySqlDataAdapter(Sessioncmd);
+                DataTable Sessiondt = new DataTable();
+                Sessionadp.Fill(Sessiondt);
+                decimal Amount1 = 0;
+                if (Sessiondt.Rows.Count > 0)
+                {
+                    for (int j = 0; j < Sessiondt.Rows.Count; j++)
+                    {
+                        string session = (Sessiondt.Rows[j]["Session"]).ToString();
+
+                        string CheckSession1 = "Select * From Session where  ClientID = '" + ClientID + "' && MatchID = '"+apiID+"' && Session = '" + session + "' order by  DATETIME DESC";
+                        MySqlCommand Sessioncmd1 = new MySqlCommand(CheckSession1, cn);
+                        MySqlDataAdapter Sessionadp1 = new MySqlDataAdapter(Sessioncmd1);
+                        DataTable Sessiondt1 = new DataTable();
+                        Sessionadp1.Fill(Sessiondt1);
+                        if (Sessiondt1.Rows.Count > 0)
+                        {
+                            decimal lastAmount = Convert.ToDecimal(Sessiondt1.Rows[0]["Position"]);
+                            Amount1 = Amount1 + lastAmount;
+
+                        }
+                    }
+                }
+                else
+                {
+                    Amount1 = 0;
+                }
+                return Amount1;
+            }
+
+        }
+        public Decimal declareSessionAmount(Decimal ClientID, int apiID)
+        {
+            Decimal TotalAmount1 = 0;
+            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+            using (MySqlConnection cn = new MySqlConnection(CN))
+            {
+                cn.Open();
+
+
+                decimal finaltotalamount = 0;
+
+                string Amount = "Select TotalAmount from SessionCalculation where ClientID = '" + ClientID + "' && MatchID = '" + apiID + "'";
+                MySqlCommand Amountcmd = new MySqlCommand(Amount, cn);
+                MySqlDataAdapter Amountadp = new MySqlDataAdapter(Amountcmd);
+                DataTable Amountdt = new DataTable();
+                Amountadp.Fill(Amountdt);
+                if (Amountdt.Rows.Count > 0)
+                {
+                    Decimal TotalAmount = 0;
+
+                    for (int j = 0; j < Amountdt.Rows.Count; j++)
+                    {
+                        TotalAmount = Convert.ToDecimal(Amountdt.Rows[j]["TotalAmount"]);
+                        TotalAmount1 = TotalAmount1 + TotalAmount;
+                    }
+                    TotalAmount = 0;
+                    finaltotalamount = finaltotalamount + TotalAmount1;
+
+
+                }
+
+                return finaltotalamount;
+            }
+        }
+
+
+
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {

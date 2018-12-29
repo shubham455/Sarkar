@@ -49,6 +49,8 @@ namespace betplayer.Agent
                     DropDownSession.DataValueField = "Session";
                     DropDownSession.DataBind();
 
+
+
                     string s2 = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Session["Agentcode"] + "' && Session.MatchID = '0'";
                     MySqlCommand cmd2 = new MySqlCommand(s2, cn);
                     MySqlDataAdapter adp2 = new MySqlDataAdapter(cmd2);
@@ -99,7 +101,52 @@ namespace betplayer.Agent
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s2 = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Session["Agentcode"] + "' && Session.ClientID = '" + DropDownClient.SelectedItem.Value + "' && Session.MatchID = '" + MatchID + "' && Session.Session = '" + DropDownSession.SelectedItem.Text + "' order by Session.DateTime DESC";
+
+                string declaresession = "Select * From DeclaredSession where Session = '" + DropDownSession.SelectedItem.Text + "' && MatchID = '"+MatchID+"'";
+                MySqlCommand declaresessioncmd = new MySqlCommand(declaresession, cn);
+                MySqlDataAdapter declaresessionadp = new MySqlDataAdapter(declaresessioncmd);
+                DataTable declaresessiondt = new DataTable();
+                declaresessionadp.Fill(declaresessiondt);
+                if (declaresessiondt.Rows.Count > 0)
+                {
+                    lblrate.Text = declaresessiondt.Rows[0]["DeclareRun"].ToString();
+                }
+                else
+                {
+                    lblrate.Text = "";
+                }
+
+                if (DropDownClient.Text == "All Client")
+                {
+                    showsessions("All Client");
+                }
+                else
+                {
+                    showsessions(DropDownClient.SelectedItem.Value);
+                }
+
+
+            }
+        }
+
+
+        public void showsessions(string Client)
+        {
+            int MatchID = Convert.ToInt32(Request.QueryString["MatchID"]);
+            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
+            using (MySqlConnection cn = new MySqlConnection(CN))
+            {
+                cn.Open();
+                string s2 = "";
+                if (Client == "All Client")
+                {
+                    s2 = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Session["Agentcode"] + "'  && Session.MatchID = '" + MatchID + "' && Session.Session = '" + DropDownSession.SelectedItem.Text + "' order by Session.DateTime DESC";
+
+                }
+                else
+                {
+                    s2 = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Session["Agentcode"] + "' && Session.ClientID = '" + DropDownClient.SelectedItem.Value + "' && Session.MatchID = '" + MatchID + "' && Session.Session = '" + DropDownSession.SelectedItem.Text + "' order by Session.DateTime DESC";
+                }
                 MySqlCommand cmd2 = new MySqlCommand(s2, cn);
                 MySqlDataAdapter adp2 = new MySqlDataAdapter(cmd2);
                 dt = new DataTable();
@@ -120,7 +167,7 @@ namespace betplayer.Agent
                         string Mode = dt.Rows[j]["Mode"].ToString();
                         string ClientID = dt.Rows[j]["ClientID"].ToString();
 
-                        string selectAgentshare = "select Agent_share From ClientMaster where ClientID = '" + DropDownClient.SelectedItem.Value + "'";
+                        string selectAgentshare = "select Agent_share From ClientMaster where ClientID = '" + ClientID + "'";
                         MySqlCommand selectAgentsharecmd = new MySqlCommand(selectAgentshare, cn);
                         MySqlDataAdapter selectAgentshareadp = new MySqlDataAdapter(selectAgentsharecmd);
                         DataTable selectAgentsharedt = new DataTable();
@@ -132,7 +179,7 @@ namespace betplayer.Agent
 
 
 
-                        for (int i = runs + 5; i >= runs + 5; i--)
+                        for (int i = runs + 5; i >= runs - 5; i--)
                         {
 
                             DataRow row = runTable.NewRow();
@@ -156,7 +203,7 @@ namespace betplayer.Agent
                         string ClientID = dt.Rows[j]["ClientID"].ToString();
 
 
-                        string selectAgentshare = "select Agent_share From ClientMaster where ClientID = '" + DropDownClient.SelectedItem.Value + "'";
+                        string selectAgentshare = "select Agent_share From ClientMaster where ClientID = '" + ClientID + "'";
                         MySqlCommand selectAgentsharecmd = new MySqlCommand(selectAgentshare, cn);
                         MySqlDataAdapter selectAgentshareadp = new MySqlDataAdapter(selectAgentsharecmd);
                         DataTable selectAgentsharedt = new DataTable();
@@ -219,6 +266,7 @@ namespace betplayer.Agent
                         }
                     }
                 }
+
             }
         }
         public Decimal CalculateAmount(string Mode, int Initruns, Decimal InitAmount, Decimal Rate, int runs, int Amount, Decimal AgentShare1)
@@ -254,6 +302,5 @@ namespace betplayer.Agent
             }
             return Difference;
         }
-
     }
 }

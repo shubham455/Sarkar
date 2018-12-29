@@ -40,13 +40,17 @@
                                         <button class="btn btn-warning" type="button"><i class="icon-plus icon-white"></i>Create</button></a>
 
                                     <a href="AddFromLotus.aspx">
-                                        <button class="btn btn-warning" type="button"><i class="icon-plus icon-white"></i>Create From Lotus</button></a>
-                                
-                                     <a href="AddfromDiamond.aspx">
-                                        <button class="btn btn-warning" type="button"><i class="icon-plus icon-white"></i>Create From Diamond</button></a>
-                                
+                                        <button class="btn btn-warning" type="button"><i class="icon-plus icon-white"></i>Create From Site1</button></a>
+
+                                    <a href="AddfromDiamond.aspx">
+                                        <button class="btn btn-warning" type="button"><i class="icon-plus icon-white"></i>Create From Site2</button></a>
+
+                                    <div class="controls" style="vertical-align: middle; text-align: left; padding-top: 0px;">
+                                        <asp:TextBox runat="server" TextMode="Date" class=" m-ctrl-medium date-picker" size="16" name="BillDate" type="text" ID="BillDate" AutoPostBack ="true" OnTextChanged="BillDate_TextChanged" />
+                                    </div>
+
                                 </div>
-                                
+
                             </div>
                             <br />
 

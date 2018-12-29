@@ -4,11 +4,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Live Game 25</title>
+    <title>Sarkar50</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="css/login/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/login/style_v1.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/login/clndr.css" rel="stylesheet" type="text/css" media="all" />
     <!--<link rel="stylesheet" type="text/css" href="captcha.css">-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -16,14 +16,14 @@
 
 
 </head>
-<body>
+<body style="background-image: url(images/loginimg/bk2.gif);">
     <br />
     <br />
     <br />
     <br />
 
     <!---start-wrap---->
-    <div class="wrap" style="margin-left: 10px;">
+    <div class="wrap" style="margin-left: 10px;" >
         <!---  End Header ----->
 
         <!----- Content ------------->
@@ -94,11 +94,11 @@
                             <tr>
                                 <td>
 
-                                    <asp:Button ID="btnHOME" CssClass="HomeButton" style="background-color:#FFBAD3;color:black" runat="server" Text="Home" class="HomeButton" OnClick="btnHOME_Click" />
+                                    <asp:Button ID="btnHOME" CssClass="HomeButton" style="background-color:#FFBAD3;color:black" runat="server" Text="Home" Font-Bold="true" class="HomeButton" OnClick="btnHOME_Click" />
                                 </td>
                                 <td></td>
                                 <td>
-                                    <asp:Button ID="btnSubmit" CssClass="LoginButton" runat="server" style="background-color:lightgreen;color:black" Text="Login" class="LoginButton" OnClick="Submitbtn_Click" />
+                                    <asp:Button ID="btnSubmit" CssClass="LoginButton" runat="server" style="background-color:lightgreen;color:black" Text="Login" Font-Bold="true" class="LoginButton" OnClick="Submitbtn_Click" />
                                 </td>
 
                             </tr>

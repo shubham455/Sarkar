@@ -37,7 +37,7 @@ namespace betplayer.Client
                 adp.Fill(dt);
 
 
-                string s1 = "Select TeamA,TeamB From Matches where apiID = @MatchID";
+                string s1 = "Select TeamA,TeamB,WinnerTeam From Matches where apiID = @MatchID";
                 MySqlCommand cmd1 = new MySqlCommand(s1, cn);
                 cmd1.Parameters.AddWithValue("@MatchID", MatchID);
                 MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
@@ -47,14 +47,50 @@ namespace betplayer.Client
                 string TeamB = dt1.Rows[0]["TeamB"].ToString();
                 lblteamA.Text = TeamA;
                 lblteamB.Text = TeamB;
+                string winnerteam = "";
 
-                if(dt.Rows.Count >0)
+                if (dt.Rows.Count > 0)
                 {
                     lblteamA.Text = dt1.Rows[0]["TeamA"].ToString();
                     lblteamB.Text = dt1.Rows[0]["TeamB"].ToString();
-                
+                    winnerteam = dt1.Rows[0]["WinnerTeam"].ToString();
+                }
+                string winnerteamposition = "";
+                if (winnerteam == TeamA)
+                {
+                    winnerteamposition = "position1";
+                }
+                else if (winnerteam == TeamB)
+                {
+                    winnerteamposition = "position2";
                 }
 
+                string checkbets = "Select * From Positions Where MatchID = '" + MatchID + "' && ClientID = '" + ClientID + "'";
+                MySqlCommand checkbetscmd = new MySqlCommand(checkbets, cn);
+                MySqlDataAdapter checkbetsadp = new MySqlDataAdapter(checkbetscmd);
+                DataTable checkbetsdt = new DataTable();
+                checkbetsadp.Fill(checkbetsdt);
+                int FinalBetAmount = 0;
+
+                if (winnerteamposition == "position1")
+                {
+                    FinalBetAmount = Convert.ToInt32(checkbetsdt.Rows[0]["Position1"]);
+                }
+                else if (winnerteamposition == "position2")
+                {
+                    FinalBetAmount = Convert.ToInt32(checkbetsdt.Rows[0]["Position2"]);
+                }
+
+                if (FinalBetAmount > 0)
+                {
+                    lblMatch.Text = "You Won(" + FinalBetAmount + ")Coins";
+                }
+                if (FinalBetAmount < 0)
+                {
+                    lblMatch.Text = "You Lose(" + FinalBetAmount + ")Coins";
+                }
+
+                int TotalAmount1 = 0;
                 string Amount = "Select TotalAmount from SessionCalculation where MatchID = @MatchID && ClientID =@ClientID";
                 MySqlCommand Amountcmd = new MySqlCommand(Amount, cn);
                 Amountcmd.Parameters.AddWithValue("@ClientID", ClientID);
@@ -65,7 +101,7 @@ namespace betplayer.Client
                 if (Amountdt.Rows.Count > 0)
                 {
                     int TotalAmount = 0;
-                    int TotalAmount1 = 0;
+
 
                     for (int i = 0; i < Amountdt.Rows.Count; i++)
                     {
@@ -74,7 +110,7 @@ namespace betplayer.Client
                     }
                     TotalAmount = 0;
 
-                    if(TotalAmount1 > 0)
+                    if (TotalAmount1 > 0)
                     {
                         lblSession.Text = "You Won(" + TotalAmount1 + ")Coins";
                     }
@@ -82,12 +118,14 @@ namespace betplayer.Client
                     {
                         lblSession.Text = "You Lose(" + TotalAmount1 + ")Coins";
                     }
-                    
-                }
 
-                string Session = "Select * From Session where MatchID = '"+MatchID+"' && ClientID = '"+ClientID+"' order by DateTime DESC ";
+                }
+                int FinalPlusminus = (FinalBetAmount + TotalAmount1) - 100;
+                lblfinalAmount.Text = FinalPlusminus.ToString();
+
+                string Session = "Select * From Session where MatchID = '" + MatchID + "' && ClientID = '" + ClientID + "' order by DateTime DESC ";
                 MySqlCommand Sessioncmd = new MySqlCommand(Session, cn);
-               
+
                 MySqlDataAdapter Sessionadp = new MySqlDataAdapter(Sessioncmd);
                 Sessiondt = new DataTable();
                 Sessionadp.Fill(Sessiondt);

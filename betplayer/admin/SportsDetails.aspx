@@ -62,6 +62,8 @@
                                                     <li><a href="ViewMatchReport.aspx?MatchID=<%: row["apiID"] %>""><i class="icon-pushpin"></i>Display Match Bets</a></li>
                                                     <li><a href="ViewSessionReport.aspx?MatchID=<%: row["apiID"] %>""><i class="icon-bullhorn"></i>Display Session Bets</a></li>
                                                     <li><a onclick="undeclarematch(<%: row["apiID"] %>);"><i class="icon-bullhorn"></i>Undeclare Match</a></li>
+                                                    <li><a onclick="deletematch(<%: row["apiID"] %>);"><i class="icon-bullhorn"></i>Delete Match</a></li>
+                                                    <li><a href="sessionundeclare.aspx?MatchID=<%: row["apiID"] %>&fk=<%: row["firebasekey"] %>"><i class="icon-bullhorn"></i>Session Undeclare</a></li>
                                                         
                                                 </ul>
                                             </div>
@@ -123,6 +125,39 @@
                 }).then(function (data) {
                     if (data.status) alert("Match Undeclare Successfully");
                     else alert("Match Undeclare Failed!!!" + "\r\n" + data.error);
+                }).then(function () {
+                    location.reload();
+                }).catch(function (err) {
+                    console.log(err);
+                });
+            }
+        }
+        function deletematch(apiID) {
+            var result = confirm("Want to delete?");
+            if (result) {
+                var params = {
+                    apiID: apiID
+                };
+
+                var formBody = [];
+                for (var property in params) {
+                    var encodedKey = encodeURIComponent(property);
+                    var encodedValue = encodeURIComponent(params[property]);
+                    formBody.push(encodedKey + "=" + encodedValue);
+                }
+                formBody = formBody.join("&");
+
+                fetch('/Admin/deletematch.ashx', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                    },
+                    body: formBody
+                }).then(function (responce) {
+                    return responce.json();
+                }).then(function (data) {
+                    if (data.status) alert("Match Delete Successfully");
+                    else alert("Match Delete Failed!!!" + "\r\n" + data.error);
                 }).then(function () {
                     location.reload();
                 }).catch(function (err) {

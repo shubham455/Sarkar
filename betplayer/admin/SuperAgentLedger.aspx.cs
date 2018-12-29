@@ -44,6 +44,17 @@ namespace betplayer.admin
                     dropdownAgent.DataBind();
 
 
+                    string ClientCollection = "Select * From SuperAgentCollectionName where CreatedBy = '" + Session["Admincode"] + "'";
+                    MySqlCommand ClientCollectioncmd = new MySqlCommand(ClientCollection, cn);
+                    MySqlDataAdapter ClientCollectionadp = new MySqlDataAdapter(ClientCollectioncmd);
+                    DataTable ClientCollectiondt = new DataTable();
+                    ClientCollectionadp.Fill(ClientCollectiondt);
+                    dropdowncollection.DataSource = ClientCollectiondt;
+                    dropdowncollection.DataTextField = "Name";
+                    dropdowncollection.DataValueField = "SuperAgentCollectionID";
+                    dropdowncollection.DataBind();
+
+
                     string s1 = "Select * From SuperAgentledger where SuperAgentID = '" + dropdownAgent.SelectedValue + "'";
                     MySqlCommand cmd1 = new MySqlCommand(s1, cn);
                     MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
@@ -87,7 +98,7 @@ namespace betplayer.admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "select matches.TeamA,matches.teamB,matches.DateTime,superagentledger.superagentledgerID,superagentledger.Dabit,superagentledger.Credit from superagentLedger inner join matches on superagentledger.MatchID = matches.apiID where superagentID = '" + dropdownAgent.SelectedValue + "'";
+                string s = "select matches.TeamA,matches.teamB,matches.DateTime,superagentledger.superagentledgerID,superagentledger.Dabit,superagentledger.Credit from superagentLedger inner join matches on superagentledger.MatchID = matches.apiID where superagentID = '" + dropdownAgent.SelectedValue + "' order by  matches.DateTime ASC";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt1 = new DataTable();
@@ -109,7 +120,7 @@ namespace betplayer.admin
                     row["ID"] = ID;
                     row["Date"] = oDate;     //row["Date"] = datetime;
                     row["PaynmentDescription"] = TeamA + "VS" + TeamB;
-                    row["Dabit"] = Dabit;
+                    row["Dabit"] = Dabit *-1;
                     row["Credit"] = Credit;
 
                     decimal Balance = 0, Balance1 = 0;
@@ -119,15 +130,15 @@ namespace betplayer.admin
                     }
                     else if (Credit != 0)
                     {
-                        Balance = Credit;
+                        Balance = Credit ;
                     }
                     if (runtable.Rows.Count > 0)
                     {
                         for (int k = 0; k < runtable.Rows.Count; k++)
                         {
                             Balance1 = Convert.ToDecimal(runtable.Rows[k]["Balance"]);
-                            Balance1 = Balance1 - Dabit;
-                            Balance1 = Balance1 + Credit;
+                            Balance1 = Balance1 + Balance;
+                            
                             row["Balance"] = Balance1;
                         }
                     }
@@ -164,7 +175,7 @@ namespace betplayer.admin
                     row["Remark"] = Remark;
                     if (PaynmentDescription == "Payment Received")
                     {
-                        row["Dabit"] = Amount;
+                        row["Dabit"] = Amount * -1;
                         row["Credit"] = 0;
                         row["Balance"] = Amount * -1;
                     }
@@ -196,7 +207,7 @@ namespace betplayer.admin
                     LedgerTableOrdered.Rows[0]["Date"] = date.Date.ToString().Substring(0, 10);
                     if (l > 0)
                     {
-                        LedgerTableOrdered.Rows[l]["Balance"] = Convert.ToInt32(LedgerTableOrdered.Rows[l - 1]["Balance"]) - Convert.ToInt32(LedgerTableOrdered.Rows[l]["Dabit"]) + Convert.ToInt32(LedgerTableOrdered.Rows[l]["Credit"]);
+                        LedgerTableOrdered.Rows[l]["Balance"] = Convert.ToDecimal(LedgerTableOrdered.Rows[l - 1]["Balance"]) + Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Dabit"]) + Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Credit"]);
 
 
                     }
@@ -256,8 +267,8 @@ namespace betplayer.admin
                 cn.Open();
                 string s = "Insert Into SuperAgentCollectionMaster (SuperAgentID,CollectionType,Date,Amount,PaynmentType,Remark) values(@SuperAgentID,@CollectionType,@Date,@Amount,@PaynmentType,@Remark)";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
-                cmd.Parameters.AddWithValue("@SuperAgentID", Session["SuperAgentID"]);
-                cmd.Parameters.AddWithValue("@CollectionType", Collection.Value);
+                cmd.Parameters.AddWithValue("@SuperAgentID", dropdownAgent.Text);
+                cmd.Parameters.AddWithValue("@CollectionType", dropdowncollection.SelectedItem.Text);
                 cmd.Parameters.AddWithValue("@Date", BillDate.Text);
                 cmd.Parameters.AddWithValue("@Amount", Amount.Text);
                 cmd.Parameters.AddWithValue("@PaynmentType", PaymentType.Value);
@@ -269,6 +280,7 @@ namespace betplayer.admin
                 BillDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
                 dropdownAgent_SelectedIndexChanged(sender, e);
+                Response.Redirect("SuperAgentLedger.aspx", true);
 
 
 

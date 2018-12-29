@@ -13,15 +13,6 @@ namespace Panchayat_System.Admin {
     public partial class BirthCertificate {
         
         /// <summary>
-        /// txtcode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtcode;
-        
-        /// <summary>
         /// txtname control.
         /// </summary>
         /// <remarks>
@@ -85,13 +76,22 @@ namespace Panchayat_System.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtAgentShare2;
         
         /// <summary>
-        /// txtClientShare control.
+        /// txtMobapp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtClientShare;
+        protected global::System.Web.UI.WebControls.TextBox txtMobapp;
+        
+        /// <summary>
+        /// regmob control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regmob;
         
         /// <summary>
         /// SessionDropDown control.

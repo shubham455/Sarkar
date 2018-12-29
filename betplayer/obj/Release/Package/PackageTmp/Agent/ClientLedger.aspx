@@ -63,12 +63,12 @@
                                                 <asp:ListItem Text="Select It.." Value="0"></asp:ListItem>
                                             </asp:DropDownList>
                                         <td>
-                                            <select runat="server" name="Collection" id="Collection" onchange="ShowLedgerCollection()">
-                                                <option value="CASH A/C" selected="">CASH A/C</option>
-                                            </select></td>
+                                            <asp:DropDownList ID="dropdowncollection" runat="server" AppendDataBoundItems="true" AutoPostBack="false">
+                                                <asp:ListItem Text="Cash/ac" Value="0"></asp:ListItem>
+                                            </asp:DropDownList>
                                         <td>
                                             <div class="controls" style="vertical-align: middle; text-align: left; padding-top: 0px;">
-                                                <asp:TextBox runat="server" TextMode="Date" class=" m-ctrl-medium date-picker" size="16" name="BillDate" type="text" ID="BillDate" value="2018-06-09" />
+                                                <asp:TextBox runat="server" TextMode="Date" class=" m-ctrl-medium date-picker" size="16" name="BillDate" type="text" ID="BillDate" />
                                             </div>
                                         </td>
                                     </tr>

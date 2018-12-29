@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/admin/Dashboard.Master" AutoEventWireup="true" CodeBehind="MatchAndSessionPosition.aspx.cs" Inherits="betplayer.admin.MatchAndSessionPosition" %>
 
 <asp:Content ID="content" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
+    <meta http-equiv="refresh" content="10">
     <div id="main-content">
         <!-- BEGIN PAGE CONTAINER-->
         <div class="container-fluid">
@@ -278,7 +279,7 @@
                                             <asp:Label ID="lblTeamB" runat="server"></asp:Label>
                                         </strong></td>
                                         <td align="left" class="TableHeading"><strong>Date &amp; Time</strong></td>
-                                    </tr>
+                                    </tr> <%int i = 1; %>
                                     <% foreach (System.Data.DataRow row in ClientDataTable1.Rows)
                                         { %>
                                     <tr>
@@ -292,7 +293,7 @@
                                             </div>
                                         </td>
 
-                                        <td height="25" align="left" class="TableHeading"><strong><%: row["RunnerID"] %></strong></td>
+                                        <td height="25" align="left" class="TableHeading"><strong><%=i%></strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong><%: row["rate"] %></strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong><%: row["Amount"] %></strong></td>
                                         <td align="left" class="TableHeading"><strong><%: row["Mode"] %></strong></td>
@@ -303,7 +304,21 @@
                                         <td style="text-align: right;" class="TableHeading"><strong><%: row["Position2"] %>  </strong></td>
                                         <td align="left" class="TableHeading"><strong><%: row["Datetime"] %></strong></td>
                                     </tr>
+                                     <% i++; %>
                                     <% } //foreach %>
+                                    <tr>
+                                        <td align="left" class="TableHeading">&nbsp;</td>
+                                        <td height="25" align="left" class="TableHeading"><strong></strong></td>
+                                        <td style="text-align: right;" class="TableHeading"><strong></strong></td>
+                                        <td style="text-align: right;" class="TableHeading"><strong></strong></td>
+                                        <td align="left" class="TableHeading"><strong></strong></td>
+                                        <td align="left" class="TableHeading"><strong></strong></td>
+                                        <td align="left" class="TableHeading"><strong></strong></td>
+                                        <td align="left" class="TableHeading"><strong>Total</strong></td>
+                                        <td style="text-align: right;" class="TableHeading"><strong><asp:Label ID="finalposition1" runat="server"></asp:Label>  </strong></td>
+                                        <td style="text-align: right;" class="TableHeading"><strong><asp:Label ID="finalposition2" runat="server"></asp:Label>   </strong></td>
+                                        <td align="left" class="TableHeading"><strong></strong></td>
+                                    </tr>
                                 </tbody>
 
                             </table>
@@ -323,7 +338,7 @@
     </div>
     <asp:HiddenField ID="apiID" runat="server" />
     <asp:HiddenField ID="firebasekey" runat="server" />
-    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
     <script src="js/LiveMatch.js"></script>
     <script type="text/javascript">
          <!--

@@ -133,12 +133,12 @@
                                                     <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
                                                     <ul class="dropdown-menu">
                                                         <li><a href="ModifySuperAgent.aspx?id=<%:row["SuperAgentID"] %>"><i class="icon-pencil"></i>Edit</a></li>
-                                                        <li><a onclick="CallHandler('<%:row["SuperAgentID"] %>');"><i class="icon-trash"></i>Delete</a></li>
+                                                        <li><a onclick="#"><i class="icon-trash"></i>Delete</a></li>
                                                         <li><a onclick="ChangesInStatus('<%:row["SuperAgentID"] %>');"><i class="icon-ban-circle"></i>
                                                             InActive                              </a></li>
                                                         <li class="divider"></li>
                                                         
-                                                        <li><a href="javascript:SendLoginDetails('17');"><i class="icon-film"></i>Send Login Details</a></li>
+                                                        <li><a onclick="SendLoginDetails('<%:row["SuperAgentID"] %>');"><i class="icon-film"></i>Send Login Details</a></li>
                                                     </ul>
                                                 </div>
                                             </td>
@@ -264,6 +264,38 @@
             }).then(function (data) {
                 if (data.status) alert("Status Updated with ID: " + data.userDeletedId + " Successfully");
                 else alert("User Status Updated Failed!!!" + "\r\n" + data.error);
+            }).then(function () {
+                location.reload();
+            }).catch(function (err) {
+                console.log(err);
+            });
+        }
+    </script>
+    <script>
+        function SendLoginDetails(userId) {
+            var params = {
+                userId: userId
+            };
+
+            var formBody = [];
+            for (var property in params) {
+                var encodedKey = encodeURIComponent(property);
+                var encodedValue = encodeURIComponent(params[property]);
+                formBody.push(encodedKey + "=" + encodedValue);
+            }
+            formBody = formBody.join("&");
+
+            fetch('/Admin/SendsuperagentDetails.ashx', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                },
+                body: formBody
+            }).then(function (responce) {
+                return responce.json();
+            }).then(function (data) {
+                if (data.status) alert("Mesaage Sent with  ID: " + data.userDeletedId + " Successfully");
+                else alert("Message  Sent Failed!!!" + "\r\n" + data.error);
             }).then(function () {
                 location.reload();
             }).catch(function (err) {

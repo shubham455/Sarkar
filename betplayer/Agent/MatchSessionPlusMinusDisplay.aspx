@@ -76,6 +76,7 @@
                                                                                             <td width="50" align="right" style="text-align: right;" valign="middle"><strong>SESSION</strong></td>
                                                                                             <td width="50" align="right" style="text-align: right;" valign="middle"><strong>TOTAL</strong></td>
                                                                                             <td width="70" align="right" style="text-align: right;" valign="middle"><strong>NET AMT</strong></td>
+                                                                                            <td width="70" align="right" style="text-align: right;" valign="middle"><strong>SHR %</strong></td>
                                                                                             <td width="70" align="right" style="text-align: right;" valign="middle"><strong>SHR AMT</strong></td>
                                                                                             <td width="70" align="right" style="text-align: right;" valign="middle"><strong>MOB.APP</strong></td>
                                                                                             <td width="100" align="right" style="text-align: right;" valign="middle"><strong>FINAL</strong></td>
@@ -90,9 +91,10 @@
                                                                                             <td align="right" style="text-align: right;" valign="middle" class="FontText"><%:row["SessionAmount"] %></td>
                                                                                             <td align="right" style="text-align: right;" valign="middle" class="FontText"><strong><%:row["TotalAmount"] %></strong></td>
                                                                                             <td align="right" style="text-align: right;" valign="middle" class="FontText"><%:row["MatchCommision"] %></td>
-                                                                                            <td align="right" style="text-align: right;" valign="middle" class="FontText"><%: row["SessionCommision"] %></td>
+                                                                                            <td align="right" style="text-align: right;" valign="middle" class="FontText"><%:row["SessionCommision"] %></td>
                                                                                             <td align="right" style="text-align: right;" valign="middle" class="FontText"><strong><%:row["TotalCommisionAmount"] %></strong></td>
                                                                                             <td align="right" style="text-align: right;" valign="middle" class="FontText"><strong><%:row["TotalNetAmount"] %></strong></td>
+                                                                                            <td align="right" style="text-align: right;" valign="middle" class="FontText"><%:row["ClientShare"] %></td>
                                                                                             <td align="right" style="text-align: right;" valign="middle" class="FontText"><%:row["TotalHalfAmount"] %></td>
                                                                                             <td align="right" style="text-align: right;" valign="middle" class="FontText"><%:row["MOBAppAmount"] %></td>
                                                                                             <td align="right" style="text-align: right;" valign="middle" class="FontText"><strong><%:row["FinalAmount"] %></strong></td>
@@ -110,6 +112,7 @@
                                                                                             <td align="right" style="text-align: right;" valign="middle"><strong><%:row["Session1Amount"] %> </strong></td>
                                                                                             <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalCommisionAmount"] %> </strong></td>
                                                                                             <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalNetAmount"] %> </strong></td>
+                                                                                            <td align="right" style="text-align: right;" valign="middle"><strong> </strong></td>
                                                                                             <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalHalfAmount"] %> </strong></td>
                                                                                             <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalAppAmount"] %></strong></td>
                                                                                             <td align="right" style="text-align: right;" valign="middle"><strong><%:row["TotalFinalAmount"] %>  </strong></td>

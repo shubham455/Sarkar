@@ -8,7 +8,7 @@
     </div>
 
     <div class="TeamName">
-        <a  style="color:black" href="#"><%: row["teamA"] %> VS <%: row["teamB"] %></a>
+        <a  style="color:black" href="#"><%: row["teamname"] %></a>
     </div>
     <div class="profile-details">
         <a href="BetDetails.aspx?id=<%: row["apiID"] %>&fk=<%: row["firebasekey"] %>&Type=<%: row["Type"] %>">
@@ -30,13 +30,13 @@
                             <table width="99%" border="0" cellspacing="0" cellpadding="0">
                                 <tbody>
                                     <tr >
-                                        <td class="GameList" align="center"><%: row["DateTime"] %> </td>
+                                        <td class="GameList" align="center"><%: row["Date"] %> </td>
                                     </tr>
                                     <tr>
-                                        <td class="GameList" align="center">Match Bets : 0</td>
+                                        <td class="GameList" align="center">Match Bets :<%: row["MatchBetCount"] %> </td>
                                     </tr>
                                     <tr>
-                                        <td class="GameList" align="center">Session Bets : 0</td>
+                                        <td class="GameList" align="center">Session Bets : <%: row["SessionBetCount"] %></td>
                                     </tr>
                                     
                                     

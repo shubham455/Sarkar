@@ -96,7 +96,7 @@
                                     </tr>
 
 
-
+                                     <%int i = 1; %>
                                     <% foreach (System.Data.DataRow row in ClientDataTable1.Rows)
                                         { %>
                                     <tr>
@@ -109,7 +109,7 @@
                                                 </ul>
                                             </div>
                                         </td>
-                                        <td height="25" align="left" class="TableHeading"><strong><%:row["RunnerID"] %></strong></td>
+                                        <td height="25" align="left" class="TableHeading"><strong><%=i %></strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong><%:row["Rate"] %></strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong><%:row["Amount"] %></strong></td>
                                         <td align="left" class="TableHeading"><strong><%:row["Mode"] %></strong></td>
@@ -120,6 +120,7 @@
                                         <td width="90" style="text-align: right;" class="TableHeading"><strong><%:row["Position1"] %></strong></td>
                                         <td width="90" style="text-align: right;" class="TableHeading"><strong><%:row["Position2"] %></strong></td>
                                     </tr>
+                                     <% i++; %>
                                     <% } //foreach %>
 
 

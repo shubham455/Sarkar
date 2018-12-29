@@ -90,7 +90,7 @@ namespace betplayer.Agent
                     string team = "";
                     if (selectteamdt1.Rows.Count > j)
                     {
-                        team = selectteamdt1.Rows[j]["Team"].ToString();
+                        team = dt1.Rows[j]["Team"].ToString();
 
                     }
 
@@ -181,7 +181,7 @@ namespace betplayer.Agent
                     string team = "";
                     if (selectteamdt1.Rows.Count > k)
                     {
-                        team = selectteamdt1.Rows[k]["Team"].ToString();
+                        team = dt1.Rows[k]["Team"].ToString();
 
                     }
                     string Mode1 = "";

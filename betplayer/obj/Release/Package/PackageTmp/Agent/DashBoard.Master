@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8">
-    <title>livegame25 Dashboard</title>
+    <title>sarkar50 Dashboard</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="description">
     <meta content="" name="author">
@@ -16,6 +16,7 @@
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style_responsive.css" rel="stylesheet">
+    <link href="css/Homepage/style_session.css" rel="stylesheet">
     <link href="css/style_default.css" rel="stylesheet" id="style_color">
 
     <link href="assets/fancybox/source/jquery.fancybox.css" rel="stylesheet">
@@ -99,7 +100,7 @@
                     </a>
                     <ul class="sub">
                         <li><a class="" href="ClientDetails.aspx">Client Master</a></li>
-                        <li><a class="" href="#">Collection Master</a></li>
+                        <li><a class="" href="CollectionDetails.aspx">Collection Master</a></li>
                     </ul>
                 </li>
                 <li class="has-sub">
@@ -142,7 +143,7 @@
     </form>
 
     <div id="footer">
-        2018 © livegame25.com
+        2018 © sarkar50.com
 		<div class="span pull-right">
             <span class="go-top"><i class="icon-arrow-up"></i></span>
         </div>

@@ -30,7 +30,7 @@
                             <h4><i class="icon-globe"></i>Runner</h4>
                             <span class="tools"><a href="javascript:;" class="icon-chevron-down"></a><a href="javascript:;" class="icon-remove"></a></span>
                         </div>
-                        <div class="widget-body form">
+                        
                             <table>
                                 <tbody>
                                     <tr>
@@ -42,20 +42,27 @@
                                             </select>
                                         <td width="5%" align="left" valign="middle"></td>
                                         <td width="14%" align="left" valign="middle">
-                                            <input id="team_Lagai" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="lagaiKeyPress(event)" type="text" style="width: 100px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" placeholder="Lagai">
+                                            <input id="team_Lagai" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="lagaiKeyPress(event)" type="text" style="width: 100px; height: 50px; font-size: xx-large; font-weight: bold" name="team1khai" value="" >
                                         </td>
                                         <td width="14%" align="left" valign="middle">
-                                            <input id="team_Khai" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="khaiKeyPress(event)" type="text" name="team1lagai" style="width: 100px; height: 50px; font-size: xx-large; font-weight: bold" value="" placeholder="Khai">
+                                            <input id="team_Khai" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="khaiKeyPress(event)" type="text" name="team1lagai" style="width: 100px; height: 50px; font-size: xx-large; font-weight: bold" value="" >
                                         </td>
 
                                         <td width="14%" align="left" valign="middle">
                                             <button id="btnteamupdate" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">Update</button>
                                         </td>
                                         <td width="14%" align="left" valign="middle">
-                                            <button id="btnLock" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">Lock</button>
+                                            <button id="btnLock" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large; background-color:#ff6347">Lock</button>
+                                        </td>
+                                         <td width="14%" align="left" valign="middle">
+                                            <button id="btnUnLock" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">UnLock</button>
                                         </td>
                                         <td width="14%" align="left" valign="middle">
-                                            <button id="btnUnLock" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">UnLock</button>
+                                            <button id="btnclearrate" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large; background-color:#ff6347">Lock All</button>
+                                        </td>
+                                       
+                                         <td width="14%" align="left" valign="middle">
+                                            <button id="btnUnclearrate" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">UnLock All</button>
                                         </td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
                                         <td width="24%" align="left" valign="middle">&nbsp;</td>
@@ -65,87 +72,76 @@
                                     <br />
                                     <br />
 
-
-
-
                                 </tbody>
                             </table>
+                       
+                        <div class="widget-body form">
+                            <div class="main-container">
+                                <div class="match-container">
+                                    <div class="lastball-container">
+                                        <button id="ball_start" type="button" class="btn btn-success" style="font-size: x-large; font-weight: bold; color: black;">Ball Start</button>
+                                        <button id="bet_open" type="button" class="btn btn-success" style="font-size: x-large; font-weight: bold; color: black">Bet Open</button>
+                                        <button id="bet_closed" type="button" class="btn btn-success" style="font-size: x-large; font-weight: bold; color: black">Bet Closed</button>
+                                        <button id="NoRun" type="button" class="btn btn-success" style="font-size: x-large; font-weight: bold; color: black">No Run</button>
+                                        <button id="1run" type="button" class="btn btn-success" style="font-size: x-large; font-weight: bold; color: black">1 Run</button>
+                                        <button id="2run" type="button" class="btn btn-success" style="font-size: x-large; font-weight: bold; color: black">2 Run</button>
+                                        <button id="3run" type="button" class="btn btn-success" style="font-size: x-large; font-weight: bold; color: black">3 Run</button>
+                                        <button id="four" type="button" class="btn btn-success" style="font-size: x-large; font-weight: bold; color: black">FOUR</button>
+                                        <button id="six" type="button" class="btn btn-success" style="font-size: x-large; font-weight: bold; color: black">SIX</button>
+                                        <button id="out" type="button" class="btn btn-success" style="font-size: x-large; font-weight: bold; color: black">OUT</button>
+                                        <button id="wide" type="button" class="btn btn-success" style="font-size: x-large; font-weight: bold; color: black">WIDE</button>
+                                        <button id="noball" type="button" class="btn btn-success" style="font-size: x-large; font-weight: bold; color: black">NO BALL</button>
+                                        <button id="freehit" type="button" class="btn btn-success" style="font-size: x-large; font-weight: bold; color: black">FREE HIT</button>
+                                        <button id="wideplus4" type="button" class="btn btn-success" style="font-size: x-large; font-weight: bold; color: black">Wide4</button>
+                                        <button id="timeout" type="button" class="btn btn-success" style="font-size: x-large; font-weight: bold; color: black">Timeout</button>
+                                        <button id="thirdumpire" type="button" class="btn btn-success" style="font-size: x-large; font-weight: bold; color: black">Third Umpire</button>
+                                        <button id="Review" type="button" class="btn btn-success" style="font-size: x-large; font-weight: bold; color: black">Review</button>
+                                        <button id="Inningsbreak" type="button" class="btn btn-success" style="font-size: x-large; font-weight: bold; color: black">InningsBreak</button>
+                                    </div>
 
-
-
-                            <div class="widget-body form">
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td width="25%" align="left" valign="middle">
-                                                <span>Runner Min/Max: </span>
-                                            </td>
-                                            <td width="30%" align="left" valign="middle">
-                                                <input id="minBet" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="minBetKeyPress(event)" type="text" style="width: 90%; height: 50px; font-size: xx-large; font-weight: bold" value="" placeholder="Min Bet">
-                                            </td>
-                                            <td width="30%" align="left" valign="middle">
-                                                <input id="maxBet" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="maxBetKeyPress(event)" type="text" style="width: 90%; height: 50px; font-size: xx-large; font-weight: bold" value="" placeholder="Max Bet">
-                                            </td>
-
-                                            <td width="15%" align="left" valign="middle">
-                                                <button id="btnminmaxUpdate" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">Update</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td width="25%" align="left" valign="middle">
-                                                <span>Session Min/Max: </span>
-                                            </td>
-                                            <td width="30%" align="left" valign="middle">
-                                                <input id="sessionMinBet" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="sessionMinBetKeyPress(event)" type="text" style="width: 90%; height: 50px; font-size: xx-large; font-weight: bold" value="" placeholder="Min Bet">
-                                            </td>
-                                            <td width="30%" align="left" valign="middle">
-                                                <input id="sessionMaxBet" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="sessionMaxBetKeyPress(event)" type="text" style="width: 90%; height: 50px; font-size: xx-large; font-weight: bold" value="" placeholder="Max Bet">
-                                            </td>
-
-                                            <td width="15%" align="left" valign="middle">
-                                                <button id="btnsessionMinMaxUpdate" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">Update</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="widget-body form">
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <select name="ctl00$ContentPlaceHolder$DropStatus" runat="server" id="team_selector1" class="btn btn-primary dropdown-toggle" style="width: 180px; height: 50px; font-size: large">
-                                                <option id="team1_name1" style="font-size: large" value="team_1">Team1</option>
-                                                <option id="team2_name2" style="font-size: large" value="team_2">Team2</option>
-                                            </select>
-
-                                        </td>
-                                        <td style="margin-left: 30px;"></td>
-                                        <td>
-                                            <asp:Button ID="btnDeclare" runat="server" OnClick="btnDeclare_ServerClick" OnClientClick="return matchDeclareConfirmation();" Text="Declare" class="btn btn-success" Style="height: 50px; width: 120px; font-size: x-large; font-weight: bold; color: black" />
-                                        </td>
-                                        <td style="margin-left: 30px;"></td>
-                                        <td>
-                                            <asp:Button ID="btntie" runat="server" OnClick="btntie_Click" OnClientClick="return matchDeclareConfirmation();" Text="Tie" class="btn btn-success" Style="height: 50px; width: 120px; font-size: x-large; font-weight: bold; color: black" />
-                                        </td>
-                                        <td style="margin-left: 30px;"></td>
-                                        <td>
-                                            <asp:Button ID="btnabandoned" runat="server" OnClick="btnabandoned_Click" OnClientClick="return matchDeclareConfirmation();" Text="Abandoned" class="btn btn-success" Style="height: 50px; width: 150px; font-size: x-large; font-weight: bold; color: black" />
-                                        </td>
-                                        <td style="margin-left: 30px;"></td>
-                                        
-                                    </tr>
-                                </table>
+                                </div>
                             </div>
                         </div>
+                    
+                    <div class="widget-body form">
+                        <table>
+                            <tr>
+                                <td>
+                                    <select name="ctl00$ContentPlaceHolder$DropStatus" runat="server" id="team_selector1" class="btn btn-primary dropdown-toggle" style="width: 180px; height: 50px; font-size: large">
+                                        <option id="team1_name1" style="font-size: large" value="team_1"></option>
+                                        <option id="team2_name2" style="font-size: large" value="team_2">team2</option>
+                                    </select>
+
+                                </td>
+                                <td style="margin-left: 30px;"></td>
+                                <td>
+                                    <asp:Button ID="btnDeclare" runat="server" OnClick="btnDeclare_ServerClick" OnClientClick="return matchDeclareConfirmation();" Text="Declare" class="btn btn-success" Style="height: 50px; width: 120px; font-size: x-large; font-weight: bold; color: black" />
+                                </td>
+                                <td style="margin-left: 30px;"></td>
+                                <td>
+                                    <asp:Button ID="btntie" runat="server" OnClick="btntie_Click" OnClientClick="return matchDeclareConfirmation();" Text="Tie" class="btn btn-success" Style="height: 50px; width: 120px; font-size: x-large; font-weight: bold; color: black" />
+                                </td>
+                                <td style="margin-left: 30px;"></td>
+                                <td>
+                                    <asp:Button ID="btnabandoned" runat="server" OnClick="btnabandoned_Click" OnClientClick="return matchDeclareConfirmation();" Text="Abandoned" class="btn btn-success" Style="height: 50px; width: 150px; font-size: x-large; font-weight: bold; color: black" />
+                                </td>
+                                <td style="margin-left: 30px;"></td>
+
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
+    </div>
 
     <asp:HiddenField ID="firebasekey" runat="server" />
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
-    <script src="js/RunnerUpdate.js"></script>
+    <script src="js/jsbn.js"></script>
+    <script src="js/money.js"></script>
+    <script src="js/RunnerUpdate_v2.5.js"></script>
 
     <script>
         function matchDeclareConfirmation() {
@@ -154,6 +150,6 @@
             else
                 return false;
         }
-        
+
     </script>
 </asp:Content>

@@ -85,13 +85,13 @@ namespace betplayer.superagent {
         protected global::System.Web.UI.WebControls.Label SATotalNetAmount;
         
         /// <summary>
-        /// SATotalHalfAmount control.
+        /// Label12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label SATotalHalfAmount;
+        protected global::System.Web.UI.WebControls.Label Label12;
         
         /// <summary>
         /// SBSAAgentShare control.
@@ -184,13 +184,13 @@ namespace betplayer.superagent {
         protected global::System.Web.UI.WebControls.Label Label7;
         
         /// <summary>
-        /// Label8 control.
+        /// Label13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label8;
+        protected global::System.Web.UI.WebControls.Label Label13;
         
         /// <summary>
         /// Label10 control.

@@ -67,7 +67,7 @@
                                         </td>
 
                                         <td height="20" align="left" class="FontText"><%=i%></td>
-                                        <td align="left" class="FontText"><%: row["MatchesID"] %></td>
+                                        <td align="left" class="FontText"><%: row["apiID"] %></td>
                                         <td align="left" class="FontText"><%: row["TeamA"] %> v <%: row["TeamB"] %>(<%: row["Type"] %>)</td>
                                         <td align="left" class="FontText"><%: toDateString(row["DateTime"])%></td>
                                         <td width="110" align="left" class="FontText"><%: toTime(row["DateTime"]) %></td>

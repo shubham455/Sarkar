@@ -76,13 +76,11 @@ namespace betplayer.Agent
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
 
-                    int AgentLimit = Convert.ToInt32(dt.Rows[0]["CurrentLimit"]);
-                    
-
-                    int Total = 0;
+                    decimal AgentLimit = Convert.ToDecimal(dt.Rows[0]["CurrentLimit"]);
+                    decimal Total = 0;
                     foreach (Object client in clientValues)
                     {
-                        int ClientCurrentLimit = Convert.ToInt32(client.GetType().GetProperty("ClientLimit").GetValue(client, null));
+                        decimal ClientCurrentLimit = Convert.ToDecimal(client.GetType().GetProperty("ClientLimit").GetValue(client, null));
 
                         Total = Total + ClientCurrentLimit;
                     }
@@ -93,10 +91,11 @@ namespace betplayer.Agent
                         foreach (Object client in clientValues)
                         {
                             string clientID = client.GetType().GetProperty("ClientID").GetValue(client, null).ToString();
-                            string clientLimit = client.GetType().GetProperty("ClientLimit").GetValue(client, null).ToString();
+                            decimal currentlimit = Convert.ToDecimal(client.GetType().GetProperty("ClientLimit").GetValue(client, null));
                             string Fixlimit = client.GetType().GetProperty("FixLimit").GetValue(client, null).ToString();
+                            decimal finallimit = currentlimit ;
 
-                            string updatelimit = "Update ClientMaster set  CurrentLimit= '" + clientLimit + "',FixLimit = '"+Fixlimit+"'  Where ClientID = '" + clientID + "'";
+                            string updatelimit = "Update ClientMaster set Client_Limit = '"+finallimit+"',CurrentLimit= '" + currentlimit + "',FixLimit = '"+Fixlimit+"'  Where ClientID = '" + clientID + "'";
                             MySqlCommand cmd = new MySqlCommand(updatelimit, cn);
                             cmd.ExecuteNonQuery();
 
@@ -108,7 +107,7 @@ namespace betplayer.Agent
                 }
             }
 
-            catch (Exception e)
+            catch (Exception e) 
             {
                 return e.Message;
             }

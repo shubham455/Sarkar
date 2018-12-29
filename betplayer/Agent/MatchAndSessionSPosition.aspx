@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Agent/DashBoard.Master" AutoEventWireup="true" CodeBehind="MatchAndSessionSPosition.aspx.cs" Inherits="betplayer.Agent.MatchAndSessionSPosition" %>
 
 <asp:Content ID="content" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
+    <meta http-equiv="refresh" content="10">
     <div id="main-content">
         <!-- BEGIN PAGE CONTAINER-->
         <div class="container-fluid">
@@ -66,7 +67,7 @@
                                                                                             </div>
                                                                                         </td>
                                                                                         <td width="20%" style="text-align: center; vertical-align: middle;">
-                                                                                             <img id="LastBall" style="height: 100%;" src="" /></td>
+                                                                                            <img id="LastBall" style="height: 100%;" src="" /></td>
                                                                                     </tr>
                                                                                 </tbody>
                                                                             </table>
@@ -278,11 +279,12 @@
 
                                                         <td align="left" class="TableHeading"><strong>Date &amp; Time</strong></td>
                                                     </tr>
+                                                     <%int i = 1; %>
                                                     <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
                                                         { %>
                                                     <tr>
                                                         <td align="left" class="TableHeading">&nbsp;</td>
-                                                        <td height="25" align="left" class="TableHeading"><strong><%: row["SessionID"] %></strong></td>
+                                                        <td height="25" align="left" class="TableHeading"><strong><%=i %></strong></td>
                                                         <td align="left" class="TableHeading"><strong><%: row["Session"] %> </strong></td>
                                                         <td align="left" class="TableHeading"><strong><%: row["ClientID"] %> <%: row["Name"] %></strong></td>
                                                         <td align="right" class="TableHeading" style="text-align: right;"><strong><%: row["rate"] %></strong></td>
@@ -294,6 +296,7 @@
 
                                                         <td align="left" class="TableHeading"><strong><%: row["DateTime"] %></strong></td>
                                                     </tr>
+                                                     <% i++; %>
                                                     <% } //foreach %>
                                                 </tbody>
                                             </table>
@@ -312,7 +315,11 @@
                                                     { %>
                                                 <tr>
                                                     <td width="50" height="25" align="right" style="text-align: right;"><%:row["Runs"] %><strong></strong></td>
-                                                    <td width="100" align="right" style="text-align: right;"><strong><%:row["Amount"] %></strong></td>
+                                                    <td width="100" align="right" style="text-align: right;" <% if(Convert.ToInt32(row["Amount"]) <= 0){ %>
+                                                                                                                class="sessionPossionAmountRed"
+                                                                                                                <% } else { %> 
+                                                                                                                class="sessionPossionAmountBlue"
+                                                                                                                <% } %>><strong><%:row["Amount"] %></strong></td>
                                                 </tr>
                                                 <% } //foreach %>
                                             </table>
@@ -333,7 +340,7 @@
     <asp:HiddenField ID="apiID" runat="server" />
     <asp:HiddenField ID="firebasekey" runat="server" />
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
-    <script src="js/LiveMatch.js"></script>
+    <script src="js/LiveMatch_v1.js"></script>
     <script type="text/javascript">
          <!--
     function Redirect(value) {
@@ -350,7 +357,7 @@
         var matchtype = urlParams.get('Type');
         console.log(matchid);
         if (value != "NONE") {
-            window.location = "MatchAndSessionSPosition.aspx?MatchID=" + matchid + "&&Session=" + value + "&&fk=" + firebasekey+ "&&Type="+matchtype;
+            window.location = "MatchAndSessionSPosition.aspx?MatchID=" + matchid + "&&Session=" + value + "&&fk=" + firebasekey + "&&Type=" + matchtype;
         }
 
     }

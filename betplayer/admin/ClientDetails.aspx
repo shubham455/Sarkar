@@ -35,26 +35,7 @@
                             <!-- BEGIN FORM-->
 
 
-                            <div class="portlet-body">
-                                <div class="clearfix">
-
-                                    <a href="CreateClient.aspx">
-                                        <button class="btn btn-warning" type="button"><i class="icon-plus icon-white"></i>Create</button></a>
-                                    <div class="btn-group">
-                                        <asp:DropDownList ID="DropDownstatus" runat="server" CssClass="btn btn-primary dropdown-toggle" Width="150px" OnSelectedIndexChanged="DropDownstatus_SelectedIndexChanged" AutoPostBack="true">
-
-                                            <asp:ListItem Text="Active" Value="Active">Active</asp:ListItem>
-                                            <asp:ListItem Text="Inactive" Value="Inactive">Inactive</asp:ListItem>
-                                        </asp:DropDownList>
-
-                                    </div>
-                                    <a href="UpdateClientLimit.aspx">
-                                        <button class="btn btn-success" type="button">Update Comm. &amp; Limit</button></a>
-
-                                </div>
-                                <div class="space15"></div>
-
-                            </div>
+                           
                             <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
                                 <div class="row-fluid">
                                     <div class="span6">
@@ -153,7 +134,7 @@
                                             <td align="right" class="FontText " style="text-align: right;">0.00</td>
                                             <td align="right" class="FontText " style="text-align: right;">0.00</td>
                                             <td align="right" class="FontText " style="text-align: right;"><%:row["agent_share"] %></td>
-                                            <td align="right" class="FontText " style="text-align: right;"><%:row["client_share"] %></td>
+                                            <td align="right" class="FontText " style="text-align: right;"></td>
                                             <td align="right" class="FontText " style="text-align: right;"><%:row["client_limit"] %></td>
                                             <td align="right" class="FontText "><%:row["Status"] %></td>
                                         </tr>

@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/admin/DashBoard.Master" CodeBehind="MatchAndSessionSPosition.aspx.cs" Inherits="betplayer.admin.MatchAndPositionSPosition" %>
 
 <asp:Content ID="content" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
+    <meta http-equiv="refresh" content="10">
     <div id="main-content">
         <!-- BEGIN PAGE CONTAINER-->
         <div class="container-fluid">
@@ -140,7 +141,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" style="text-align: center; vertical-align: middle;">
-                                                                                                <input type="button" name="Session1" id="Session1" value="NONE" class="ButtonUserSession" style="width: 150px;" onclick="Redirect1();"></td>
+                                                                                                <input type="button" name="Session1" id="Session1" value="NONE" class="ButtonUserSession" style="width: 150px;" onclick="Redirect1(this.value);"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="not1" id="not1" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(1)"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
@@ -152,7 +153,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" style="text-align: center; vertical-align: middle;">
-                                                                                                <input type="button" name="Session2" id="Session2" value="NONE" class="ButtonUserSession" style="width: 150px;" onclick="Redirect1();"></td>
+                                                                                                <input type="button" name="Session2" id="Session2" value="NONE" class="ButtonUserSession" style="width: 150px;" onclick="Redirect1(this.value);"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="not2" id="not2" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(2)"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
@@ -164,7 +165,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" style="text-align: center; vertical-align: middle;">
-                                                                                                <input type="button" name="Session3" id="Session3" value="NONE" class="ButtonUserSession" style="width: 150px;" onclick="Redirect1();"></td>
+                                                                                                <input type="button" name="Session3" id="Session3" value="NONE" class="ButtonUserSession" style="width: 150px;" onclick="Redirect1(this.value);"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="not3" id="not3" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(3)"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
@@ -176,7 +177,7 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="35" style="text-align: center; vertical-align: middle;">
-                                                                                                <input type="button" name="Session4" id="Session4" value="NONE" class="ButtonUserSession" style="width: 150px;" onclick="Redirect1();"></td>
+                                                                                                <input type="button" name="Session4" id="Session4" value="NONE" class="ButtonUserSession" style="width: 150px;" onclick="Redirect1(this.value);"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
                                                                                                 <input type="button" name="not4" id="not4" value="0.00" class="ButtonL" onfocus="this.className='ButtonL_hover'" onblur="this.className='ButtonL'" onmouseover="this.className='ButtonL_hover'" onmouseout="this.className='ButtonL'" onclick="AddSessionBitN(4)"></td>
                                                                                             <td style="text-align: center; vertical-align: middle;">
@@ -277,6 +278,7 @@
 
                                                         <td align="left" class="TableHeading"><strong>Date &amp; Time</strong></td>
                                                     </tr>
+                                                     <%int i = 1; %>
                                                     <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
                                                         { %>
                                                     <tr>
@@ -290,7 +292,7 @@
                                                             </div>
                                                         </td>
                                                         
-                                                        <td height="25" align="left" class="TableHeading"><strong><%: row["SessionID"] %></strong></td>
+                                                        <td height="25" align="left" class="TableHeading"><strong><%=i %></strong></td>
                                                         <td align="left" class="TableHeading"><strong><%: row["Session"] %> </strong></td>
                                                         <td align="left" class="TableHeading"><strong><%: row["ClientID"] %> <%: row["Name"] %></strong></td>
                                                         <td align="right" class="TableHeading" style="text-align: right;"><strong><%: row["rate"] %></strong></td>
@@ -302,6 +304,7 @@
 
                                                         <td align="left" class="TableHeading"><strong><%: row["DateTime"] %></strong></td>
                                                     </tr>
+                                                     <% i++; %>
                                                     <% } //foreach %>
                                                 </tbody>
                                             </table>
@@ -320,7 +323,11 @@
                                                     { %>
                                                 <tr>
                                                     <td width="50" height="25" align="right" style="text-align: right;"><strong><%:row["Runs"] %></strong></td>
-                                                    <td width="100" align="right" style="text-align: right;"><strong><%:row["Amount"] %></strong></td>
+                                                    <td width="100" align="right" style="text-align: right;"<% if(Convert.ToInt32(row["Amount"]) <= 0){ %>
+                                                                                                                class="sessionPossionAmountRed"
+                                                                                                                <% } else { %> 
+                                                                                                                class="sessionPossionAmountBlue"
+                                                                                                                <% } %>><strong><%:row["Amount"] %></strong></td></td>
                                                 </tr>
                                                 <% } //foreach %>
                                             </table>

@@ -45,6 +45,18 @@ namespace betplayer.Super_Agent
                     dropdownAgent.DataBind();
 
 
+                    string ClientCollection = "Select * From AgentCollectionName where CreatedBy = '" + Session["SuperAgentcode"] + "'";
+                    MySqlCommand ClientCollectioncmd = new MySqlCommand(ClientCollection, cn);
+                    MySqlDataAdapter ClientCollectionadp = new MySqlDataAdapter(ClientCollectioncmd);
+                    DataTable ClientCollectiondt = new DataTable();
+                    ClientCollectionadp.Fill(ClientCollectiondt);
+                    dropdowncollection.DataSource = ClientCollectiondt;
+                    dropdowncollection.DataTextField = "Name";
+                    dropdowncollection.DataValueField = "AgentCollectionnameID";
+                    dropdowncollection.DataBind();
+
+
+
                     string s1 = "Select * From Agentledger where AgentID = '" + dropdownAgent.SelectedValue + "'";
                     MySqlCommand cmd1 = new MySqlCommand(s1, cn);
                     MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
@@ -61,6 +73,7 @@ namespace betplayer.Super_Agent
 
         public void dropdownAgent_SelectedIndexChanged(object sender, EventArgs e)
         {
+
 
             runtable = new DataTable();
             runtable.Columns.Add(new DataColumn("ID"));
@@ -90,58 +103,58 @@ namespace betplayer.Super_Agent
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "select matches.TeamA,matches.teamB,matches.DateTime,agentledger.agentledgerID,agentledger.Dabit,agentledger.Credit from agentLedger inner join matches on agentledger.MatchID = matches.apiID where agentID = '" + dropdownAgent.SelectedValue + "'";
+                string s = "select matches.TeamA,matches.teamB,matches.DateTime,agentledger.agentledgerID,agentledger.Dabit,agentledger.Credit from agentLedger inner join matches on agentledger.MatchID = matches.apiID where agentID = '" + dropdownAgent.SelectedValue + "' order by  matches.DateTime ASC";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt1 = new DataTable();
                 adp.Fill(dt1);
-
-
-                for (int i = 0; i < dt1.Rows.Count; i++)
+                if (dt1.Rows.Count > 0)
                 {
-                    int ID = Convert.ToInt32(dt1.Rows[i]["agentledgerID"]);
-                    string DateFromDB = dt1.Rows[i]["DateTime"].ToString();
-                    DateTime oDate = DateTime.Parse(DateFromDB);
-                    string datetime = oDate.Date.ToString().Substring(0, 10);
 
-                    string TeamA = dt1.Rows[i]["TeamA"].ToString();
-                    string TeamB = dt1.Rows[i]["TeamB"].ToString();
-                    decimal Dabit = Convert.ToDecimal(dt1.Rows[i]["Dabit"]);
-                    decimal Credit = Convert.ToDecimal(dt1.Rows[i]["Credit"]);
+                    for (int i = 0; i < dt1.Rows.Count; i++)
+                    {
+                        int ID = Convert.ToInt32(dt1.Rows[i]["agentledgerID"]);
+                        string DateFromDB = dt1.Rows[i]["DateTime"].ToString();
+                        DateTime oDate = DateTime.Parse(DateFromDB);
+                        string datetime = oDate.Date.ToString().Substring(0, 10);
 
-                    row["CollectionID"] = ID;
-                    row["Date"] = oDate;     //row["Date"] = datetime;
-                    row["PaynmentDescription"] = TeamA + "VS" + TeamB;
-                    row["Dabit"] = Dabit;
-                    row["Credit"] = Credit;
+                        string TeamA = dt1.Rows[i]["TeamA"].ToString();
+                        string TeamB = dt1.Rows[i]["TeamB"].ToString();
+                        decimal Dabit = Convert.ToDecimal(dt1.Rows[i]["Dabit"]);
+                        decimal Credit = Convert.ToDecimal(dt1.Rows[i]["Credit"]);
 
-                    decimal Balance = 0, Balance1 = 0;
-                    if (Dabit != 0)
-                    {
-                        Balance = Dabit *-1;
-                    }
-                    else if (Credit != 0)
-                    {
-                        Balance = Credit;
-                    }
-                    if (runtable.Rows.Count > 0)
-                    {
-                        for (int k = 0; k < runtable.Rows.Count; k++)
+                        row["CollectionID"] = ID;
+                        row["Date"] = oDate;     //row["Date"] = datetime;
+                        row["PaynmentDescription"] = TeamA + "VS" + TeamB;
+                        row["Dabit"] = Dabit * -1;
+                        row["Credit"] = Credit;
+
+                        decimal Balance = 0, Balance1 = 0;
+                        if (Dabit != 0)
                         {
-                            Balance1 = Convert.ToDecimal(runtable.Rows[k]["Balance"]);
-                            Balance1 = Balance1 - Dabit;
-                            Balance1 = Balance1 + Credit;
+                            Balance = Dabit * -1;
+                        }
+                        else if (Credit != 0)
+                        {
+                            Balance = Credit;
+                        }
+                        if (runtable.Rows.Count > 0)
+                        {
+
+                            Balance1 = Convert.ToDecimal(runtable.Rows[runtable.Rows.Count - 1]["Balance"]);
+                            Balance1 = Balance1 + Balance;
+
                             row["Balance"] = Balance1;
                         }
-                    }
-                    else
-                    {
-                        row["Balance"] = Balance;
-                    }
 
-                    runTable.Rows.Add(row.ItemArray);
+                        else
+                        {
+                            row["Balance"] = Balance;
+                        }
+
+                        runTable.Rows.Add(row.ItemArray);
+                    }
                 }
-
                 string s1 = "Select * From AgentCollectionMaster where agentID = '" + dropdownAgent.SelectedValue + "'";
                 MySqlCommand cmd1 = new MySqlCommand(s1, cn);
                 MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
@@ -157,7 +170,7 @@ namespace betplayer.Super_Agent
 
 
                     string CollectionName = dt.Rows[j]["CollectionType"].ToString();
-                    int Amount = Convert.ToInt32(dt.Rows[j]["Amount"]);
+                    decimal Amount = Convert.ToDecimal(dt.Rows[j]["Amount"]);
                     string PaynmentDescription = dt.Rows[j]["PaynmentType"].ToString();
                     string Remark = dt.Rows[j]["Remark"].ToString();
 
@@ -167,7 +180,7 @@ namespace betplayer.Super_Agent
                     row["Remark"] = Remark;
                     if (PaynmentDescription == "Payment Received")
                     {
-                        row["Dabit"] = Amount;
+                        row["Dabit"] = Amount * -1;
                         row["Credit"] = 0;
                         row["Balance"] = Amount * -1;
                     }
@@ -199,7 +212,7 @@ namespace betplayer.Super_Agent
                     LedgerTableOrdered.Rows[0]["Date"] = date.Date.ToString().Substring(0, 10);
                     if (l > 0)
                     {
-                        LedgerTableOrdered.Rows[l]["Balance"] = Convert.ToDecimal(LedgerTableOrdered.Rows[l - 1]["Balance"]) - Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Dabit"]) + Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Credit"]);
+                        LedgerTableOrdered.Rows[l]["Balance"] = Convert.ToDecimal(LedgerTableOrdered.Rows[l - 1]["Balance"]) + Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Dabit"]) + Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Credit"]);
 
 
                     }
@@ -240,7 +253,7 @@ namespace betplayer.Super_Agent
             else
             {
                 emptyLedgerTable = true;
-                
+
 
 
                 row1["TotalDabitAmount"] = 0;
@@ -255,28 +268,28 @@ namespace betplayer.Super_Agent
 
         protected void btnSave_ServerClick(object sender, EventArgs e)
         {
-          
+
             string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-                using (MySqlConnection cn = new MySqlConnection(CN))
-                {
-                    cn.Open();
-                    string s = "Insert Into AgentCollectionMaster (AgentID,CollectionType,Date,Amount,PaynmentType,Remark,SuperAgentID) values(@ClientID,@CollectionType,@Date,@Amount,@PaynmentType,@Remark,@AgentID)";
-                    MySqlCommand cmd = new MySqlCommand(s, cn);
-                    cmd.Parameters.AddWithValue("@ClientID", dropdownAgent.Text);
-                    cmd.Parameters.AddWithValue("@CollectionType", Collection.Value);
-                    cmd.Parameters.AddWithValue("@Date", BillDate.Text);
-                    cmd.Parameters.AddWithValue("@Amount", Amount.Text);
-                    cmd.Parameters.AddWithValue("@PaynmentType", PaymentType.Value);
-                    cmd.Parameters.AddWithValue("@Remark", Remark.Text);
-                    cmd.Parameters.AddWithValue("@AgentID", Session["SuperAgentID"]);
-                    cmd.ExecuteNonQuery();
+            using (MySqlConnection cn = new MySqlConnection(CN))
+            {
+                cn.Open();
+                string s = "Insert Into AgentCollectionMaster (AgentID,CollectionType,Date,Amount,PaynmentType,Remark,SuperAgentID) values(@ClientID,@CollectionType,@Date,@Amount,@PaynmentType,@Remark,@AgentID)";
+                MySqlCommand cmd = new MySqlCommand(s, cn);
+                cmd.Parameters.AddWithValue("@ClientID", dropdownAgent.Text);
+                cmd.Parameters.AddWithValue("@CollectionType", dropdowncollection.SelectedItem.Text);
+                cmd.Parameters.AddWithValue("@Date", BillDate.Text);
+                cmd.Parameters.AddWithValue("@Amount", Amount.Text);
+                cmd.Parameters.AddWithValue("@PaynmentType", PaymentType.Value);
+                cmd.Parameters.AddWithValue("@Remark", Remark.Text);
+                cmd.Parameters.AddWithValue("@AgentID", Session["SuperAgentID"]);
+                cmd.ExecuteNonQuery();
 
-                    Amount.Text = "";
-                    Remark.Text = "";
-                    BillDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                Amount.Text = "";
+                Remark.Text = "";
+                BillDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
-                    dropdownAgent_SelectedIndexChanged(sender, e);
-                
+                dropdownAgent_SelectedIndexChanged(sender, e);
+
 
 
             }

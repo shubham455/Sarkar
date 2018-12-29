@@ -371,70 +371,81 @@ namespace betplayer.superagent
                             TotalAmount = TotalAmount + Amount;
                         }
                     }
-
+                    Decimal TotalSAShareAmount1 = 0;
                     string s55 = "Select * from sharetable where MatchID = '" + MatchID + "' && ClientID = '" + ID + "'";
                     MySqlCommand cmd55 = new MySqlCommand(s55, cn);
                     MySqlDataAdapter adp55 = new MySqlDataAdapter(cmd55);
                     DataTable dt55 = new DataTable();
                     adp55.Fill(dt55);
 
-                    string s5 = "Select SessionCommision,MatchCommision,Name  From SuperAgentMaster where SuperAgentID = '" + Session["SuperAgentID"] + "' ";
-                    MySqlCommand cmd5 = new MySqlCommand(s5, cn);
-                    MySqlDataAdapter adp5 = new MySqlDataAdapter(cmd5);
-                    DataTable dt5 = new DataTable();
-                    adp5.Fill(dt5);
-
-                    Decimal SessionCommision1 = Convert.ToDecimal(dt55.Rows[0]["SAgentSessionComm"]);
-                    Decimal SessionCommision2 = SessionCommision1 / 100;
-                    Decimal SessionCommision = TotalAmount * SessionCommision2;
-
-                    double SessionCommisionvalue = double.Parse(SessionCommision.ToString());
-                    row["SessionCommision"] = SessionCommisionvalue;
-
-
-                    row["MatchCommision"] = 0;
-                    decimal totalcommision = SessionCommision;
-
-                    double totalcommisionvalue = double.Parse(totalcommision.ToString());
-                    row["TotalCommisionAmount"] = totalcommisionvalue;
-
-                    Decimal Match = SessionTotalAmount;
-                    Decimal Commision = SessionCommision;
-                    Decimal To = 0;
-
-                    if (Match > 0)
+                    if (dt55.Rows.Count > 0)
                     {
-                        To = Match - Commision;
+
+                        Decimal SessionCommision1 = Convert.ToDecimal(dt55.Rows[0]["SAgentSessionComm"]);
+                        Decimal SessionCommision2 = SessionCommision1 / 100;
+                        Decimal SessionCommision = TotalAmount * SessionCommision2;
+
+                        double SessionCommisionvalue = double.Parse(SessionCommision.ToString());
+                        row["SessionCommision"] = SessionCommisionvalue;
+
+
+                        row["MatchCommision"] = 0;
+                        decimal totalcommision = SessionCommision;
+
+                        double totalcommisionvalue = double.Parse(totalcommision.ToString());
+                        row["TotalCommisionAmount"] = totalcommisionvalue;
+
+                        Decimal Match = SessionTotalAmount;
+                        Decimal Commision = SessionCommision;
+                        Decimal To = 0;
+
+                        if (Match > 0)
+                        {
+                            To = Match - Commision;
+                        }
+                        else if (Match < 0)
+                        {
+                            To = Match + Commision;
+                        }
+                        else
+                        {
+                            To = Commision * -1;
+                        }
+
+                        Decimal TotalNetAmouunt = To;
+
+
+                        decimal ClientShare1 = Convert.ToDecimal(dt55.Rows[0]["Clientshare"]);
+                        decimal ClientMaster2 = ClientShare1 / 100;
+                        Decimal TotalHalfAmount = TotalNetAmouunt * ClientMaster2;
+
+
+                        double TotalNetAmouuntvalue = double.Parse(TotalNetAmouunt.ToString());
+                        row["TotalNetAmount"] = TotalNetAmouuntvalue;
+                        double TotalHalfAmountvalue = double.Parse(TotalHalfAmount.ToString());
+                        row["TotalHalfAmount"] = TotalHalfAmountvalue;
+
+
+
+                        decimal SuperAgentShare1 = Convert.ToDecimal(dt55.Rows[0]["SAgentshare"]);
+                        decimal SuperAgentShare2 = SuperAgentShare1 / 100;
+                        Decimal TotalSAShareAmount = TotalNetAmouunt * SuperAgentShare2;
+                        TotalSAShareAmount1 = TotalNetAmouunt - TotalSAShareAmount;
+
+                        double TotalSAShareAmountvalue = double.Parse(TotalSAShareAmount.ToString());
+
+                        row["SAAgentShare"] = TotalSAShareAmountvalue;
+
                     }
-                    else if (Match < 0)
+                    else
                     {
-                        To = Match + Commision;
+                        row["SessionCommision"] = 0;
+                        row["MatchCommision"] = 0;
+                        row["TotalCommisionAmount"] = 0;
+                        row["TotalNetAmount"] = 0;
+                        row["TotalHalfAmount"] = 0;
+                        row["SAAgentShare"] = 0;
                     }
-
-                    Decimal TotalNetAmouunt = To;
-
-
-                    decimal ClientShare1 = Convert.ToDecimal(dt55.Rows[i]["Clientshare"]);
-                    decimal ClientMaster2 = ClientShare1 / 100;
-                    Decimal TotalHalfAmount = TotalNetAmouunt * ClientMaster2;
-
-
-                    double TotalNetAmouuntvalue = double.Parse(TotalNetAmouunt.ToString());
-                    row["TotalNetAmount"] = TotalNetAmouuntvalue;
-                    double TotalHalfAmountvalue = double.Parse(TotalHalfAmount.ToString());
-                    row["TotalHalfAmount"] = TotalHalfAmountvalue;
-
-
-
-                    decimal SuperAgentShare1 = Convert.ToDecimal(dt55.Rows[0]["SAgentshare"]);
-                    decimal SuperAgentShare2 = SuperAgentShare1 / 100;
-                    Decimal TotalSAShareAmount = TotalNetAmouunt * SuperAgentShare2;
-                    Decimal TotalSAShareAmount1 = TotalNetAmouunt - TotalSAShareAmount;
-
-                    double TotalSAShareAmountvalue = double.Parse(TotalSAShareAmount.ToString());
-
-                    row["SAAgentShare"] = TotalSAShareAmountvalue;
-
                     Decimal MobileAppAmount = 0;
 
                     string s7 = "Select myMobAmount From SuperAgentMaster where  SuperAgentID = '" + Session["SuperAgentID"] + "'";

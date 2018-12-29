@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -69,7 +70,7 @@ namespace betplayer.Client
         }
         private string AddEntryToLedger(HttpContext context, int ClientID)
         {
-
+            decimal positionA = 0, positionB = 0;
             Decimal Amount = Convert.ToDecimal(context.Request["Amount"]);
             Decimal Rate = Convert.ToDecimal(context.Request["Rate"]);
             string Team = context.Request["Team"].ToString();
@@ -81,7 +82,6 @@ namespace betplayer.Client
 
             try
             {
-
                 string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
@@ -105,25 +105,394 @@ namespace betplayer.Client
                     String TeamB = SelectTeamdt.Rows[0]["TeamB"].ToString();
 
 
+                    string lastbet = "Select * From Runner where matchID = '" + MatchID + "'  and ClientID = '" + ClientID + "' order by Datetime DESC";
+                    MySqlCommand lastbetcmd = new MySqlCommand(lastbet, cn);
+                    MySqlDataAdapter lastbetadp = new MySqlDataAdapter(lastbetcmd);
+                    DataTable lastbetdt = new DataTable();
+                    lastbetadp.Fill(lastbetdt);
                     Decimal CheckClientAmount = 0;
-                    if (Team != TeamB)
-                    {
-                        CheckClientAmount = ClientLimit1 + Position2;
-                    }
+                    if (lastbetdt.Rows.Count > 0)
 
-                    else if (Team != TeamA)
                     {
-                        CheckClientAmount = ClientLimit1 + Position1;
-                    }
-                    
 
-                    if (CheckClientAmount == 0 || CheckClientAmount < 0)
+                        string teamname = lastbetdt.Rows[0]["Team"].ToString();
+                        string mode = lastbetdt.Rows[0]["Mode"].ToString();
+                        int lastbetPosition1 = Convert.ToInt32(lastbetdt.Rows[0]["Position1"]);
+                        int lastbetPosition2 = Convert.ToInt32(lastbetdt.Rows[0]["Position2"]);
+                        if (lastbetPosition1 > 0)
+                        {
+
+
+                        }
+
+                        if (Mode == "L" && Team == TeamA)
+                        {
+                            if (Position1 < 0)
+                            {
+                                decimal checklastposition = Position2 - lastbetPosition2;
+                                if (checklastposition < 0) { checklastposition = checklastposition * -1; }
+                                if (lastbetPosition2 > 0)
+                                {
+                                    ClientLimit1 = ClientLimit1 + lastbetPosition2;
+                                }
+                                if (ClientLimit1 >= checklastposition)
+                                {
+                                    positionA = (Amount * Rate);
+                                    if (lastbetPosition2 > 0)
+                                    {
+                                        ClientLimit1 = ClientLimit1 + lastbetPosition2;
+                                    }
+                                    if (ClientLimit1 < positionA)
+                                    {
+                                        positionA = positionA * 1;
+                                    }
+                                    if (Position1 < 0)
+                                    {
+                                        CheckClientAmount = ClientLimit1 + positionA;
+                                    }
+                                    else if (Position2 < 0)
+                                    {
+                                        CheckClientAmount = ClientLimit1 + positionB;
+                                    }
+                                }
+                                else
+                                {
+                                    CheckClientAmount = 1000 * -1;
+                                }
+                            }
+                            else if (Position2 < 0)
+                            {
+                                decimal checklastposition = Position2 - lastbetPosition2;
+                                if (checklastposition < 0) { checklastposition = checklastposition * -1; }
+                                if (lastbetPosition2 > 0)
+                                {
+                                    ClientLimit1 = ClientLimit1 + lastbetPosition2;
+                                }
+                                if (ClientLimit1 >= checklastposition)
+                                {
+                                    positionB = (Amount * Rate);
+                                    if (lastbetPosition2 > 0)
+                                    {
+                                        ClientLimit1 = ClientLimit1 + lastbetPosition2;
+                                    }
+                                    if (ClientLimit1 < positionB)
+                                    {
+                                        positionB = positionB * -1;
+                                    }
+                                    if (Position1 < 0)
+                                    {
+                                        CheckClientAmount = ClientLimit1 + positionA;
+                                    }
+                                    else if (Position2 < 0)
+                                    {
+                                        CheckClientAmount = ClientLimit1 + positionB;
+                                    }
+                                }
+                                else
+                                {
+                                    CheckClientAmount = 1000 * -1;
+                                }
+                            }
+
+                        }
+                        else if (Mode == "K" && Team == TeamA)
+                        {
+                            if (Position1 < 0)
+                            {
+                                decimal templimit = ClientLimit1;
+                                ClientLimit1 = lastbetPosition1 - ClientLimit1;
+                                if (ClientLimit1 > 0) { ClientLimit1 = ClientLimit1 * -1; }
+
+                                if (ClientLimit1 > Position1)
+                                {
+                                    CheckClientAmount = 1000 * -1;
+                                }
+                                else
+                                {
+                                    ClientLimit1 = templimit;
+                                    decimal checklastposition = Position1 - lastbetPosition1;
+                                    if (checklastposition < 0) { checklastposition = checklastposition * -1; }
+
+                                    if (lastbetPosition1 > 0)
+                                    {
+                                        ClientLimit1 = ClientLimit1 + lastbetPosition1;
+                                    }
+                                    ClientLimit1 = ClientLimit1 + checklastposition;
+
+                                    positionA = (Amount * Rate);
+                                    if (lastbetPosition1 > 0)
+                                    {
+                                        ClientLimit1 = ClientLimit1 + lastbetPosition1;
+                                    }
+                                    if (ClientLimit1 < positionA)
+                                    {
+                                        positionA = positionA * 1;
+                                    }
+                                    if (Position1 < 0)
+                                    {
+                                        CheckClientAmount = ClientLimit1 + positionA;
+                                    }
+                                    else if (Position2 < 0)
+                                    {
+                                        CheckClientAmount = ClientLimit1 + positionB;
+                                    }
+                                    else
+                                    {
+                                        CheckClientAmount = 1000 * -1;
+                                    }
+
+                                }
+                            }
+
+                            else if (Position2 < 0)
+                            {
+
+                                decimal checklastposition = Position1 - lastbetPosition1;
+                                if (checklastposition < 0) { checklastposition = checklastposition * -1; }
+                                if (lastbetPosition1 > 0)
+                                {
+                                    ClientLimit1 = ClientLimit1 + lastbetPosition1;
+                                }
+
+                                if (ClientLimit1 >= checklastposition)
+                                {
+                                    positionB = (Amount * Rate);
+                                    if (lastbetPosition1 > 0)
+                                    {
+                                        ClientLimit1 = ClientLimit1 + lastbetPosition1;
+                                    }
+                                    if (ClientLimit1 < positionA)
+                                    {
+                                        positionA = positionA * -1;
+                                    }
+                                    if (Position1 < 0)
+                                    {
+                                        CheckClientAmount = ClientLimit1 + positionA;
+                                    }
+                                    else if (Position2 < 0)
+                                    {
+                                        CheckClientAmount = ClientLimit1 + positionB;
+                                    }
+
+                                }
+                                else
+                                {
+                                    CheckClientAmount = 1000 * -1;
+                                }
+                            }
+                        }
+                        else if (Mode == "L" && Team == TeamB)
+                        {
+                            if (Position1 < 0)
+                            {
+                                decimal checklastposition = Position1 - lastbetPosition1;
+                                if (checklastposition < 0) { checklastposition = checklastposition * -1; }
+                                if (lastbetPosition1 > 0)
+                                {
+                                    ClientLimit1 = ClientLimit1 + lastbetPosition1;
+                                }
+                                if (ClientLimit1 >= checklastposition)
+                                {
+                                    positionA = (Amount * Rate);
+                                    if (lastbetPosition1 > 0)
+                                    {
+                                        ClientLimit1 = ClientLimit1 + lastbetPosition1;
+                                    }
+
+                                    if (ClientLimit1 < positionA)
+                                    {
+                                        positionA = positionA * -1;
+                                    }
+                                    if (Position1 < 0)
+                                    {
+                                        CheckClientAmount = ClientLimit1 + positionA;
+                                    }
+                                    else if (Position2 < 0)
+                                    {
+                                        CheckClientAmount = ClientLimit1 + positionB;
+                                    }
+                                }
+                                else
+                                {
+                                    CheckClientAmount = 1000 * -1;
+                                }
+                            }
+
+                            else if (Position2 < 0)
+                            {
+                                decimal checklastposition = Position1 - lastbetPosition1;
+                                if (checklastposition < 0) { checklastposition = checklastposition * -1; }
+                                if (lastbetPosition1 > 0)
+                                {
+                                    ClientLimit1 = ClientLimit1 + lastbetPosition1;
+                                }
+                                if (ClientLimit1 >= checklastposition)
+                                {
+                                    positionB = (Amount * Rate);
+                                    if (lastbetPosition1 > 0)
+                                    {
+                                        ClientLimit1 = ClientLimit1 + lastbetPosition1;
+                                    }
+
+                                    if (ClientLimit1 < positionB)
+                                    {
+                                        positionB = positionB * -1;
+                                    }
+                                    if (Position1 < 0)
+                                    {
+                                        CheckClientAmount = ClientLimit1 + positionA;
+                                    }
+                                    else if (Position2 < 0)
+                                    {
+                                        CheckClientAmount = ClientLimit1 + positionB;
+                                    }
+                                }
+                                else
+                                {
+                                    CheckClientAmount = 1000 * -1;
+                                }
+
+
+                            }
+                        }
+                        else if (Mode == "K" && Team == TeamB)
+                        {
+                            if (Position1 < 0)
+                            {
+                                decimal pos = 0;
+                                decimal templimit = ClientLimit1;
+                                if (lastbetPosition1 < lastbetPosition2)
+                                {
+                                    pos = lastbetPosition1;
+                                }
+                                else if (lastbetPosition1 > lastbetPosition2)
+                                {
+                                    pos = lastbetPosition2;
+                                }
+                                ClientLimit1 = pos - ClientLimit1;
+                                if (ClientLimit1 > 0) { ClientLimit1 = ClientLimit1 * -1; }
+
+                                if (ClientLimit1 > Position2)
+                                {
+                                    CheckClientAmount = 1000 * -1;
+                                }
+                                else
+                                {
+                                    ClientLimit1 = templimit;
+                                    decimal checklastposition = Position2 - pos;
+                                    if (checklastposition < 0) { checklastposition = checklastposition * -1; }
+                                    if (lastbetPosition2 > 0)
+                                    {
+                                        ClientLimit1 = ClientLimit1 + lastbetPosition2;
+                                    }
+                                    if (ClientLimit1 >= checklastposition)
+                                    {
+                                        positionA = (Amount * Rate);
+                                        if (lastbetPosition2 > 0)
+                                        {
+                                            ClientLimit1 = ClientLimit1 + lastbetPosition2;
+                                        }
+                                        if (ClientLimit1 < positionA)
+                                        {
+                                            positionA = positionA * -1;
+                                        }
+                                        if (Position1 < 0)
+                                        {
+                                            CheckClientAmount = ClientLimit1 + positionA;
+                                        }
+                                        else if (Position2 < 0)
+                                        {
+                                            CheckClientAmount = ClientLimit1 + positionB;
+                                        }
+
+                                        else
+                                        {
+                                            CheckClientAmount = 1000 * -1;
+                                        }
+                                    }
+                                }
+                            }
+                            else if (Position2 < 0)
+                            {
+                                decimal pos = 0;
+                                decimal templimit = ClientLimit1;
+                                if (lastbetPosition1 < lastbetPosition2)
+                                {
+                                    pos = lastbetPosition1;
+                                }
+                                else if (lastbetPosition1 > lastbetPosition2)
+                                {
+                                    pos = lastbetPosition2;
+                                }
+                                ClientLimit1 = pos - ClientLimit1;
+                                if (ClientLimit1 > 0) { ClientLimit1 = ClientLimit1 * -1; }
+
+                                if (ClientLimit1 > Position2)
+                                {
+                                    CheckClientAmount = 1000 * -1;
+                                }
+                                else
+                                {
+                                    ClientLimit1 = templimit;
+                                    if(lastbetPosition2 >0)
+                                    { lastbetPosition2 = lastbetPosition2 * -1; }
+                                    decimal checklastposition = Position2 - lastbetPosition2;
+                                    if (checklastposition < 0) { checklastposition = checklastposition * -1; }
+                                    if (lastbetPosition2 < 0)
+                                    { lastbetPosition2 = lastbetPosition2 * -1; }
+                                    if (lastbetPosition2 > 0)
+                                    {
+                                        ClientLimit1 = ClientLimit1 + lastbetPosition2;
+                                    }
+                                    if (ClientLimit1 >= checklastposition)
+                                    {
+                                        //positionB = (Amount * Rate);
+                                        if (lastbetPosition2 > 0)
+                                        {
+                                            ClientLimit1 = ClientLimit1 + lastbetPosition2;
+                                        }
+
+                                        //if (ClientLimit1 < positionB)
+                                        //{
+                                        //positionB = positionB * -1;
+                                        //}
+
+                                        if (Position1 < 0)
+                                        {
+                                            CheckClientAmount = ClientLimit1 + positionA;
+                                        }
+                                        else if (Position2 < 0)
+                                        {
+                                            CheckClientAmount = ClientLimit1 + positionB;
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        CheckClientAmount = 1000 * -1;
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (Position1 < 0)
+                        {
+                            CheckClientAmount = ClientLimit1 + Position1;
+                        }
+                        else if (Position2 < 0)
+                        {
+                            CheckClientAmount = ClientLimit1 + Position2;
+                        }
+                    }
+                    if (CheckClientAmount < 0)
                     {
                         return "unsuccess";
                     }
                     else
                     {
-
 
                         string s = "Insert Into runner (ClientID, Amount, Rate, Mode, DateTime, MatchID,Team,Position1,Position2,Position3) values (@ClientID,@Amount,@Rate,@Mode,@DateTime,@MatchID,@Team,@Position1,@Position2,@Position3)";
                         MySqlCommand cmd = new MySqlCommand(s, cn);
@@ -140,46 +509,7 @@ namespace betplayer.Client
                         cmd.ExecuteNonQuery();
 
 
-
-                        string s1 = "Select Client_Limit From ClientMaster where ClientID = '" + ClientID + "'";
-                        MySqlCommand cmd1 = new MySqlCommand(s1, cn);
-                        MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
-                        DataTable dt1 = new DataTable();
-                        adp1.Fill(dt1);
-                        int Amount1 = 0;
-                        if (Position1 < 0)
-                        {
-                            Amount1 = Position1;
-                        }
-                        else if (Position2 < 0)
-                        {
-                            Amount1 = Position2;
-                        }
-                        decimal ClientLimit = Convert.ToDecimal(dt1.Rows[0]["Client_Limit"]);
-
-                        if (Mode == "L")
-                        {
-                            decimal deductedAmount = ClientLimit + Amount1;
-                            double dValue = double.Parse(deductedAmount.ToString());
-
-
-                            string s2 = "Update ClientMaster Set Client_Limit = '" + dValue + "' where ClientId = '" + ClientID + "'";
-                            MySqlCommand cmd2 = new MySqlCommand(s2, cn);
-                            cmd2.ExecuteNonQuery();
-                        }
-                        else if (Mode == "K")
-                        {
-                            decimal CalculateAmount = Rate * Amount1;
-                            decimal deductedAmount = ClientLimit + Amount1;
-                            double dValue = double.Parse(deductedAmount.ToString());
-
-                            string s2 = "Update ClientMaster Set Client_Limit = '" + dValue + "' where ClientId = '" + ClientID + "'";
-                            MySqlCommand cmd2 = new MySqlCommand(s2, cn);
-                            cmd2.ExecuteNonQuery();
-                        }
-
-
-                        string check = "Select * from Sharetable where  MatchID = '" + MatchID + "' && ClientID = '"+ClientID+"'";
+                        string check = "Select * from Sharetable where  MatchID = '" + MatchID + "' && ClientID = '" + ClientID + "'";
                         MySqlCommand checkcmd = new MySqlCommand(check, cn);
                         MySqlDataReader rdr = checkcmd.ExecuteReader();
                         if (rdr.Read())
@@ -234,32 +564,17 @@ namespace betplayer.Client
                             cmd6.ExecuteNonQuery();
 
                         }
+                        return "success";
 
-                        BindData(ClientID);
                     }
-                    return "success";
+
                 }
+
             }
             catch (Exception e)
             {
                 return e.Message;
             }
-
         }
-        private void BindData(int id)
-        {
-
-            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (MySqlConnection cn = new MySqlConnection(CN))
-            {
-                cn.Open();
-                string s = "Select * From Runner where ClientID ='" + id + "' ";
-                MySqlCommand cmd = new MySqlCommand(s, cn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-            }
-        }
-
     }
 }

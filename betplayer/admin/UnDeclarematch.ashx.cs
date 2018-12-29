@@ -60,8 +60,8 @@ namespace betplayer.admin
                         for (int i = 0; i < positionsdt.Rows.Count; i++)
                         {
                             int ClientID = Convert.ToInt16(positionsdt.Rows[i]["ClientID"]);
-                            int Position1 = Convert.ToInt16(positionsdt.Rows[i]["Position1"]);
-                            int Position2 = Convert.ToInt16(positionsdt.Rows[i]["Position2"]);
+                            int Position1 = Convert.ToInt32(positionsdt.Rows[i]["Position1"]);
+                            int Position2 = Convert.ToInt32(positionsdt.Rows[i]["Position2"]);
                             string Position3 = (positionsdt.Rows[i]["Position3"]).ToString();
 
                             string update = "Update Runner Set Position1 = @Position1,position2 = @Position2, Position3 = @Position3 where ClientID = @ClientID && MatchID= @matchID order by Datetime DESC";
@@ -82,6 +82,21 @@ namespace betplayer.admin
                         string Delete = "Delete From clientledger where MatchID = '" + apiID + "'";
                         MySqlCommand Deletecmd = new MySqlCommand(Delete, cn);
                         Deletecmd.ExecuteNonQuery();
+
+                        string Deleteagentledger = "Delete From agentledger where MatchID = '" + apiID + "'";
+                        MySqlCommand Deleteagentledgercmd = new MySqlCommand(Deleteagentledger, cn);
+                        Deleteagentledgercmd.ExecuteNonQuery();
+
+                        string Deletesuperagentledger = "Delete From superagentledger where MatchID = '" + apiID + "'";
+                        MySqlCommand Deletesuperagentledgercmd = new MySqlCommand(Deletesuperagentledger, cn);
+                        Deletesuperagentledgercmd.ExecuteNonQuery();
+
+
+
+                        string DeleteAdminLedger = "Delete From adminledger where MatchID = '" + apiID + "'";
+                        MySqlCommand DeleteAdminLedgercmd = new MySqlCommand(DeleteAdminLedger, cn);
+                        DeleteAdminLedgercmd.ExecuteNonQuery();
+
 
                         string DeleteMatchCalcultion = "Delete From MatchCalculation where MatchID = '" + apiID + "'";
                         MySqlCommand DeleteMatchCalcultioncmd = new MySqlCommand(DeleteMatchCalcultion, cn);

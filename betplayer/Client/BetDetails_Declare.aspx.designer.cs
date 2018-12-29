@@ -31,6 +31,15 @@ namespace betplayer.Client {
         protected global::System.Web.UI.WebControls.Label lblteamB;
         
         /// <summary>
+        /// lblMatch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMatch;
+        
+        /// <summary>
         /// lblSession control.
         /// </summary>
         /// <remarks>
@@ -38,5 +47,14 @@ namespace betplayer.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSession;
+        
+        /// <summary>
+        /// lblfinalAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblfinalAmount;
     }
 }

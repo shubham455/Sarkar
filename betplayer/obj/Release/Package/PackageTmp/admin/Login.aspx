@@ -19,7 +19,7 @@
 <body id="login-body">
     <div class="login-header">
         <div id="logo" class="center">
-            <a href="#">livegame25</a>
+            <a href="#">Sarkar50</a>
         </div>
     </div>
     <div id="login">
@@ -56,7 +56,7 @@
     <asp:Button ID="btnsubmit" CssClass="btn btn-block login-btn" runat="server" Text="Login" OnClick="Submitbtn_Click" />
     </form>
     </div>
-    <div id="login-copyright">2018 &copy; livegame25.com </div>
+    <div id="login-copyright">2018 &copy; Sarkar50.com </div>
 
 
 </body>

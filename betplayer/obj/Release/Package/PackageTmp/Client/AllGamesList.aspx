@@ -8,7 +8,7 @@
     </div>
     
     <div class="TeamName">
-        <a href="#"><%: row["teamA"] %> v <%: row["teamB"] %></a>
+        <a href="#"><%: row["teamname"] %> </a>
     </div>
     <div class="profile-details">
         
@@ -31,13 +31,13 @@
                             <table width="99%" border="0" cellspacing="0" cellpadding="0">
                                 <tbody>
                                     <tr>
-                                        <td class="GameList" align="center"><%: row["DateTime"] %> </td>
+                                        <td class="GameList" align="center"><%: row["Date"] %> </td>
                                     </tr>
                                     <tr>
-                                        <td class="GameList" align="center">Match Bets : <asp:Label ID="lblmatch" runat="server" Text="0"></asp:Label></td>
+                                        <td class="GameList" align="center">Match Bets :<%: row["MatchBetCount"] %> </td>
                                     </tr>
                                     <tr>
-                                        <td class="GameList" align="center">Session Bets : <asp:Label ID="lblSession" runat="server" Text="0"/></td>
+                                        <td class="GameList" align="center">Session Bets :<%: row["SessionBetCount"] %> </td>
                                     </tr>
                                     <tr>
                                         <td class="GameList" align="center">Declared :<%if(Convert.ToInt16( row["Status"]) == 1) {%>NO<% }else{%>Yes<% } %> </td>

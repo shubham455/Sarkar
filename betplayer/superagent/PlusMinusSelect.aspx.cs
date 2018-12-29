@@ -49,6 +49,10 @@ namespace betplayer.superagent
             {
                 Response.Redirect("MatchSessionPlusminusSelect.aspx?MatchID=" + apiId.Value);
             }
+            else if (select == "For Single Session")
+            {
+                Response.Redirect("SingleSessionPlusminusSelect.aspx?MatchID=" + apiId.Value);
+            }
         }
     }
 }

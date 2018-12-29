@@ -17,8 +17,6 @@ namespace betplayer.admin
         private DataTable dt;
         public DataTable MatchesDataTable { get { return dt; } }
 
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -32,7 +30,7 @@ namespace betplayer.admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select * From ClientMaster where CreatedBy = '" + Session["Admincode"] + "'";
+                string s = "Select * From ClientMaster";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -48,7 +46,7 @@ namespace betplayer.admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select* From ClientMaster Where Name Like '%" + txtsearch.Text + "%' and  CreatedBy = '" + Session["Admincode"] + "'";
+                string s = "Select* From ClientMaster Where Name Like '%" + txtsearch.Text + "%' ";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -63,7 +61,7 @@ namespace betplayer.admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Select * From ClientMaster where CreatedBy = '" + Session["Admincode"] + "'";
+                string s = "Select * From ClientMaster";
                 MySqlCommand cmd = new MySqlCommand(s, cn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -73,22 +71,6 @@ namespace betplayer.admin
             }
         }
 
-        protected void DropDownstatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string CN = ConfigurationManager.ConnectionStrings["DBMS"].ConnectionString;
-            using (MySqlConnection cn = new MySqlConnection(CN))
-            {
-                cn.Open();
-
-                string selected = Request.Form["checkbox"];
-                string s = "update  ClientMaster set Status = '" + DropDownstatus.SelectedItem.Text + "' where ClientID in (" + selected + ")";
-                MySqlCommand cmd = new MySqlCommand(s, cn);
-                cmd.ExecuteNonQuery();
-
-                BindData();
-
-            }
-        }
     }
 }
 

@@ -25,13 +25,13 @@ namespace Panchayat_System.Admin
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
-                    string s3 = "Select agentshare,AgentLimit,Currentlimit From AgentMaster where AgentID = '"+Session["AgentID"]+"'";
+                    string s3 = "Select agentshare,AgentLimit,Currentlimit From AgentMaster where AgentID = '" + Session["AgentID"] + "'";
                     MySqlCommand cmd3 = new MySqlCommand(s3, cn);
                     MySqlDataAdapter adp3 = new MySqlDataAdapter(cmd3);
                     DataTable dt3 = new DataTable();
                     adp3.Fill(dt3);
 
-                    int AgentLimit = Convert.ToInt32(dt3.Rows[0]["Currentlimit"]);
+                    decimal AgentLimit = Convert.ToDecimal(dt3.Rows[0]["Currentlimit"]);
                     decimal Total = 0;
                     string s4 = "Select * From ClientMaster where CreatedBy = '" + Session["Agentcode"] + "'";
                     MySqlCommand cmd4 = new MySqlCommand(s4, cn);
@@ -62,42 +62,33 @@ namespace Panchayat_System.Admin
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string Select = "Select * From ClientMaster where Contact_No = @Contactno ";
-                MySqlCommand cmd2 = new MySqlCommand(Select, cn);
-                cmd2.Parameters.AddWithValue("@Contactno", txtContactno.Text);
-                MySqlDataReader rdr = cmd2.ExecuteReader();
-                if (rdr.Read())
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Client Already Exists.....');", true);
-                }
-                else
-                {
-                    rdr.Close();
-                    string s = "insert into ClientMaster(Name,Contact_No,Password,Client_limit,Currentlimit,FixLimit,Agent_Share,mobileApp,Session_Commision_Type,Status,CreatedBy,Date,Mode) values (@Name,@Contact_No,@Password,@Clientlimit,@Currentlimit,@FixLimit,@Agentshare,@MobApp,@SessionType,@Status,@CreatedBy,@Date,@Mode); SELECT LAST_INSERT_ID()";
-                    MySqlCommand cmd = new MySqlCommand(s, cn);
 
-                    cmd.Parameters.AddWithValue("@Name", txtname.Text);
-                    cmd.Parameters.AddWithValue("@Contact_No", txtContactno.Text);
-                    cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
-                    cmd.Parameters.AddWithValue("@Clientlimit", txtClientlimit.Text);
-                    cmd.Parameters.AddWithValue("@CurrentLimit", txtClientlimit.Text);
-                    cmd.Parameters.AddWithValue("@Agentshare", txtAgentShare.Text);
-                    cmd.Parameters.AddWithValue("@SessionType", SessionDropDown.SelectedItem.Text);
-                    cmd.Parameters.AddWithValue("@Status", "Active");
-                    cmd.Parameters.AddWithValue("@CreatedBy", Session["Agentcode"]);
-                    cmd.Parameters.AddWithValue("@Date", DateTime.Today.ToString("yyyy/MM/dd"));
-                    cmd.Parameters.AddWithValue("@Mode", "Agent");
-                    cmd.Parameters.AddWithValue("@FixLimit", txtClientlimit.Text);
-                    cmd.Parameters.AddWithValue("@MobApp", "Yes");
+                string s = "insert into ClientMaster(Name,Contact_No,Password,Client_limit,Currentlimit,FixLimit,Agent_Share,mobileApp,Session_Commision_Type,Status,CreatedBy,Date,Mode,MobileAppAmount) values (@Name,@Contact_No,@Password,@Clientlimit,@Currentlimit,@FixLimit,@Agentshare,@MobApp,@SessionType,@Status,@CreatedBy,@Date,@Mode,@MobAppAmount); SELECT LAST_INSERT_ID()";
+                MySqlCommand cmd = new MySqlCommand(s, cn);
 
-                    int ID = Convert.ToInt16(cmd.ExecuteScalar());
-                    string update = "Update ClientMaster Set Code = 'C" + ID + "'where ClientID = '" + ID + "' ";
-                    MySqlCommand cmd1 = new MySqlCommand(update, cn);
-                    cmd1.ExecuteNonQuery();
-                    Response.Redirect("~/Agent/ClientDetails.aspx?msg=Add");
-                }
+                cmd.Parameters.AddWithValue("@Name", txtname.Text);
+                cmd.Parameters.AddWithValue("@Contact_No", txtContactno.Text);
+                cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
+                cmd.Parameters.AddWithValue("@Clientlimit", txtClientlimit.Text);
+                cmd.Parameters.AddWithValue("@CurrentLimit", txtClientlimit.Text);
+                cmd.Parameters.AddWithValue("@Agentshare", txtAgentShare.Text);
+                cmd.Parameters.AddWithValue("@SessionType", SessionDropDown.SelectedItem.Text);
+                cmd.Parameters.AddWithValue("@Status", "Active");
+                cmd.Parameters.AddWithValue("@CreatedBy", Session["Agentcode"]);
+                cmd.Parameters.AddWithValue("@Date", DateTime.Today.ToString("yyyy/MM/dd"));
+                cmd.Parameters.AddWithValue("@Mode", "Agent");
+                cmd.Parameters.AddWithValue("@FixLimit", txtClientlimit.Text);
+                cmd.Parameters.AddWithValue("@MobApp","Yes");
+                cmd.Parameters.AddWithValue("@MobAppAmount",txtMobapp.Text);
+
+                int ID = Convert.ToInt16(cmd.ExecuteScalar());
+                string update = "Update ClientMaster Set Code = 'C" + ID + "'where ClientID = '" + ID + "' ";
+                MySqlCommand cmd1 = new MySqlCommand(update, cn);
+                cmd1.ExecuteNonQuery();
+                Response.Redirect("~/Agent/ClientDetails.aspx?msg=Add");
             }
         }
+
         public string GeneratePassword()
         {
             string PasswordLength = "8";
@@ -135,7 +126,7 @@ namespace Panchayat_System.Admin
 
         protected void txtClientlimit_TextChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(txtAgentlimit.Text) < Convert.ToInt32(txtClientlimit.Text))
+            if (Convert.ToDecimal(txtAgentlimit.Text) < Convert.ToDecimal(txtClientlimit.Text))
             {
                 txtClientlimit.Text = "";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Client Limit Do not Greater Than Agent Limit.....');", true);

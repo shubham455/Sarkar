@@ -45,12 +45,12 @@
                                             <table width="850" border="0" cellpadding="0" cellspacing="0">
                                                 <tbody>
                                                     <tr>
-                                                        <td width="33" class="welcome">&nbsp;</td>
-                                                        <td width="204" height="30" align="left" valign="middle" class="welcome">Code</td>
-                                                        <td width="313" align="left">
+                                                        <td class="welcome">&nbsp;</td>
+                                                        <td height="30" align="left" valign="middle" class="welcome">Code</td>
+                                                        <td align="left">
                                                             <asp:TextBox CssClass="textbox" ID="txtCode" ReadOnly="true" runat="server" />
                                                         </td>
-                                                        <td width="313" align="left">&nbsp;</td>
+                                                        <td align="left">&nbsp;</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="welcome">&nbsp;</td>
@@ -72,10 +72,10 @@
                                                         <td height="30" align="left" class="welcome">&nbsp;</td>
                                                         <td height="30" align="left" valign="middle" class="welcome">Client Limit</td>
                                                         <td align="left" valign="middle">
-                                                            <asp:TextBox CssClass="textbox" ID="txtclientLimit" runat="server" /></td>
+                                                            <asp:TextBox CssClass="textbox" ID="txtclientLimit" runat="server" OnTextChanged="txtClientlimit_TextChanged" /></td>
                                                         <td align="left" valign="middle">&nbsp;</td>
                                                         <td>
-                                                            <asp:TextBox CssClass="textbox" ID="txtAgentlimit" runat="server" Text="" PlaceHolder="305653&nbsp;&nbsp; से ज्यादा नहीं भर सकते। " ReadOnly="true" />
+                                                            <asp:TextBox CssClass="textbox" ID="txtAgentlimit" runat="server" Text=""  ReadOnly="true" />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -120,12 +120,14 @@
                                                         <td height="30" align="left" valign="middle" class="welcome">Agent Share %</td>
                                                         <td align="left">
                                                             <asp:TextBox CssClass="textbox" ID="txtAgentshare" AutoPostBack="true" OnTextChanged="txtAgentshare_TextChanged" runat="server" /></td>
-                                                        <td align="left" valign="middle">
-                                                            <input name="MatchShare2" type="text" runat="server" class="textbox" id="txtAgentshare2" onblur="showCustomer(this.value)" value="" readonly=""></td>
+                                                        <td align="left" valign="middle">&nbsp;</td>
+                                                        <td>
+                                                            <input name="MatchShare2" type="text" runat="server" class="textbox" id="txtAgentshare2"  readonly="">
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td align="left" class="welcome">&nbsp;</td>
-                                                        <td height="30" align="left" valign="middle" class="welcome">Client Share %</td>
+                                                        <td height="30" align="left" valign="middle" class="welcome">Mobile App Amt</td>
                                                         <td align="left">
                                                             <asp:TextBox CssClass="textbox" ID="txtClientshare" runat="server" /></td>
                                                         <td align="left">&nbsp;</td>

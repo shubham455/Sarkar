@@ -104,7 +104,16 @@
 
                             <tr>
                                 <td valign="top" align="center">
-                                    <p class="price-btn price-btn-blue popup-with-zoom-anim">Match Session Plus Minus</p>
+                                    <p class="price-btn price-btn-blue popup-with-zoom-anim">Match Plus Minus</p>
+                                </td>
+                            </tr>
+                            <tr bgcolor="">
+                                <td height="25" colspan="6" align="center" class="">
+                                    <asp:Label ID="lblMatch" runat="server"></asp:Label></td>
+                            </tr>
+                            <tr>
+                                <td valign="top" align="center">
+                                    <p class="price-btn price-btn-blue popup-with-zoom-anim">Session Plus Minus</p>
                                 </td>
                             </tr>
                             <tr bgcolor="">
@@ -163,6 +172,10 @@
                                 <td valign="top" align="center">
                                     <p class="price-btn price-btn-blue popup-with-zoom-anim">Net Plus Minus</p>
                                 </td>
+                            </tr>
+                            <tr bgcolor="">
+                                <td height="25" colspan="6" align="center" class="">
+                                    <asp:Label ID="lblfinalAmount" runat="server"></asp:Label></td>
                             </tr>
                             <tr bgcolor="">
                                 <td height="25" colspan="6" align="center" class=""></td>

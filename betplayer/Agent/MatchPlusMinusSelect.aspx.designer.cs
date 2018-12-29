@@ -7,9 +7,45 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace betplayer.Agent {
+namespace betplayer.agent {
     
     
-    public partial class MatchPlusMinusSelect {
+    public partial class MatchplusminusSelect {
+        
+        /// <summary>
+        /// lblTeamA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTeamA;
+        
+        /// <summary>
+        /// lblTeamB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTeamB;
+        
+        /// <summary>
+        /// lblAgentName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAgentName;
+        
+        /// <summary>
+        /// apiID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField apiID;
     }
 }

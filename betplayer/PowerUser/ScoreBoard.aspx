@@ -29,7 +29,7 @@
                         </div>
                         <div class="widget-body form">
                             <div class="main-container">
-                                <div class="match-container" >
+                                <div class="match-container">
                                     <div class="lastball-container">
                                         <button id="ball_start" type="button" class="btn btn-success" style="font-size: x-large; font-weight: bold; color: black">Ball Start</button>
                                         <button id="bet_open" type="button" class="btn btn-success" style="font-size: x-large; font-weight: bold; color: black">Bet Open</button>
@@ -64,20 +64,17 @@
                                     </div>
                                     <div class="score-container">
                                         <p style="font-size: large;">Score Board</p>
-                                        <input style="width:150px;" id="InputRun" type="text" name="Runs" value="" onkeydown="focusNextElementOnEnterKeyPress(event)" placeholder="Run"/>
-                                        <input style="width:150px;" id="InputWicket" type="text" name="Wickets" value="" onkeydown="focusNextElementOnEnterKeyPress(event)" placeholder="Wicket"/>
-                                        <input style="width:150px;" id="InputOver" type="text" name="Overs" value="" onkeydown="focusNextElementOnEnterKeyPress(event)" placeholder="Over"/>
+                                        <input style="width: 150px;" id="InputRun" type="text" name="Runs" value="" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" placeholder="Run" />
+                                        <input style="width: 150px;" id="InputWicket" type="text" name="Wickets" value="" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" placeholder="Wicket" />
+                                        <input style="width: 150px;" id="InputOver" type="text" name="Overs" value="" onfocus="this.setSelectionRange(0, this.value.length)" onkeydown="focusNextElementOnEnterKeyPress(event)" placeholder="Over" />
                                     </div>
-                                    <div  class="message-container">
+                                    <div class="message-container">
                                         <p style="font-size: large;" class="welcome">Message</p>
                                         <textarea id="InputMessage" name="Message" style="width: 500px;"></textarea>
                                         <button id="btnmessage" type="button" class="btn btn-success" style="height: 50px; width: 100px; font-size: large;">Update</button>
                                     </div>
                                 </div>
-                                <div id="Sessions" class="session-container"">
-                                    <span>Name</span>
-                                    <span>Suspended</span>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -87,7 +84,7 @@
     </div>
     <asp:HiddenField ID="firebasekey" runat="server" />
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
-    <script src="js/ManualMatch.js"></script>
+    <script src="js/ManualMatch_v2.5.js"></script>
     <script lang="javascript">
 
         function Tab() {

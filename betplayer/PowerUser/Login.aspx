@@ -19,7 +19,7 @@
 <body id="login-body">
     <div class="login-header">
         <div id="logo" class="center">
-            <a href="agent.crick20.com">livegame25</a>
+            <a href="#">Sarkar50</a>
         </div>
     </div>
     <div id="login">

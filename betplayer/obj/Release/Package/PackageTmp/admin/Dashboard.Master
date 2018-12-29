@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8">
-    <title>livegame25 Dashboard</title>
+    <title>sarkar50 Dashboard</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="description">
     <meta content="" name="author">
@@ -16,6 +16,7 @@
     <link href="../admin/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="../admin/css/style.css" rel="stylesheet">
     <link href="../admin/css/style_responsive.css" rel="stylesheet">
+    <link href="../admin/css/style_session.css" rel="stylesheet">
     <link href="../admin/css/style_default.css" rel="stylesheet" id="style_color">
 
     <link href="../admin/assets/fancybox/source/jquery.fancybox.css" rel="stylesheet">
@@ -33,7 +34,7 @@
             <div class="container-fluid">
                 <!-- BEGIN LOGO -->
                 <a class="brand">
-                    <img src="../admin/img/logo.png" alt="livegame25">
+                    <img src="../admin/img/logo.png" alt="sarkar50">
                 </a>
                 <!-- END LOGO -->
                 <!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -101,7 +102,9 @@
                     <ul class="sub">
 
                         <li><a class="" href="SuperAgentDetails.aspx">SuperAgent Master</a></li>
+                        <li><a class="" href="ClientDetails.aspx">Client Master</a></li>
                         <li><a class="" href="poweruserdetails.aspx">Poweruser Master</a></li>
+                        <li><a class="" href="CollectionDetails.aspx">CollectionMaster Master</a></li>
 
                     </ul>
                 </li>
@@ -160,7 +163,7 @@
     </form>
 
     <div id="footer">
-        2018 © livegame25 Dashboard.
+        2018 © sarkar50 Dashboard.
 	
         <div class="span pull-right">
             <span class="go-top"><i class="icon-arrow-up"></i></span>

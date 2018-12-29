@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>livegame25.com</title>
+    <title>Sarkar50.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link href="css/Homepage/bootstrap.min.css" rel="stylesheet">
@@ -19,7 +19,7 @@
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="navbar-header">
-                    <h1 class="navbar-brand"><a href="#">livegame25</a></h1>
+                    <h1 class="navbar-brand"><a href="#">Sarkar50</a></h1>
                 </div>
 
                 <!-- /.navbar-collapse -->
@@ -44,17 +44,17 @@
     <section class="main__middle__container">
         <div class="container" style="color: #000; font-family: Verdana, Geneva, sans-serif;">
             <p align="center"><a href="#" class="btn btn-primary btn-lg">हमारे बारे में </a></p>
-            <p class="big-paragraph" align="center">livegame25 सट्टेबाजी की साइट नहीं है।</p>
+            <p class="big-paragraph" align="center">Sarkar50 सट्टेबाजी की साइट नहीं है।</p>
             <p align="justify" style="line-height: 26px;">
                 <strong>असली सट्टेबाजी जिंदगी को बर्बाद कर देती है। आभासी सट्टेबाजी अद्भुत रोमांच देती है। </strong>
                 <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;livegame25 उपयोगकर्ताओं के लिए आभासी सट्टेबाजी का खेल (INSTANT BETTING SPORTS) है और हमारे आभासी खेल (VIRTUAL  SPORTS) पर शर्त लगाने का एक मुफ्त सामाजिक सट्टेबाजी मंच है।
+                &nbsp;&nbsp;&nbsp;&nbsp;Sarkar50 उपयोगकर्ताओं के लिए आभासी सट्टेबाजी का खेल (INSTANT BETTING SPORTS) है और हमारे आभासी खेल (VIRTUAL  SPORTS) पर शर्त लगाने का एक मुफ्त सामाजिक सट्टेबाजी मंच है।
                
                 <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;livegame25 में हम अपने उपयोगकर्ताओं को सट्टेबाजी, मनोरंजन के रूप में, एक सुरक्षित और कानूनी वातावरण से मुक्त तरीके से प्रदान करना चाहते हैं। खिलाड़ियों को एक आभासी मुद्रा (VIRTUAL CURRENCY) कोइंस  (Coins) दिए जाते है  जिससे वह भाव देख सकते है एवं सौदे कर सकते है । इसमें दिखने वाले भाव भी आभासी होते है।  livegame25 में किये गए किसी भी सौदे का किसी भी तरह से रूपये के रूप में लेन देन नहीं होता है।
+                &nbsp;&nbsp;&nbsp;&nbsp;Sarkar50 में हम अपने उपयोगकर्ताओं को सट्टेबाजी, मनोरंजन के रूप में, एक सुरक्षित और कानूनी वातावरण से मुक्त तरीके से प्रदान करना चाहते हैं। खिलाड़ियों को एक आभासी मुद्रा (VIRTUAL CURRENCY) कोइंस  (Coins) दिए जाते है  जिससे वह भाव देख सकते है एवं सौदे कर सकते है । इसमें दिखने वाले भाव भी आभासी होते है।  Sarkar50 में किये गए किसी भी सौदे का किसी भी तरह से रूपये के रूप में लेन देन नहीं होता है।
                
                 <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;livegame25 केवल एक  मुफ्त, मनोरंजन साइट है जहां केवल आभासी मुद्राओं (Coins) का उपयोग किया जाता है।  livegame25 में आप ना तो रूपये जमा कर सकते हे और ना ही निकाल सकते हे।
+                &nbsp;&nbsp;&nbsp;&nbsp;Sarkar50 केवल एक  मुफ्त, मनोरंजन साइट है जहां केवल आभासी मुद्राओं (Coins) का उपयोग किया जाता है।  Sarkar50 में आप ना तो रूपये जमा कर सकते हे और ना ही निकाल सकते हे।
                
                 <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;एक पूरी तरह से नए स्तर पर अपने पसंदीदा खेल की आभासी सट्टेबाजी करे। कैसे खेले जानने के लिए <a href="#">यहाँ क्लिक करे। </a>

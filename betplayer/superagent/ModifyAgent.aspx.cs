@@ -43,7 +43,7 @@ namespace betplayer.Super_Agent
                     MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                     DataTable dt1 = new DataTable();
                     adp1.Fill(dt1);
-                    txtSuperAgentShare.Text = dt1.Rows[0]["AgentShare"].ToString();
+                    txtSuperAgentShare.Text = dt1.Rows[0]["myshare"].ToString();
                     Text1.Value = dt1.Rows[0]["MatchCommision"].ToString();
                     Text2.Value = dt1.Rows[0]["SessionCommision"].ToString();
 

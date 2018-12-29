@@ -15,7 +15,8 @@ namespace betplayer.superagent
         private DataTable dt;
         private DataTable ClientTable = new DataTable();
         private DataTable runTable;
-        public DataTable MatchesDataTable { get { return ClientTable; } }
+        public DataTable ClientTableOrdered;
+        public DataTable MatchesDataTable { get { return ClientTableOrdered; } }
         public DataTable runTable1 { get { return runTable; } }
         public Boolean emptyLedgerTable = false;
 
@@ -33,7 +34,10 @@ namespace betplayer.superagent
             ClientTable.Columns.Add(new DataColumn("Amount"));
             ClientTable.Columns.Add(new DataColumn("rate"));
             ClientTable.Columns.Add(new DataColumn("Mode"));
-            ClientTable.Columns.Add(new DataColumn("dateTime"));
+            //ClientTable.Columns.Add(new DataColumn("dateTime"));
+            DataColumn colDateTime = new DataColumn("DateTime");
+            colDateTime.DataType = System.Type.GetType("System.DateTime");
+            ClientTable.Columns.Add(colDateTime);
             ClientTable.Columns.Add(new DataColumn("Team"));
             ClientTable.Columns.Add(new DataColumn("clientID"));
             ClientTable.Columns.Add(new DataColumn("Name"));
@@ -59,9 +63,7 @@ namespace betplayer.superagent
                 adp.Fill(dt);
                 string TeamA1 = dt.Rows[0]["TeamA"].ToString();
                 string TeamB1 = dt.Rows[0]["TeamB"].ToString();
-
-
-
+                
 
 
                 string s11 = "Select AgentID,code From AgentMaster where CreatedBy = '" + Session["SuperAgentcode"] + "'";
@@ -69,33 +71,29 @@ namespace betplayer.superagent
                 MySqlDataAdapter adp11 = new MySqlDataAdapter(cmd11);
                 DataTable dt11 = new DataTable();
                 adp11.Fill(dt11);
-                
+                string check = "";
                 for (int o = 0; o < dt11.Rows.Count; o++)
                 {
                     int AgentID = Convert.ToInt16(dt11.Rows[o]["AgentID"]);
                     string Agentcode = (dt11.Rows[o]["code"]).ToString();
 
-
-                    
                     string s = "select Session.sessionID,Session.session,Session.Runs,Session.Amount,Session.rate,Session.Mode,Session.DateTime,Session.Team,Session.clientID,clientmaster.Name from Session inner join clientmaster on Session.ClientID = clientmaster.ClientID where  clientmaster.mode = 'Agent' && clientmaster.CreatedBy = '" + Agentcode + "'    && Session.MatchID = '" + apiID.Value + "' && Session.Session = '" + Session1 + "' order by Session.DateTime DESC";
                     MySqlCommand cmd1 = new MySqlCommand(s, cn);
                     MySqlDataAdapter adp1 = new MySqlDataAdapter(cmd1);
                     dt = new DataTable();
-
                     adp1.Fill(dt);
-
 
                     for (int j = 0; j < dt.Rows.Count; j++)
                     {
 
                         int ClientID2 = Convert.ToInt32(dt.Rows[j]["ClientID"]);
-                        string selectAgentshare = "select CreatedBy,Agent_share,ClientID From ClientMaster where Createdby = '" + Agentcode + "' && ClientID = '"+ClientID2+"'";
+                        string selectAgentshare = "select CreatedBy,Agent_share,ClientID From ClientMaster where Createdby = '" + Agentcode + "' && ClientID = '" + ClientID2 + "'";
                         MySqlCommand selectAgentsharecmd = new MySqlCommand(selectAgentshare, cn);
                         MySqlDataAdapter selectAgentshareadp = new MySqlDataAdapter(selectAgentsharecmd);
                         DataTable selectAgentsharedt = new DataTable();
                         selectAgentshareadp.Fill(selectAgentsharedt);
 
-                         int ClientID1 = Convert.ToInt16(selectAgentsharedt.Rows[0]["ClientID"]);
+                        int ClientID1 = Convert.ToInt16(selectAgentsharedt.Rows[0]["ClientID"]);
                         Decimal AgentShare = Convert.ToDecimal(selectAgentsharedt.Rows[0]["Agent_Share"]);
                         Decimal AgentShare1 = AgentShare / 100;
 
@@ -123,43 +121,35 @@ namespace betplayer.superagent
                         decimal finalshare = SAgentshare1 - AgentShare1;
 
 
-                        if (j == 0)
+                        if (check != "true")
                         {
-
-                            int runs = Convert.ToInt16(dt.Rows[j]["Runs"]);
-                            int Amount = Convert.ToInt32(dt.Rows[j]["Amount"]);
-                            Decimal Rate = Convert.ToDecimal(dt.Rows[j]["Rate"]);
-                            string Mode = dt.Rows[j]["Mode"].ToString();
-                            string ClientID = dt.Rows[j]["ClientID"].ToString();
-
-
-
-
-
-                            for (int i = runs + 5; i >= runs - 5; i--)
+                            if (j == 0)
                             {
+                                check = "true";
+                                int runs = Convert.ToInt16(dt.Rows[j]["Runs"]);
+                                int Amount = Convert.ToInt32(dt.Rows[j]["Amount"]);
+                                Decimal Rate = Convert.ToDecimal(dt.Rows[j]["Rate"]);
+                                string Mode = dt.Rows[j]["Mode"].ToString();
+                                string ClientID = dt.Rows[j]["ClientID"].ToString();
 
-                                DataRow row = runTable.NewRow();
-                                row["RUNS"] = i.ToString();
-                                row["Amount"] = CalculateAmount(Mode,
-                                    i, 0,
-                                    Rate,
-                                    runs, Amount,
-                                   finalshare).ToString();
-                                runTable.Rows.Add(row.ItemArray);
-                            }
-
-                            if (dt.Rows.Count > 0)
-                            {
-                                IEnumerable<DataRow> orderedRows = dt.AsEnumerable();
-                                DataTable TempClientTable = orderedRows.CopyToDataTable();
-                                foreach (DataRow row in TempClientTable.Rows)
+                                for (int i = runs + 5; i >= runs - 5; i--)
                                 {
-                                    ClientTable.Rows.Add(row.ItemArray);
-                                }
-                            }
 
+                                    DataRow row = runTable.NewRow();
+                                    row["RUNS"] = i.ToString();
+                                    row["Amount"] = CalculateAmount(Mode,
+                                        i, 0,
+                                        Rate,
+                                        runs, Amount,
+                                       finalshare).ToString();
+                                    runTable.Rows.Add(row.ItemArray);
+                                }
+
+
+
+                            }
                         }
+
                         else
                         {
 
@@ -173,7 +163,7 @@ namespace betplayer.superagent
 
                             int highVal = Convert.ToInt32(runTable.Rows[0]["Runs"]);
                             int lowVal = Convert.ToInt32(runTable.Rows[runTable.Rows.Count - 1]["Runs"]);
-                            if ((runs+5) > highVal)
+                            if ((runs + 5) > highVal)
                             {
                                 for (int i = runs + 5; i > highVal; i--)
                                 {
@@ -227,8 +217,32 @@ namespace betplayer.superagent
                             }
                         }
                     }
+                    if (dt.Rows.Count > 0)
+                    {
+                        IEnumerable<DataRow> orderedRows = dt.AsEnumerable();
+                        DataTable TempClientTable = orderedRows.CopyToDataTable();
+                        foreach (DataRow row in TempClientTable.Rows)
+                        {
+                            ClientTable.Rows.Add(row.ItemArray);
+                        }
+                    }
+                    if (ClientTable.Rows.Count > 0)
+                    {
+                        IEnumerable<DataRow> orderedRows = from row in ClientTable.AsEnumerable()
+                                                           orderby row.Field<DateTime>("DateTime") descending
+                                                           select row;
+
+                        ClientTableOrdered = orderedRows.CopyToDataTable();
+
+                    }
+                    else
+                    {
+                        ClientTableOrdered = ClientTable;
+                    }
                 }
+
             }
+
         }
         public double CalculateAmount(string Mode, int Initruns, Decimal InitAmount, Decimal Rate, int runs, int Amount, Decimal fianlshare)
         {
@@ -252,7 +266,7 @@ namespace betplayer.superagent
             {
                 if (Mode == "Y")
                 {
-                    Difference = Amount * Rate * -1 *fianlshare + InitAmount;
+                    Difference = Amount * Rate * -1 * fianlshare + InitAmount;
                 }
                 else if (Mode == "N")
                 {

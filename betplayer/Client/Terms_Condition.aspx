@@ -7,7 +7,7 @@
     <title>Terms &amp; Conditions</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link href="css/login/style.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/login/style_v1.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/login/clndr.css" rel="stylesheet" type="text/css" media="all">
 
     <style>
@@ -23,7 +23,7 @@
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
-            color: #FFF;
+            color: #E9E9E9;
         }
 
             /* Hide the browser's default checkbox */
@@ -95,34 +95,34 @@
                 <div class="clear"></div>
             </div>
             <div class="skills">
-                <h3>Terms &amp; Conditions</h3>
+                <h3 style="align-content:center">Terms &amp; Conditions</h3>
             </div>
 
 
             <div class="drag_drop">
 
                 <br>
-                <h4 align="left" style="color: #FFF; font-family: Verdana, Geneva, sans-serif; font-size: 12px;">1. लोगिन करने के बाद अपना पासवर्ड बदल लें। </h4>
+                <h4 align="left" style="color: #000; font-family: Verdana, Geneva, sans-serif; font-size: 12px;">1. लोगिन करने के बाद अपना पासवर्ड बदल लें। </h4>
                 <br>
-                <h4 align="left" style="color: #FFF; font-family: Verdana, Geneva, sans-serif; font-size: 12px;">2. प्रत्येक गेम के लिए 100/- Coins चार्ज रहेगा।</h4>
+                <h4 align="left" style="color: #000; font-family: Verdana, Geneva, sans-serif; font-size: 12px;">2. प्रत्येक गेम के लिए 100/- Coins चार्ज रहेगा।</h4>
                 <br>
-                <h4 align="left" style="color: #FFF; font-family: Verdana, Geneva, sans-serif; font-size: 12px;">3. टेस्ट गेम में प्रतिदिन 50/- coins  चार्ज रहेगा।</h4>
+                <h4 align="left" style="color: #000; font-family: Verdana, Geneva, sans-serif; font-size: 12px;">3. टेस्ट गेम में प्रतिदिन 50/- coins  चार्ज रहेगा।</h4>
                 <br>
-                <h4 align="left" style="color: #FFF; font-family: Verdana, Geneva, sans-serif; font-size: 12px;">4. वनडे और टी-20 के एडवांस सौदे मैच शुरू होने के आधे घंटे पहले से ही लिए जायेंगे। </h4>
+                <h4 align="left" style="color: #000; font-family: Verdana, Geneva, sans-serif; font-size: 12px;">4. वनडे और टी-20 के एडवांस सौदे मैच शुरू होने के आधे घंटे पहले से ही लिए जायेंगे। </h4>
                 <br>
-               <h4 align="left"  style="color:#FFF;   font-family:Verdana, Geneva, sans-serif;  font-size:12px;">5. टेस्ट मैच के एडवांस सौदे मैच शुरू होने के 45 मिनिट पहले से ही लिए जायेंगे। </h4>
+               <h4 align="left"  style="color:#000;   font-family:Verdana, Geneva, sans-serif;  font-size:12px;">5. टेस्ट मैच के एडवांस सौदे मैच शुरू होने के 45 मिनिट पहले से ही लिए जायेंगे। </h4>
                 <br>
-                <h4 align="left" style="color: #FFF; font-family: Verdana, Geneva, sans-serif; font-size: 12px;">6. गेम रद्द या टाई होने पर मैच के सभी सौदे रद्द माने जायेंगे और जो सेशन पुरे हो चुके हे, उनके हिसाब से ही Coins कम या ज्यादा होंगे  ।  </h4>
+                <h4 align="left" style="color: #000; font-family: Verdana, Geneva, sans-serif; font-size: 12px;">6. गेम रद्द या टाई होने पर मैच के सभी सौदे रद्द माने जायेंगे और जो सेशन पुरे हो चुके हे, उनके हिसाब से ही Coins कम या ज्यादा होंगे  ।  </h4>
                 <br>
-                <h4 align="left" style="color: #FFF; font-family: Verdana, Geneva, sans-serif; font-size: 12px;">7. एक बार में मैच का सौदा कम से कम 500 Coins एवं ज्यादा से ज्यादा 1,00,000 Coins और सेशन का सौदा कम से कम 500 Coins एवं ज्यादा से ज्यादा 50,000 Coins तक का ही  लिया जायेगा। </h4>
+                <h4 align="left" style="color: #000; font-family: Verdana, Geneva, sans-serif; font-size: 12px;">7. एक बार में मैच का सौदा कम से कम 500 Coins एवं ज्यादा से ज्यादा 1,00,000 Coins और सेशन का सौदा कम से कम 500 Coins एवं ज्यादा से ज्यादा 50,000 Coins तक का ही  लिया जायेगा। </h4>
                 <br>
-                <h4 align="left" style="color: #FFF; font-family: Verdana, Geneva, sans-serif; font-size: 12px;">8. मैच के दौरान भाव को देख व समझ के ही सौदा करे। किये गए किसी भी सौदे को हटाया या बदला नहीं जाएगा। सभी सौदे के लिए स्वयं आप ही जिम्मेदार होंगे।</h4>
+                <h4 align="left" style="color: #000; font-family: Verdana, Geneva, sans-serif; font-size: 12px;">8. मैच के दौरान भाव को देख व समझ के ही सौदा करे। किये गए किसी भी सौदे को हटाया या बदला नहीं जाएगा। सभी सौदे के लिए स्वयं आप ही जिम्मेदार होंगे।</h4>
                 <br>
-                <h4 align="left" style="color: #FFF; font-family: Verdana, Geneva, sans-serif; font-size: 12px;">9. मैच या सेशन भाव गलत चलने पर जो भी मैच या सेशन के सौदे हुए हे वह स्वतः हट जायेंगे।</h4>
+                <h4 align="left" style="color: #000; font-family: Verdana, Geneva, sans-serif; font-size: 12px;">9. मैच या सेशन भाव गलत चलने पर जो भी मैच या सेशन के सौदे हुए हे वह स्वतः हट जायेंगे।</h4>
                 
                 <br>
 
-                <h4 align="left" style="color: #FFF; font-family: Verdana, Geneva, sans-serif; font-size: 12px;">नोट : सर्वर या वेबसाईट में किसी तरह की  खराबी आने या बंद हो जाने पर  केवल किये गए सौदे  ही मान्य होंगे। ऐसी स्थिति में  किसी भी तरह का वाद-विवाद मान्य नहीं होगा।</h4>
+                <h4 align="left" style="color: #000; font-family: Verdana, Geneva, sans-serif; font-size: 12px;">नोट : सर्वर या वेबसाईट में किसी तरह की  खराबी आने या बंद हो जाने पर  केवल किये गए सौदे  ही मान्य होंगे। ऐसी स्थिति में  किसी भी तरह का वाद-विवाद मान्य नहीं होगा।</h4>
                 <br>
             </div>
             <br>
@@ -145,7 +145,7 @@
 
             <div class="menu" id="menu" align="center">
                 <ul class="nav">
-                    <li class="active"><a href="MainMenu.aspx" style="font-size: 14px !important; line-height: 25px;">NEXT =&gt; MAIN MENU</a></li>
+                    <li class="active"><a href="MainMenu.aspx" style="font-size: 14px !important; background-color:#56baec; line-height: 25px;">NEXT =&gt; MAIN MENU</a></li>
                 </ul>
             </div>
 

@@ -15,6 +15,7 @@ namespace betplayer.poweruser
 {
     public partial class AddMatchManually : System.Web.UI.Page
     {
+        JavaScriptSerializer js = new JavaScriptSerializer();
         protected void Page_Load(object sender, EventArgs e)
         {
             ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
@@ -62,22 +63,10 @@ namespace betplayer.poweruser
             using (MySqlConnection cn = new MySqlConnection(CN))
             {
                 cn.Open();
-                string s = "Update Matches set TeamA =@TeamA , TeamB =@TeamB, TeamC =@TeamC, apiID=@MatchesID, DateTime =@DateTime ,Type = @MatchType,Status = @Status,Active =@Active where MatchesId = @MatchesID";
-                MySqlCommand cmd = new MySqlCommand(s, cn);
 
 
-                cmd.Parameters.AddWithValue("@MatchesID", txtcode.Text);
-                cmd.Parameters.AddWithValue("@TeamA", txtTeamA.Text);
-                cmd.Parameters.AddWithValue("@TeamB", txtTeamB.Text);
-                cmd.Parameters.AddWithValue("@TeamC", txtTeamC.Text);
-                cmd.Parameters.AddWithValue("@DateTime", txtdate1.Text + "T" + txtTime.Text + ":00.000Z");
-                cmd.Parameters.AddWithValue("@MatchType", DropdownMatchesType.SelectedItem.Text);
-                cmd.Parameters.AddWithValue("@Status", '1');
-                cmd.Parameters.AddWithValue("@Active", '1');
-                cmd.ExecuteNonQuery();
 
-
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://betplayer-197014.firebaseio.com/currentMatches.json");
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://sarkar-73a30.firebaseio.com/currentMatches.json");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
 
@@ -93,10 +82,18 @@ namespace betplayer.poweruser
                         maxBet = "200000",
                         sessionMinBet = "1000",
                         sessionMaxBet = "200000",
+                        fancyminbet = "500",
+                        fancymaxbet = "20000",
+                        lastBall = new
+                        {
+                            @event = "Bet Open"
+                        },
                         livetv = new
                         {
                             enabled = false,
-                            channel = ""
+                            channel = "",
+                            ip = "",
+                            port = ""
                         },
                         team_1 = new
                         {
@@ -142,12 +139,31 @@ namespace betplayer.poweruser
 
                     streamWriter.Write(json);
                 }
-
+                var firebaseKey = "";
                 var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
                     var result = streamReader.ReadToEnd();
+                    FirebaseResponse firebaseResult = js.Deserialize<FirebaseResponse>(result);
+                    firebaseKey = firebaseResult.name;
                 }
+                string fkey = firebaseKey;
+
+                string s = "Update Matches set TeamA =@TeamA , TeamB =@TeamB, TeamC =@TeamC, apiID=@MatchesID, DateTime =@DateTime ,Type = @MatchType,Status = @Status,Active =@Active,Firebasekey = @fk where MatchesId = @MatchesID";
+                MySqlCommand cmd = new MySqlCommand(s, cn);
+
+
+                cmd.Parameters.AddWithValue("@MatchesID", txtcode.Text);
+                cmd.Parameters.AddWithValue("@TeamA", txtTeamA.Text);
+                cmd.Parameters.AddWithValue("@TeamB", txtTeamB.Text);
+                cmd.Parameters.AddWithValue("@TeamC", txtTeamC.Text);
+                cmd.Parameters.AddWithValue("@DateTime", txtdate1.Text + "T" + txtTime.Text + ":00.000Z");
+                cmd.Parameters.AddWithValue("@MatchType", DropdownMatchesType.SelectedItem.Text);
+                cmd.Parameters.AddWithValue("@Status", '1');
+                cmd.Parameters.AddWithValue("@Active", '1');
+                cmd.Parameters.AddWithValue("@fk", fkey);
+                cmd.ExecuteNonQuery();
+
                 Response.Redirect("CreateMatch.aspx");
 
             }
@@ -165,6 +181,11 @@ namespace betplayer.poweruser
 
                 Response.Redirect("CreateMatch.aspx");
             }
+        }
+        public class FirebaseResponse
+        {
+            public string name { get; set; }
+
         }
     }
 }

@@ -41,7 +41,7 @@
                 	
                     <div style="float:left;padding-left:20px;padding-right:20px;">
                         <div class="circle-wrap">
-                            <a href="SportDetails.aspx">
+                            <a href="SportsDetails.aspx">
                                 <div class="stats-circle red-color">
                                     <i class="icon-tags"></i>
                                 </div>

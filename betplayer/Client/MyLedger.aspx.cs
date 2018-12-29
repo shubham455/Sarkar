@@ -87,8 +87,7 @@ namespace betplayer.Client
                         for (int k = 0; k < runtable.Rows.Count; k++)
                         {
                             Balance1 = Convert.ToDecimal(runtable.Rows[k]["Balance"]);
-                            Balance1 = Balance1 - Dabit;
-                            Balance1 = Balance1 + Credit;
+                            Balance1 = Balance1 + Balance;
                             row["Balance"] = Balance1;
                         }
                     }
@@ -126,13 +125,13 @@ namespace betplayer.Client
                     {
                         row["Dabit"] = Amount;
                         row["Credit"] = 0;
-                        row["Balance"] = Amount * -1;
+                        row["Balance"] = Amount;
                     }
                     else if (PaynmentDescription == "Payment Paid")
                     {
-                        row["Credit"] = Amount;
+                        row["Credit"] = Amount * -1;
                         row["Dabit"] = 0;
-                        row["Balance"] = Amount;
+                        row["Balance"] = Amount * -1;
                     }
 
                     runTable.Rows.Add(row.ItemArray);
@@ -152,7 +151,7 @@ namespace betplayer.Client
                         LedgerTableOrdered.Rows[0]["Date"] = date.Date.ToString().Substring(0, 10);
                         if (l > 0)
                         {
-                            LedgerTableOrdered.Rows[l]["Balance"] = Convert.ToInt32(LedgerTableOrdered.Rows[l - 1]["Balance"]) - Convert.ToInt32(LedgerTableOrdered.Rows[l]["Dabit"]) + Convert.ToInt32(LedgerTableOrdered.Rows[l]["Credit"]);
+                            LedgerTableOrdered.Rows[l]["Balance"] = Convert.ToInt32(LedgerTableOrdered.Rows[l - 1]["Balance"]) + Convert.ToInt32(LedgerTableOrdered.Rows[l]["Dabit"]) + Convert.ToInt32(LedgerTableOrdered.Rows[l]["Credit"]);
 
 
                         }

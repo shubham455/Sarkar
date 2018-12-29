@@ -1,11 +1,11 @@
 ﻿// Initialize Firebase
 var config = {
-    apiKey: "AIzaSyDeJEW2OK0RnL0A4OjYF6oTj04xQhgpb40",
-    authDomain: "betplayer-197014.firebaseapp.com",
-    databaseURL: "https://betplayer-197014.firebaseio.com",
-    projectId: "betplayer-197014",
-    storageBucket: "betplayer-197014.appspot.com",
-    messagingSenderId: "98790187004"
+    apiKey: "AIzaSyB2FBmOPhVzXCuy3WFWXeZFPHlKy5QyrAE",
+    authDomain: "sarkar-73a30.firebaseapp.com",
+    databaseURL: "https://sarkar-73a30.firebaseio.com",
+    projectId: "sarkar-73a30",
+    storageBucket: "sarkar-73a30.appspot.com",
+    messagingSenderId: "957699320056"
 };
 firebase.initializeApp(config);
 var matchIdElement = document.getElementById("ContentPlaceHolder_firebasekey");
@@ -160,21 +160,14 @@ function updateSessionTable(sessions) {
             var session = displayableSessions[i - 1];
             console.log(session);
             document.getElementById("Session" + i).value = session['name'];
-            if (session['suspended'] === false) {
-                document.getElementById("not" + i).value =
-                    session["not"] !== "" ? session["not"] : "0.00";
-                document.getElementById("yes" + i).value =
-                    session["yes"] !== "" ? session["yes"] : "0.00";
-                document.getElementById("notrate" + i).value =
-                    session["notRate"] !== "" ? session["notRate"] : "0.00";
-                document.getElementById("yesrate" + i).value =
-                    session["yesRate"] !== "" ? session["yesRate"] : "0.00";
-            } else {
-                document.getElementById("not" + i).value = "0.00";
-                document.getElementById("yes" + i).value = "0.00";
-                document.getElementById("notrate" + i).value = "0.00";
-                document.getElementById("yesrate" + i).value = "0.00";
-            }
+            document.getElementById("not" + i).value =
+                session["not"] !== "" ? session["not"] : "0.00";
+            document.getElementById("yes" + i).value =
+                session["yes"] !== "" ? session["yes"] : "0.00";
+            document.getElementById("notrate" + i).value =
+                session["notRate"] !== "" ? session["notRate"] : "0.00";
+            document.getElementById("yesrate" + i).value =
+                session["yesRate"] !== "" ? session["yesRate"] : "0.00";
         }
     }
 }

@@ -92,10 +92,11 @@
                                         </strong></td>
                                         <td width="90" style="text-align: right;" class="TableHeading"><strong>
                                             <asp:Label ID="lblTeam2" runat="server" /></strong></td>
+                                         <%int i = 1; %>
                                         <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
                                             { %>
                                     <tr>
-                                        <td height="25" align="left" class="TableHeading"><strong><%:row["RunnerID"] %></strong></td>
+                                        <td height="25" align="left" class="TableHeading"><strong><%= i%></strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong><%:row["Rate"] %></strong></td>
                                         <td style="text-align: right;" class="TableHeading"><strong><%:row["Amount"] %></strong></td>
                                         <td align="left" class="TableHeading"><strong><%:row["Mode"] %></strong></td>
@@ -105,6 +106,7 @@
                                         <td width="90" style="text-align: right;" class="TableHeading"><strong><%:row["Position1"] %></strong></td>
                                         <td width="90" style="text-align: right;" class="TableHeading"><strong><%:row["Position2"] %></strong></td>
                                     </tr>
+                                     <% i++; %>
                                     <% } //foreach %>
                                     <tr>
                                         <td height="25" colspan="6" style="text-align: right;" class="TableHeading">&nbsp;</td>

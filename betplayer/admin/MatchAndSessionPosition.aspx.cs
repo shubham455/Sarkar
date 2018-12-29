@@ -17,9 +17,10 @@ namespace betplayer.admin
         private DataTable dt1;
         private DataTable ClientTable = new DataTable();
         private DataTable ClientTable1 = new DataTable();
+        public DataTable ClientTableOrdered;
         public DataTable MatchesDataTable { get { return dt; } }
         public DataTable MatchesDataTable1 { get { return dt1; } }
-        public DataTable ClientDataTable1 { get { return ClientTable; } }
+        public DataTable ClientDataTable1 { get { return ClientTableOrdered; } }
         public Boolean emptyLedgerTable = false;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,7 +34,10 @@ namespace betplayer.admin
             ClientTable.Columns.Add(new DataColumn("Amount"));
             ClientTable.Columns.Add(new DataColumn("Rate"));
             ClientTable.Columns.Add(new DataColumn("Mode"));
-            ClientTable.Columns.Add(new DataColumn("DateTime"));
+            //ClientTable.Columns.Add(new DataColumn("DateTime"));
+            DataColumn colDateTime = new DataColumn("DateTime");
+            colDateTime.DataType = System.Type.GetType("System.DateTime");
+            ClientTable.Columns.Add(colDateTime);
             ClientTable.Columns.Add(new DataColumn("Team"));
             ClientTable.Columns.Add(new DataColumn("ClientID"));
             ClientTable.Columns.Add(new DataColumn("Name"));
@@ -111,7 +115,7 @@ namespace betplayer.admin
                     selectteamadp1.Fill(selectteamdt1);
                     if (selectteamdt1.Rows.Count > 0)
                     {
-                        string team = selectteamdt1.Rows[j]["Team"].ToString();
+                        string team = dt1.Rows[j]["Team"].ToString();
 
                         Decimal Position = 0;
                         Decimal Amount = Convert.ToDecimal(dt1.Rows[j]["Amount"]);
@@ -162,17 +166,10 @@ namespace betplayer.admin
                         TeamAposition1 = (Position * AgentShare1) / 100;
 
                         Teampos = Teampos + TeamAposition1;
-
                     }
-
-
                     j++;
-
-
                 }
-
-
-
+                
                 Team1Amt.Text = Teampos.ToString();
                 if (Teampos > 0)
                 {
@@ -182,8 +179,6 @@ namespace betplayer.admin
                 {
                     Team1Amt.ForeColor = System.Drawing.Color.Red;
                 }
-
-
                 int k = 0;
                 Decimal TeamBposition = 0;
                 Decimal TeamBposition2 = 0;
@@ -205,7 +200,7 @@ namespace betplayer.admin
                     selectteamadp1.Fill(selectteamdt1);
                     if (selectteamdt1.Rows.Count > 0)
                     {
-                        string team = selectteamdt1.Rows[k]["Team"].ToString();
+                        string team = dt1.Rows[k]["Team"].ToString();
 
                         string Mode1 = "";
                         Decimal Position = 0;
@@ -257,12 +252,8 @@ namespace betplayer.admin
 
                         TeamBposition2 = (Position * AgentShare) / 100;
                         TeamposB = TeamposB + TeamBposition2;
-
-
                     }
                 }
-
-
                 Team2Amt.Text = TeamposB.ToString();
                 if (TeamposB > 0)
                 {
@@ -283,14 +274,21 @@ namespace betplayer.admin
                     }
                 }
             }
+            if (ClientTable.Rows.Count > 0)
+            {
+                IEnumerable<DataRow> orderedRows = from row in ClientTable.AsEnumerable()
+                                                   orderby row.Field<DateTime>("DateTime") descending
+                                                   select row;
+
+                ClientTableOrdered = orderedRows.CopyToDataTable();
+
+            }
+            else
+            {
+                ClientTableOrdered = ClientTable;
+            }
             calculation();
         }
-
-
-
-
-
-
         public void calculation()
         {
 
@@ -318,7 +316,8 @@ namespace betplayer.admin
                 DataTable scodedt = new DataTable();
                 scodeadp.Fill(scodedt);
 
-
+                Decimal TeamAposition = 0;
+                Decimal TeamBposition = 0;
                 for (int a = 0; a < scodedt.Rows.Count; a++)
                 {
                     int ID = Convert.ToInt16(scodedt.Rows[a]["SuperAgentID"]);
@@ -330,8 +329,7 @@ namespace betplayer.admin
                     MySqlDataAdapter adp11 = new MySqlDataAdapter(cmd11);
                     DataTable dt11 = new DataTable();
                     adp11.Fill(dt11);
-                    Decimal TeamAposition = 0;
-                    Decimal TeamBposition = 0;
+
                     for (int i = 0; i < dt11.Rows.Count; i++)
                     {
 
@@ -345,12 +343,8 @@ namespace betplayer.admin
                         DataTable dt5 = new DataTable();
                         adp1.Fill(dt5);
                         int j = 0;
-
-                        Decimal TeamAposition1 = 0;
-
                         foreach (DataRow row in dt5.Rows)
                         {
-
                             string selectteam = "select TeamA,TeamB From Matches where apiID = '" + apiID.Value + "'";
                             MySqlCommand selectteamcmd = new MySqlCommand(selectteam, cn);
                             MySqlDataAdapter selectteamadp = new MySqlDataAdapter(selectteamcmd);
@@ -368,7 +362,7 @@ namespace betplayer.admin
                             selectteamadp1.Fill(selectteamdt1);
                             if (selectteamdt1.Rows.Count > 0)
                             {
-                                string team = selectteamdt1.Rows[j]["Team"].ToString();
+                                string team = dt5.Rows[j]["Team"].ToString();
 
                                 Decimal Position = 0;
                                 Decimal Amount = Convert.ToDecimal(dt5.Rows[j]["Amount"]);
@@ -384,8 +378,6 @@ namespace betplayer.admin
                                 {
                                     Mode1 = "K";
                                 }
-
-
                                 if (TeamA == team && Mode1 == "K")
                                 {
                                     Position = Amount * Rate * -1;
@@ -396,14 +388,12 @@ namespace betplayer.admin
                                 }
                                 else if (TeamB == team && Mode1 == "K")
                                 {
-                                    Position = Amount * -1;
+                                    Position = Amount;
                                 }
                                 else if (TeamB == team && Mode1 == "L")
                                 {
-                                    Position = Amount;
+                                    Position = Amount * -1;
                                 }
-
-
                                 decimal myshare = 100;
                                 decimal myshare1 = myshare / 100;
                                 decimal SAgentShare = SuperAgentshare1;
@@ -412,19 +402,14 @@ namespace betplayer.admin
                                 decimal Team1Amt = (Position * FinalShare);
 
 
-                                row["Position1"] = TeamAposition1;
+                                row["Position1"] = Position;
 
                                 TeamAposition = TeamAposition + Team1Amt;
-
-
                             }
                             j++;
                         }
 
                         int k = 0;
-
-                        Decimal TeamBposition2 = 0;
-
                         foreach (DataRow row in dt5.Rows)
                         {
                             string selectteam = "select TeamA,TeamB From Matches where apiID = '" + apiID.Value + "'";
@@ -442,7 +427,7 @@ namespace betplayer.admin
                             selectteamadp1.Fill(selectteamdt1);
                             if (selectteamdt1.Rows.Count > 0)
                             {
-                                string team = selectteamdt1.Rows[k]["Team"].ToString();
+                                string team = dt5.Rows[k]["Team"].ToString();
 
                                 string Mode1 = "";
                                 Decimal Position1 = 0;
@@ -459,8 +444,6 @@ namespace betplayer.admin
                                 {
                                     Mode1 = "K";
                                 }
-
-
                                 if (TeamA == team && Mode1 == "K")
                                 {
                                     Position1 = Amount;
@@ -471,14 +454,12 @@ namespace betplayer.admin
                                 }
                                 else if (TeamB == team && Mode1 == "K")
                                 {
-                                    Position1 = Amount * Rate;
+                                    Position1 = Amount * Rate * -1;
                                 }
                                 else if (TeamB == team && Mode1 == "L")
                                 {
-                                    Position1 = Amount * Rate * -1;
+                                    Position1 = Amount * Rate;
                                 }
-
-
                                 decimal myshare = 100;
                                 decimal myshare1 = myshare / 100;
                                 decimal SAgentShare = SuperAgentshare1;
@@ -486,88 +467,54 @@ namespace betplayer.admin
 
                                 decimal Team1Amt = (Position1 * FinalShare);
 
-
-                                row["Position1"] = TeamBposition2;
+                                row["Position1"] = Position1;
 
                                 TeamBposition = TeamBposition + Team1Amt;
-
-
-
-
                             }
                             k++;
                         }
-
-
-
-                        if (dt5.Rows.Count > 0)
-                        {
-                            IEnumerable<DataRow> orderedRows = dt5.AsEnumerable();
-                            DataTable TempClientTable = orderedRows.CopyToDataTable();
-                            foreach (DataRow row11 in TempClientTable.Rows)
-                            {
-                                ClientTable1.Rows.Add(row11.ItemArray);
-                            }
-                        }
                     }
-                    decimal totalCalculation1 = 0, totalCalculation2 = 0;
-                    for (int d = 0; d < ClientTable1.Rows.Count; d++)
-                    {
-                        decimal total1 = Convert.ToDecimal(ClientTable1.Rows[d]["Position1"]);
-                        decimal total2 = Convert.ToDecimal(ClientTable1.Rows[d]["Position2"]);
-                        totalCalculation1 = totalCalculation1 - total1;
-                        totalCalculation2 = totalCalculation2 - total2;
+                }
+                decimal finalpos1 = 0, finalpos2 = 0;
+                for (int a = 0; a < ClientDataTable1.Rows.Count; a++)
+                {
+                    decimal totalposition1 = Convert.ToDecimal(ClientDataTable1.Rows[a]["Position1"]);
+                    decimal totalposition2 = Convert.ToDecimal(ClientDataTable1.Rows[a]["Position2"]);
+                    finalpos1 = finalpos1 + totalposition1;
+                    finalpos2 = finalpos2 + totalposition2;
+                }
 
-                    }
+                finalposition1.Text = finalpos1.ToString();
+                finalposition2.Text = finalpos2.ToString();
+                
 
-                    //if(TeamAposition > 0)
-                    //{
-                    //    TeamAposition = TeamAposition * -1;
-                    //} 
-                    //else if (TeamAposition < 0)
-                    //{
-                    //    TeamAposition = TeamAposition * -1;
-                    //}
+                double Team1Amt1 = double.Parse(TeamAposition.ToString());
+                double Team2Amt1 = double.Parse(TeamBposition.ToString());
+                Team1Amt.Text = Team1Amt1.ToString();
+                Team2Amt.Text = Team2Amt1.ToString();
+                if (Team1Amt1 > 0)
+                {
+                    Team1Amt.ForeColor = System.Drawing.Color.Blue;
 
+                }
+                else if (Team1Amt1 < 0)
+                {
+                    Team1Amt.ForeColor = System.Drawing.Color.Red;
 
-                    //if (TeamBposition > 0)
-                    //{
-                    //    TeamBposition = TeamBposition * -1;
-                    //}
-                    //else if (TeamBposition < 0)
-                    //{
-                    //    TeamBposition = TeamBposition * -1;
-                    //}
+                }
 
+                if (Team2Amt1 > 0)
+                {
+                    Team2Amt.ForeColor = System.Drawing.Color.Blue;
 
+                }
+                else if (Team2Amt1 < 0)
+                {
+                    Team2Amt.ForeColor = System.Drawing.Color.Red;
 
-                    double Team1Amt1 = double.Parse(TeamAposition.ToString());
-                    double Team2Amt1 = double.Parse(TeamBposition.ToString());
-                    Team1Amt.Text = Team1Amt1.ToString();
-                    Team2Amt.Text = Team2Amt1.ToString();
-                    if (Team1Amt1 > 0)
-                    {
-                        Team1Amt.ForeColor = System.Drawing.Color.Blue;
-
-                    }
-                    else if (Team1Amt1 < 0)
-                    {
-                        Team1Amt.ForeColor = System.Drawing.Color.Red;
-
-                    }
-
-                    if (Team2Amt1 > 0)
-                    {
-                        Team2Amt.ForeColor = System.Drawing.Color.Blue;
-
-                    }
-                    else if (Team2Amt1 < 0)
-                    {
-                        Team2Amt.ForeColor = System.Drawing.Color.Red;
-
-                    }
                 }
             }
         }
     }
 }
+

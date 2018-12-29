@@ -11,23 +11,5 @@ namespace betplayer.Client {
     
     
     public partial class AllGamesList {
-        
-        /// <summary>
-        /// lblmatch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblmatch;
-        
-        /// <summary>
-        /// lblSession control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSession;
     }
 }

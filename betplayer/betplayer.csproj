@@ -86,7 +86,10 @@
     <Content Include="admin\AllAgentLedger.aspx" />
     <Content Include="admin\AllClientLedger.aspx" />
     <Content Include="admin\ClientLedger.aspx" />
+    <Content Include="admin\CollectionDetails.aspx" />
+    <Content Include="admin\CreateNewCollection.aspx" />
     <Content Include="admin\Createpoweruser.aspx" />
+    <Content Include="admin\css\style_session.css" />
     <Content Include="admin\DeleteBets.aspx" />
     <Content Include="admin\img\LastBall\1_Run.jpg" />
     <Content Include="admin\img\LastBall\2_Run.jpg" />
@@ -106,6 +109,7 @@
     <Content Include="admin\img\LastBall\Timeout.jpg" />
     <Content Include="admin\img\LastBall\WIDE.jpg" />
     <Content Include="admin\img\LastBall\Wide4.jpg" />
+    <Content Include="admin\js\sessiontable_v1.1.js" />
     <Content Include="admin\MatchAndSessionSPosition.aspx" />
     <Content Include="admin\MatchPlusMinusDisplay.aspx" />
     <Content Include="admin\MatchplusminusSelect.aspx" />
@@ -119,11 +123,588 @@
     <Content Include="admin\poweruserdetails.aspx" />
     <Content Include="admin\SessionPlusMinusDisplay.aspx" />
     <Content Include="admin\SessionPlusMinusSelect.aspx" />
+    <Content Include="admin\Sessionundeclare.aspx" />
     <Content Include="admin\UpdateAgentlimit.aspx" />
     <Content Include="admin\UpdateClientLimit.aspx" />
     <Content Include="admin\UpdatedRunnerBets.aspx" />
     <Content Include="admin\UpdatedSessionBets.aspx" />
     <Content Include="admin\Updatesuperagentlimit.aspx" />
+    <Content Include="admin\ViewCollectionEntry.aspx" />
+    <Content Include="Agent\AllClientLedger.aspx" />
+    <Content Include="Agent\assets\bootstrap-colorpicker\css\colorpicker.css" />
+    <Content Include="Agent\assets\bootstrap-colorpicker\img\alpha.png" />
+    <Content Include="Agent\assets\bootstrap-colorpicker\img\hue.png" />
+    <Content Include="Agent\assets\bootstrap-colorpicker\img\saturation.png" />
+    <Content Include="Agent\assets\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
+    <Content Include="Agent\assets\bootstrap-datepicker\css\datepicker.css" />
+    <Content Include="Agent\assets\bootstrap-datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="Agent\assets\bootstrap-daterangepicker\date.js" />
+    <Content Include="Agent\assets\bootstrap-daterangepicker\daterangepicker.css" />
+    <Content Include="Agent\assets\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="Agent\assets\bootstrap-daterangepicker\examples.html" />
+    <Content Include="Agent\assets\bootstrap-inputmask\bootstrap-inputmask.js" />
+    <Content Include="Agent\assets\bootstrap-inputmask\bootstrap-inputmask.min.js" />
+    <Content Include="Agent\assets\bootstrap-timepicker\compiled\timepicker.css" />
+    <Content Include="Agent\assets\bootstrap-timepicker\js\bootstrap-timepicker.js" />
+    <Content Include="Agent\assets\bootstrap-toggle-buttons\static\js\jquery.min.js" />
+    <Content Include="Agent\assets\bootstrap-toggle-buttons\static\js\jquery.toggle.buttons.js" />
+    <Content Include="Agent\assets\bootstrap-toggle-buttons\static\stylesheets\bootstrap-toggle-buttons.css" />
+    <Content Include="Agent\assets\bootstrap-wizard\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Agent\assets\bootstrap-wizard\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="Agent\assets\bootstrap-wizard\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="Agent\assets\bootstrap-wizard\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Agent\assets\bootstrap-wizard\examples\basic-custombuttons.html" />
+    <Content Include="Agent\assets\bootstrap-wizard\examples\basic-custombuttonsfirstlast.html" />
+    <Content Include="Agent\assets\bootstrap-wizard\examples\basic-disabletabclick.html" />
+    <Content Include="Agent\assets\bootstrap-wizard\examples\basic-finishbutton.html" />
+    <Content Include="Agent\assets\bootstrap-wizard\examples\basic-formvalidation.html" />
+    <Content Include="Agent\assets\bootstrap-wizard\examples\basic-inverse.html" />
+    <Content Include="Agent\assets\bootstrap-wizard\examples\basic-pills.html" />
+    <Content Include="Agent\assets\bootstrap-wizard\examples\basic-progressbar.html" />
+    <Content Include="Agent\assets\bootstrap-wizard\examples\basic-tabsleft.html" />
+    <Content Include="Agent\assets\bootstrap-wizard\examples\basic.html" />
+    <Content Include="Agent\assets\bootstrap-wizard\examples\multiple.html" />
+    <Content Include="Agent\assets\bootstrap-wizard\jquery.bootstrap.wizard.js" />
+    <Content Include="Agent\assets\bootstrap-wizard\jquery.bootstrap.wizard.min.js" />
+    <Content Include="Agent\assets\bootstrap-wizard\prettify.css" />
+    <Content Include="Agent\assets\bootstrap-wizard\prettify.js" />
+    <Content Include="Agent\assets\bootstrap-wysihtml5\bootstrap-wysihtml5.css" />
+    <Content Include="Agent\assets\bootstrap-wysihtml5\bootstrap-wysihtml5.js" />
+    <Content Include="Agent\assets\bootstrap-wysihtml5\wysihtml5-0.3.0.js" />
+    <Content Include="Agent\assets\bootstrap\css\bootstrap-fileupload.css" />
+    <Content Include="Agent\assets\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="Agent\assets\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="Agent\assets\bootstrap\css\bootstrap.css" />
+    <Content Include="Agent\assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Agent\assets\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="Agent\assets\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="Agent\assets\bootstrap\js\bootstrap-fileupload.js" />
+    <Content Include="Agent\assets\bootstrap\js\bootstrap.js" />
+    <Content Include="Agent\assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Agent\assets\chosen-bootstrap\chosen\chosen-sprite.png" />
+    <Content Include="Agent\assets\chosen-bootstrap\chosen\chosen.css" />
+    <Content Include="Agent\assets\chosen-bootstrap\chosen\chosen.jquery.js" />
+    <Content Include="Agent\assets\chosen-bootstrap\chosen\chosen.jquery.min.js" />
+    <Content Include="Agent\assets\chosen-bootstrap\chosen\chosen.proto.js" />
+    <Content Include="Agent\assets\chosen-bootstrap\chosen\chosen.proto.min.js" />
+    <Content Include="Agent\assets\chosen-bootstrap\example.jquery.html" />
+    <Content Include="Agent\assets\chosen-bootstrap\example.proto.html" />
+    <Content Include="Agent\assets\ckeditor\build-config.js" />
+    <Content Include="Agent\assets\ckeditor\ckeditor.js" />
+    <Content Include="Agent\assets\ckeditor\config.js" />
+    <Content Include="Agent\assets\ckeditor\contents.css" />
+    <Content Include="Agent\assets\ckeditor\lang\af.js" />
+    <Content Include="Agent\assets\ckeditor\lang\ar.js" />
+    <Content Include="Agent\assets\ckeditor\lang\bg.js" />
+    <Content Include="Agent\assets\ckeditor\lang\bn.js" />
+    <Content Include="Agent\assets\ckeditor\lang\bs.js" />
+    <Content Include="Agent\assets\ckeditor\lang\ca.js" />
+    <Content Include="Agent\assets\ckeditor\lang\cs.js" />
+    <Content Include="Agent\assets\ckeditor\lang\cy.js" />
+    <Content Include="Agent\assets\ckeditor\lang\da.js" />
+    <Content Include="Agent\assets\ckeditor\lang\de.js" />
+    <Content Include="Agent\assets\ckeditor\lang\el.js" />
+    <Content Include="Agent\assets\ckeditor\lang\en-au.js" />
+    <Content Include="Agent\assets\ckeditor\lang\en-ca.js" />
+    <Content Include="Agent\assets\ckeditor\lang\en-gb.js" />
+    <Content Include="Agent\assets\ckeditor\lang\en.js" />
+    <Content Include="Agent\assets\ckeditor\lang\eo.js" />
+    <Content Include="Agent\assets\ckeditor\lang\es.js" />
+    <Content Include="Agent\assets\ckeditor\lang\et.js" />
+    <Content Include="Agent\assets\ckeditor\lang\eu.js" />
+    <Content Include="Agent\assets\ckeditor\lang\fa.js" />
+    <Content Include="Agent\assets\ckeditor\lang\fi.js" />
+    <Content Include="Agent\assets\ckeditor\lang\fo.js" />
+    <Content Include="Agent\assets\ckeditor\lang\fr-ca.js" />
+    <Content Include="Agent\assets\ckeditor\lang\fr.js" />
+    <Content Include="Agent\assets\ckeditor\lang\gl.js" />
+    <Content Include="Agent\assets\ckeditor\lang\gu.js" />
+    <Content Include="Agent\assets\ckeditor\lang\he.js" />
+    <Content Include="Agent\assets\ckeditor\lang\hi.js" />
+    <Content Include="Agent\assets\ckeditor\lang\hr.js" />
+    <Content Include="Agent\assets\ckeditor\lang\hu.js" />
+    <Content Include="Agent\assets\ckeditor\lang\is.js" />
+    <Content Include="Agent\assets\ckeditor\lang\it.js" />
+    <Content Include="Agent\assets\ckeditor\lang\ja.js" />
+    <Content Include="Agent\assets\ckeditor\lang\ka.js" />
+    <Content Include="Agent\assets\ckeditor\lang\km.js" />
+    <Content Include="Agent\assets\ckeditor\lang\ko.js" />
+    <Content Include="Agent\assets\ckeditor\lang\ku.js" />
+    <Content Include="Agent\assets\ckeditor\lang\lt.js" />
+    <Content Include="Agent\assets\ckeditor\lang\lv.js" />
+    <Content Include="Agent\assets\ckeditor\lang\mk.js" />
+    <Content Include="Agent\assets\ckeditor\lang\mn.js" />
+    <Content Include="Agent\assets\ckeditor\lang\ms.js" />
+    <Content Include="Agent\assets\ckeditor\lang\nb.js" />
+    <Content Include="Agent\assets\ckeditor\lang\nl.js" />
+    <Content Include="Agent\assets\ckeditor\lang\no.js" />
+    <Content Include="Agent\assets\ckeditor\lang\pl.js" />
+    <Content Include="Agent\assets\ckeditor\lang\pt-br.js" />
+    <Content Include="Agent\assets\ckeditor\lang\pt.js" />
+    <Content Include="Agent\assets\ckeditor\lang\ro.js" />
+    <Content Include="Agent\assets\ckeditor\lang\ru.js" />
+    <Content Include="Agent\assets\ckeditor\lang\sk.js" />
+    <Content Include="Agent\assets\ckeditor\lang\sl.js" />
+    <Content Include="Agent\assets\ckeditor\lang\sr-latn.js" />
+    <Content Include="Agent\assets\ckeditor\lang\sr.js" />
+    <Content Include="Agent\assets\ckeditor\lang\sv.js" />
+    <Content Include="Agent\assets\ckeditor\lang\th.js" />
+    <Content Include="Agent\assets\ckeditor\lang\tr.js" />
+    <Content Include="Agent\assets\ckeditor\lang\ug.js" />
+    <Content Include="Agent\assets\ckeditor\lang\uk.js" />
+    <Content Include="Agent\assets\ckeditor\lang\vi.js" />
+    <Content Include="Agent\assets\ckeditor\lang\zh-cn.js" />
+    <Content Include="Agent\assets\ckeditor\lang\zh.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Agent\assets\ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="Agent\assets\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\fakeobjects\images\spacer.gif" />
+    <Content Include="Agent\assets\ckeditor\plugins\icons.png" />
+    <Content Include="Agent\assets\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="Agent\assets\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="Agent\assets\ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="Agent\assets\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Agent\assets\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="Agent\assets\ckeditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="Agent\assets\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="Agent\assets\ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="Agent\assets\ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="Agent\assets\ckeditor\samples\ajax.html" />
+    <Content Include="Agent\assets\ckeditor\samples\api.html" />
+    <Content Include="Agent\assets\ckeditor\samples\appendto.html" />
+    <Content Include="Agent\assets\ckeditor\samples\assets\inlineall\logo.png" />
+    <Content Include="Agent\assets\ckeditor\samples\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="Agent\assets\ckeditor\samples\assets\sample.jpg" />
+    <Content Include="Agent\assets\ckeditor\samples\assets\uilanguages\languages.js" />
+    <Content Include="Agent\assets\ckeditor\samples\divreplace.html" />
+    <Content Include="Agent\assets\ckeditor\samples\inlineall.html" />
+    <Content Include="Agent\assets\ckeditor\samples\inlinebycode.html" />
+    <Content Include="Agent\assets\ckeditor\samples\plugins\dialog\assets\my_dialog.js" />
+    <Content Include="Agent\assets\ckeditor\samples\plugins\dialog\dialog.html" />
+    <Content Include="Agent\assets\ckeditor\samples\plugins\enterkey\enterkey.html" />
+    <Content Include="Agent\assets\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.swf" />
+    <Content Include="Agent\assets\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="Agent\assets\ckeditor\samples\plugins\htmlwriter\outputforflash.html" />
+    <Content Include="Agent\assets\ckeditor\samples\plugins\htmlwriter\outputhtml.html" />
+    <Content Include="Agent\assets\ckeditor\samples\plugins\magicline\magicline.html" />
+    <Content Include="Agent\assets\ckeditor\samples\plugins\toolbar\toolbar.html" />
+    <Content Include="Agent\assets\ckeditor\samples\plugins\wysiwygarea\fullpage.html" />
+    <Content Include="Agent\assets\ckeditor\samples\readonly.html" />
+    <Content Include="Agent\assets\ckeditor\samples\replacebyclass.html" />
+    <Content Include="Agent\assets\ckeditor\samples\replacebycode.html" />
+    <Content Include="Agent\assets\ckeditor\samples\sample.css" />
+    <Content Include="Agent\assets\ckeditor\samples\sample.js" />
+    <Content Include="Agent\assets\ckeditor\samples\tabindex.html" />
+    <Content Include="Agent\assets\ckeditor\samples\uicolor.html" />
+    <Content Include="Agent\assets\ckeditor\samples\uilanguages.html" />
+    <Content Include="Agent\assets\ckeditor\samples\xhtmlstyle.html" />
+    <Content Include="Agent\assets\ckeditor\skins\moono\dialog.css" />
+    <Content Include="Agent\assets\ckeditor\skins\moono\dialog_ie.css" />
+    <Content Include="Agent\assets\ckeditor\skins\moono\dialog_ie7.css" />
+    <Content Include="Agent\assets\ckeditor\skins\moono\dialog_ie8.css" />
+    <Content Include="Agent\assets\ckeditor\skins\moono\dialog_iequirks.css" />
+    <Content Include="Agent\assets\ckeditor\skins\moono\dialog_opera.css" />
+    <Content Include="Agent\assets\ckeditor\skins\moono\editor.css" />
+    <Content Include="Agent\assets\ckeditor\skins\moono\editor_gecko.css" />
+    <Content Include="Agent\assets\ckeditor\skins\moono\editor_ie.css" />
+    <Content Include="Agent\assets\ckeditor\skins\moono\editor_ie7.css" />
+    <Content Include="Agent\assets\ckeditor\skins\moono\editor_ie8.css" />
+    <Content Include="Agent\assets\ckeditor\skins\moono\editor_iequirks.css" />
+    <Content Include="Agent\assets\ckeditor\skins\moono\icons.png" />
+    <Content Include="Agent\assets\ckeditor\skins\moono\images\arrow.png" />
+    <Content Include="Agent\assets\ckeditor\skins\moono\images\close.png" />
+    <Content Include="Agent\assets\ckeditor\skins\moono\images\mini.png" />
+    <Content Include="Agent\assets\ckeditor\styles.js" />
+    <Content Include="Agent\assets\clockface\CHANGELOG.txt" />
+    <Content Include="Agent\assets\clockface\css\clockface.css" />
+    <Content Include="Agent\assets\clockface\js\clockface.js" />
+    <Content Include="Agent\assets\data-tables\DT_bootstrap.css" />
+    <Content Include="Agent\assets\data-tables\DT_bootstrap.js" />
+    <Content Include="Agent\assets\data-tables\images\sort_asc.png" />
+    <Content Include="Agent\assets\data-tables\images\sort_both.png" />
+    <Content Include="Agent\assets\data-tables\images\sort_desc.png" />
+    <Content Include="Agent\assets\data-tables\jquery.dataTables.js" />
+    <Content Include="Agent\assets\fancybox\demo\1_b.jpg" />
+    <Content Include="Agent\assets\fancybox\demo\1_s.jpg" />
+    <Content Include="Agent\assets\fancybox\demo\2_b.jpg" />
+    <Content Include="Agent\assets\fancybox\demo\2_s.jpg" />
+    <Content Include="Agent\assets\fancybox\demo\3_b.jpg" />
+    <Content Include="Agent\assets\fancybox\demo\3_s.jpg" />
+    <Content Include="Agent\assets\fancybox\demo\4_b.jpg" />
+    <Content Include="Agent\assets\fancybox\demo\4_s.jpg" />
+    <Content Include="Agent\assets\fancybox\demo\5_b.jpg" />
+    <Content Include="Agent\assets\fancybox\demo\5_s.jpg" />
+    <Content Include="Agent\assets\fancybox\demo\ajax.txt" />
+    <Content Include="Agent\assets\fancybox\demo\iframe.html" />
+    <Content Include="Agent\assets\fancybox\lib\jquery-1.8.2.min.js" />
+    <Content Include="Agent\assets\fancybox\lib\jquery.mousewheel-3.0.6.pack.js" />
+    <Content Include="Agent\assets\fancybox\source\blank.gif" />
+    <Content Include="Agent\assets\fancybox\source\fancybox_loading.gif" />
+    <Content Include="Agent\assets\fancybox\source\fancybox_overlay.png" />
+    <Content Include="Agent\assets\fancybox\source\fancybox_sprite.png" />
+    <Content Include="Agent\assets\fancybox\source\helpers\fancybox_buttons.png" />
+    <Content Include="Agent\assets\fancybox\source\helpers\jquery.fancybox-buttons.css" />
+    <Content Include="Agent\assets\fancybox\source\helpers\jquery.fancybox-buttons.js" />
+    <Content Include="Agent\assets\fancybox\source\helpers\jquery.fancybox-buttons_cdea843f.css" />
+    <Content Include="Agent\assets\fancybox\source\helpers\jquery.fancybox-buttons_cdea843f.js" />
+    <Content Include="Agent\assets\fancybox\source\helpers\jquery.fancybox-media.js" />
+    <Content Include="Agent\assets\fancybox\source\helpers\jquery.fancybox-media_cdea843f.js" />
+    <Content Include="Agent\assets\fancybox\source\helpers\jquery.fancybox-thumbs.css" />
+    <Content Include="Agent\assets\fancybox\source\helpers\jquery.fancybox-thumbs.js" />
+    <Content Include="Agent\assets\fancybox\source\helpers\jquery.fancybox-thumbs_cdea843d.css" />
+    <Content Include="Agent\assets\fancybox\source\helpers\jquery.fancybox-thumbs_cdea843d.js" />
+    <Content Include="Agent\assets\fancybox\source\jquery.fancybox.css" />
+    <Content Include="Agent\assets\fancybox\source\jquery.fancybox.js" />
+    <Content Include="Agent\assets\fancybox\source\jquery.fancybox.pack.js" />
+    <Content Include="Agent\assets\fancybox\source\jquery.fancybox_cdea77da.css" />
+    <Content Include="Agent\assets\fancybox\source\jquery.fancybox_cdea77db.js" />
+    <Content Include="Agent\assets\flot\API.txt" />
+    <Content Include="Agent\assets\flot\examples\ajax.html" />
+    <Content Include="Agent\assets\flot\examples\annotating.html" />
+    <Content Include="Agent\assets\flot\examples\basic.html" />
+    <Content Include="Agent\assets\flot\examples\graph-types.html" />
+    <Content Include="Agent\assets\flot\examples\hs-2004-27-a-large_web.jpg" />
+    <Content Include="Agent\assets\flot\examples\image.html" />
+    <Content Include="Agent\assets\flot\examples\interacting-axes.html" />
+    <Content Include="Agent\assets\flot\examples\interacting.html" />
+    <Content Include="Agent\assets\flot\examples\layout.css" />
+    <Content Include="Agent\assets\flot\examples\multiple-axes.html" />
+    <Content Include="Agent\assets\flot\examples\navigate.html" />
+    <Content Include="Agent\assets\flot\examples\percentiles.html" />
+    <Content Include="Agent\assets\flot\examples\pie.html" />
+    <Content Include="Agent\assets\flot\examples\realtime.html" />
+    <Content Include="Agent\assets\flot\examples\resize.html" />
+    <Content Include="Agent\assets\flot\examples\selection.html" />
+    <Content Include="Agent\assets\flot\examples\setting-options.html" />
+    <Content Include="Agent\assets\flot\examples\stacking.html" />
+    <Content Include="Agent\assets\flot\examples\symbols.html" />
+    <Content Include="Agent\assets\flot\examples\thresholding.html" />
+    <Content Include="Agent\assets\flot\examples\time.html" />
+    <Content Include="Agent\assets\flot\examples\tracking.html" />
+    <Content Include="Agent\assets\flot\examples\turning-series.html" />
+    <Content Include="Agent\assets\flot\examples\visitors.html" />
+    <Content Include="Agent\assets\flot\examples\zooming.html" />
+    <Content Include="Agent\assets\flot\excanvas.js" />
+    <Content Include="Agent\assets\flot\excanvas.min.js" />
+    <Content Include="Agent\assets\flot\FAQ.txt" />
+    <Content Include="Agent\assets\flot\jquery.colorhelpers.js" />
+    <Content Include="Agent\assets\flot\jquery.flot.crosshair.js" />
+    <Content Include="Agent\assets\flot\jquery.flot.fillbetween.js" />
+    <Content Include="Agent\assets\flot\jquery.flot.image.js" />
+    <Content Include="Agent\assets\flot\jquery.flot.js" />
+    <Content Include="Agent\assets\flot\jquery.flot.navigate.js" />
+    <Content Include="Agent\assets\flot\jquery.flot.pie.js" />
+    <Content Include="Agent\assets\flot\jquery.flot.resize.js" />
+    <Content Include="Agent\assets\flot\jquery.flot.selection.js" />
+    <Content Include="Agent\assets\flot\jquery.flot.stack.js" />
+    <Content Include="Agent\assets\flot\jquery.flot.symbol.js" />
+    <Content Include="Agent\assets\flot\jquery.flot.threshold.js" />
+    <Content Include="Agent\assets\flot\jquery.js" />
+    <Content Include="Agent\assets\flot\LICENSE.txt" />
+    <Content Include="Agent\assets\flot\NEWS.txt" />
+    <Content Include="Agent\assets\flot\PLUGINS.txt" />
+    <Content Include="Agent\assets\font-awesome\css\font-awesome-ie7.min.css" />
+    <Content Include="Agent\assets\font-awesome\css\font-awesome.css" />
+    <Content Include="Agent\assets\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\css\font-awesome-ie7.min.css" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\css\font-awesome.min.css" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\css\prettify.css" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\css\site.css" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\font\fontawesome-webfont.eot" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\font\fontawesome-webfont.ttf" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\font\fontawesome-webfont.woff" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\font\fontawesome-webfont_162a16fe.eot" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\font\museo_slab_300-webfont.eot" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\font\museo_slab_300-webfont.ttf" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\font\museo_slab_300-webfont_162a16fe.eot" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\font\museo_slab_500-webfont.eot" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\font\museo_slab_500-webfont.ttf" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\font\museo_slab_500-webfont_162a16fe.eot" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\font\proximanova-sbold-webfont.eot" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\font\proximanova-sbold-webfont.ttf" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\font\proximanova-sbold-webfont_162a16fe.eot" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\font\proximanova-webfont.eot" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\font\proximanova-webfont.ttf" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\font\proximanova-webfont_162a16fe.eot" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\ico\favicon.ico" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\img\contribution-sample.png" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\img\icon-flag.pdf" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\js\backbone.min.js" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\js\bootstrap-222.min.js" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\js\index\index.js" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\js\jquery-1.7.1.min.js" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\js\prettify.min.js" />
+    <Content Include="Agent\assets\font-awesome\docs\assets\js\underscore.min.js" />
+    <Content Include="Agent\assets\font-awesome\docs\design.html" />
+    <Content Include="Agent\assets\font-awesome\font\fontawesome-webfont.eot" />
+    <Content Include="Agent\assets\font-awesome\font\fontawesome-webfont.ttf" />
+    <Content Include="Agent\assets\font-awesome\font\fontawesome-webfont.woff" />
+    <Content Include="Agent\assets\font-awesome\font\fontawesome-webfont_162a16fe.eot" />
+    <Content Include="Agent\assets\font-awesome\font\FontAwesome.otf" />
+    <Content Include="Agent\assets\font-awesome\less\font-awesome-ie7.less" />
+    <Content Include="Agent\assets\font-awesome\less\font-awesome.less" />
+    <Content Include="Agent\assets\font-awesome\sass\font-awesome.sass" />
+    <Content Include="Agent\assets\font-awesome\sass\font-awesome.scss" />
+    <Content Include="Agent\assets\fullcalendar\changelog.txt" />
+    <Content Include="Agent\assets\fullcalendar\fullcalendar\bootstrap-fullcalendar.css" />
+    <Content Include="Agent\assets\fullcalendar\fullcalendar\fullcalendar.css" />
+    <Content Include="Agent\assets\fullcalendar\fullcalendar\fullcalendar.js" />
+    <Content Include="Agent\assets\fullcalendar\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Agent\assets\fullcalendar\fullcalendar\fullcalendar.print.css" />
+    <Content Include="Agent\assets\fullcalendar\fullcalendar\gcal.js" />
+    <Content Include="Agent\assets\fullcalendar\GPL-LICENSE.txt" />
+    <Content Include="Agent\assets\fullcalendar\jquery\jquery-1.8.1.min.js" />
+    <Content Include="Agent\assets\fullcalendar\jquery\jquery-ui-1.8.23.custom.min.js" />
+    <Content Include="Agent\assets\fullcalendar\MIT-LICENSE.txt" />
+    <Content Include="Agent\assets\gritter\css\jquery.gritter.css" />
+    <Content Include="Agent\assets\gritter\images\gritter-light.png" />
+    <Content Include="Agent\assets\gritter\images\gritter.png" />
+    <Content Include="Agent\assets\gritter\images\ie-spacer.gif" />
+    <Content Include="Agent\assets\gritter\images\trees.jpg" />
+    <Content Include="Agent\assets\gritter\js\jquery.gritter.js" />
+    <Content Include="Agent\assets\jquery-knob\js\jquery.knob.js" />
+    <Content Include="Agent\assets\jquery-slimscroll\examples\allow-page-scroll.html" />
+    <Content Include="Agent\assets\jquery-slimscroll\examples\chaining.html" />
+    <Content Include="Agent\assets\jquery-slimscroll\examples\disable-fade-out.html" />
+    <Content Include="Agent\assets\jquery-slimscroll\examples\height-width.html" />
+    <Content Include="Agent\assets\jquery-slimscroll\examples\libs\prettify\prettify.css" />
+    <Content Include="Agent\assets\jquery-slimscroll\examples\libs\prettify\prettify.js" />
+    <Content Include="Agent\assets\jquery-slimscroll\examples\mouse-wheel.html" />
+    <Content Include="Agent\assets\jquery-slimscroll\examples\multiple-elements.html" />
+    <Content Include="Agent\assets\jquery-slimscroll\examples\programmatic-scrolling.html" />
+    <Content Include="Agent\assets\jquery-slimscroll\examples\rail.html" />
+    <Content Include="Agent\assets\jquery-slimscroll\examples\scrollbar.html" />
+    <Content Include="Agent\assets\jquery-slimscroll\examples\start-position.html" />
+    <Content Include="Agent\assets\jquery-slimscroll\examples\style.css" />
+    <Content Include="Agent\assets\jquery-slimscroll\examples\top-bottom-events.html" />
+    <Content Include="Agent\assets\jquery-slimscroll\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="Agent\assets\jquery-slimscroll\jquery.slimscroll.js" />
+    <Content Include="Agent\assets\jquery-slimscroll\jquery.slimscroll.min.js" />
+    <Content Include="Agent\assets\jquery-slimscroll\slimScroll.jquery.json" />
+    <Content Include="Agent\assets\jquery-tags-input\example.html" />
+    <Content Include="Agent\assets\jquery-tags-input\jquery.tagsinput.css" />
+    <Content Include="Agent\assets\jquery-tags-input\jquery.tagsinput.js" />
+    <Content Include="Agent\assets\jquery-tags-input\jquery.tagsinput.min.js" />
+    <Content Include="Agent\assets\jquery-tags-input\test\fake_json_endpoint.html" />
+    <Content Include="Agent\assets\jquery-tags-input\test\fake_plaintext_endpoint.html" />
+    <Content Include="Agent\assets\jqvmap\jqvmap\data\jquery.vmap.sampledata.js" />
+    <Content Include="Agent\assets\jqvmap\jqvmap\jquery.vmap.js" />
+    <Content Include="Agent\assets\jqvmap\jqvmap\jquery.vmap.min.js" />
+    <Content Include="Agent\assets\jqvmap\jqvmap\jquery.vmap.packed.js" />
+    <Content Include="Agent\assets\jqvmap\jqvmap\jqvmap.css" />
+    <Content Include="Agent\assets\jqvmap\jqvmap\maps\jquery.vmap.europe.js" />
+    <Content Include="Agent\assets\jqvmap\jqvmap\maps\jquery.vmap.germany.js" />
+    <Content Include="Agent\assets\jqvmap\jqvmap\maps\jquery.vmap.russia.js" />
+    <Content Include="Agent\assets\jqvmap\jqvmap\maps\jquery.vmap.usa.js" />
+    <Content Include="Agent\assets\jqvmap\jqvmap\maps\jquery.vmap.world.js" />
+    <Content Include="Agent\assets\jqvmap\samples\europe.html" />
+    <Content Include="Agent\assets\jqvmap\samples\germany.html" />
+    <Content Include="Agent\assets\jqvmap\samples\multi.html" />
+    <Content Include="Agent\assets\jqvmap\samples\russia.html" />
+    <Content Include="Agent\assets\jqvmap\samples\usa.html" />
+    <Content Include="Agent\assets\jqvmap\samples\world.html" />
+    <Content Include="Agent\assets\jslider\css\jslider.blue.css" />
+    <Content Include="Agent\assets\jslider\css\jslider.css" />
+    <Content Include="Agent\assets\jslider\css\jslider.plastic.css" />
+    <Content Include="Agent\assets\jslider\css\jslider.round.css" />
+    <Content Include="Agent\assets\jslider\css\jslider.round.plastic.css" />
+    <Content Include="Agent\assets\jslider\img\jslider.blue.png" />
+    <Content Include="Agent\assets\jslider\img\jslider.plastic.png" />
+    <Content Include="Agent\assets\jslider\img\jslider.png" />
+    <Content Include="Agent\assets\jslider\img\jslider.round.plastic.png" />
+    <Content Include="Agent\assets\jslider\img\jslider.round.png" />
+    <Content Include="Agent\assets\jslider\js\draggable-0.1.js" />
+    <Content Include="Agent\assets\jslider\js\jquery-1.7.1.js" />
+    <Content Include="Agent\assets\jslider\js\jquery.dependClass-0.1.js" />
+    <Content Include="Agent\assets\jslider\js\jquery.numberformatter-1.2.3.js" />
+    <Content Include="Agent\assets\jslider\js\jquery.slider.js" />
+    <Content Include="Agent\assets\jslider\js\jshashtable-2.1_src.js" />
+    <Content Include="Agent\assets\jslider\js\tmpl.js" />
+    <Content Include="Agent\assets\pre-loader\3D coffee cup.gif" />
+    <Content Include="Agent\assets\pre-loader\3D snake.gif" />
+    <Content Include="Agent\assets\pre-loader\Atom.gif" />
+    <Content Include="Agent\assets\pre-loader\Bouncing ball.gif" />
+    <Content Include="Agent\assets\pre-loader\Broken ring.gif" />
+    <Content Include="Agent\assets\pre-loader\Chasing blocks.gif" />
+    <Content Include="Agent\assets\pre-loader\Clock with hands.gif" />
+    <Content Include="Agent\assets\pre-loader\Drawing flower.gif" />
+    <Content Include="Agent\assets\pre-loader\Drink in glass.gif" />
+    <Content Include="Agent\assets\pre-loader\Fading squares.gif" />
+    <Content Include="Agent\assets\pre-loader\Fancy pants.gif" />
+    <Content Include="Agent\assets\pre-loader\Hourglass.gif" />
+    <Content Include="Agent\assets\pre-loader\Kaleidoscope.gif" />
+    <Content Include="Agent\assets\pre-loader\Linear star.gif" />
+    <Content Include="Agent\assets\pre-loader\Moving blocks.gif" />
+    <Content Include="Agent\assets\pre-loader\Nuclear alert.gif" />
+    <Content Include="Agent\assets\pre-loader\Ovals in circle.gif" />
+    <Content Include="Agent\assets\pre-loader\Pie chart.gif" />
+    <Content Include="Agent\assets\pre-loader\preview.gif" />
+    <Content Include="Agent\assets\pre-loader\preview2.gif" />
+    <Content Include="Agent\assets\pre-loader\preview3.gif" />
+    <Content Include="Agent\assets\pre-loader\Radar.gif" />
+    <Content Include="Agent\assets\pre-loader\Rounded blocks.gif" />
+    <Content Include="Agent\assets\pre-loader\Rounded stripes.gif" />
+    <Content Include="Agent\assets\pre-loader\Search with arrow.gif" />
+    <Content Include="Agent\assets\pre-loader\Searching.gif" />
+    <Content Include="Agent\assets\pre-loader\Snake.gif" />
+    <Content Include="Agent\assets\pre-loader\Snakes chasing.gif" />
+    <Content Include="Agent\assets\pre-loader\Snow with rain.gif" />
+    <Content Include="Agent\assets\pre-loader\Spider web.gif" />
+    <Content Include="Agent\assets\pre-loader\Spinning line.gif" />
+    <Content Include="Agent\assets\pre-loader\Spinning spiral.gif" />
+    <Content Include="Agent\assets\pre-loader\Storm.gif" />
+    <Content Include="Agent\assets\pre-loader\Sun.gif" />
+    <Content Include="Agent\assets\pre-loader\Surrounded segments.gif" />
+    <Content Include="Agent\assets\pre-loader\Thin broken ring.gif" />
+    <Content Include="Agent\assets\pre-loader\Thin fading line.gif" />
+    <Content Include="Agent\assets\pre-loader\Tree on wind.gif" />
+    <Content Include="Agent\assets\pre-loader\Triangles indicator.gif" />
+    <Content Include="Agent\assets\pre-loader\Twirl.gif" />
+    <Content Include="Agent\assets\pre-loader\Velocity.gif" />
+    <Content Include="Agent\assets\pre-loader\Ventilator.gif" />
+    <Content Include="Agent\assets\pre-loader\Water ripples.gif" />
+    <Content Include="Agent\assets\pre-loader\Whirlpool.gif" />
+    <Content Include="Agent\assets\uniform\css\uniform.default.css" />
+    <Content Include="Agent\assets\uniform\demo\demo.html" />
+    <Content Include="Agent\assets\uniform\images\bg-input-focus.png" />
+    <Content Include="Agent\assets\uniform\images\bg-input.png" />
+    <Content Include="Agent\assets\uniform\images\sprite.png" />
+    <Content Include="Agent\assets\uniform\jquery.uniform.js" />
+    <Content Include="Agent\assets\uniform\jquery.uniform.min.js" />
+    <Content Include="Agent\ChangePassword.aspx" />
+    <Content Include="Agent\ChangeStatus.ashx" />
+    <Content Include="Agent\ClientDetails.aspx" />
+    <Content Include="Agent\ClientLedger.aspx" />
+    <Content Include="Agent\clientLimit.ashx" />
+    <Content Include="Agent\ClientLimitReport.aspx" />
+    <Content Include="Agent\Clientplusminus.aspx" />
+    <Content Include="Agent\CollectionDetails.aspx" />
+    <Content Include="Agent\CreateClient.aspx" />
+    <Content Include="Agent\CreateNewCollection.aspx" />
+    <Content Include="Agent\css\HomePage\bootstrap.min.css" />
+    <Content Include="Agent\css\HomePage\style.css" />
+    <Content Include="Agent\css\HomePage\style_session.css" />
+    <Content Include="Agent\css\style.css" />
+    <Content Include="Agent\css\style.min.css" />
+    <Content Include="Agent\css\style_default.css" />
+    <Content Include="Agent\css\style_gray.css" />
+    <Content Include="Agent\css\style_navy-blue.css" />
+    <Content Include="Agent\css\style_purple.css" />
+    <Content Include="Agent\css\style_responsive.css" />
+    <Content Include="Agent\Dashboard.aspx" />
+    <Content Include="Agent\DashBoard.Master" />
+    <Content Include="Agent\DashboardMaster.aspx" />
+    <Content Include="Agent\DateWiseReport.aspx" />
+    <Content Include="Agent\Deleteclient.ashx" />
+    <Content Include="Agent\HomePage.aspx" />
+    <Content Include="Agent\img\404.png" />
+    <Content Include="Agent\img\500.png" />
+    <Content Include="Agent\img\avatar-mini.png" />
+    <Content Include="Agent\img\avatar.png" />
+    <Content Include="Agent\img\avatar1.jpg" />
+    <Content Include="Agent\img\avatar1_small.jpg" />
+    <Content Include="Agent\img\avatar2.jpg" />
+    <Content Include="Agent\img\avatar3.jpg" />
+    <Content Include="Agent\img\avatar3_small.jpg" />
+    <Content Include="Agent\img\bg-default.jpg" />
+    <Content Include="Agent\img\bg-grey.jpg" />
+    <Content Include="Agent\img\bg-navy-blue.jpg" />
+    <Content Include="Agent\img\bg-purple.jpg" />
+    <Content Include="Agent\img\body-bg.png" />
+    <Content Include="Agent\img\box-bg.png" />
+    <Content Include="Agent\img\bread-crumb-bg.jpg" />
+    <Content Include="Agent\img\bread-crumb-divider.jpg" />
+    <Content Include="Agent\img\bread-crumb-last.jpg" />
+    <Content Include="Agent\img\header_line.png" />
+    <Content Include="Agent\img\Homepage\img1.jpg" />
+    <Content Include="Agent\img\Homepage\img2.jpg" />
+    <Content Include="Agent\img\Homepage\img3.jpg" />
+    <Content Include="Agent\img\Homepage\line_bg_repeat.jpg" />
+    <Content Include="Agent\img\Homepage\next.png" />
+    <Content Include="Agent\img\Homepage\pic1.jpg" />
+    <Content Include="Agent\img\Homepage\pic2.jpg" />
+    <Content Include="Agent\img\Homepage\prev.png" />
+    <Content Include="Agent\img\Homepage\slider.jpg" />
+    <Content Include="Agent\img\Homepage\slider1.jpg" />
     <Content Include="Agent\img\LastBall\1_Run.jpg" />
     <Content Include="Agent\img\LastBall\2_Run.jpg" />
     <Content Include="Agent\img\LastBall\3_Run.jpg" />
@@ -142,6 +723,55 @@
     <Content Include="Agent\img\LastBall\Timeout.jpg" />
     <Content Include="Agent\img\LastBall\WIDE.jpg" />
     <Content Include="Agent\img\LastBall\Wide4.jpg" />
+    <Content Include="Agent\img\loading.gif" />
+    <Content Include="Agent\img\login-btn.jpg" />
+    <Content Include="Agent\img\logo.png" />
+    <Content Include="Agent\img\menu-selected-bg.png" />
+    <Content Include="Agent\img\overlay-icon.png" />
+    <Content Include="Agent\img\photo.jpg" />
+    <Content Include="Agent\img\profile-pic.jpg" />
+    <Content Include="Agent\img\side-bar-list-bg.png" />
+    <Content Include="Agent\img\submenu_border.png" />
+    <Content Include="Agent\img\submenu_hover.png" />
+    <Content Include="Agent\img\top-bg.jpg" />
+    <Content Include="Agent\js\demo.gmaps.js" />
+    <Content Include="Agent\js\excanvas.js" />
+    <Content Include="Agent\js\gmaps.js" />
+    <Content Include="Agent\js\Homepage\bootstrap.min.js" />
+    <Content Include="Agent\js\Homepage\jquery.min.js" />
+    <Content Include="Agent\js\jquery-1.8.2.min.js" />
+    <Content Include="Agent\js\jquery-1.8.3.min.js" />
+    <Content Include="Agent\js\jquery.blockui.js" />
+    <Content Include="Agent\js\jquery.cookie.js" />
+    <Content Include="Agent\js\jquery.peity.min.js" />
+    <Content Include="Agent\js\jquery.pulsate.min.js" />
+    <Content Include="Agent\js\LiveMatch_v1.js" />
+    <Content Include="Agent\js\respond.js" />
+    <Content Include="Agent\js\scripts.js" />
+    <Content Include="Agent\Ledger.aspx" />
+    <Content Include="Agent\Login.aspx" />
+    <Content Include="Agent\MasterDetails.aspx" />
+    <Content Include="Agent\MatchAndSessionPosition.aspx" />
+    <Content Include="Agent\MatchAndSessionSPosition.aspx" />
+    <Content Include="Agent\MatchPlusMinusDisplay.aspx" />
+    <Content Include="Agent\MatchplusminusSelect.aspx" />
+    <Content Include="Agent\MatchSessionPlusMinusDisplay.aspx" />
+    <Content Include="Agent\MatchSessionPlusMinusSelect.aspx" />
+    <Content Include="Agent\ModifyClient.aspx" />
+    <Content Include="Agent\My_Ledger.aspx" />
+    <Content Include="Agent\PlusMinusSelect.aspx" />
+    <Content Include="Agent\SecureCodeReport.aspx" />
+    <Content Include="Agent\SessionPlusMinusDisplay.aspx" />
+    <Content Include="Agent\SessionPlusMinusSelect.aspx" />
+    <Content Include="Agent\Settings.aspx" />
+    <Content Include="Agent\Sportsbetting.aspx" />
+    <Content Include="Agent\SportsDetails.aspx" />
+    <Content Include="Agent\TC.aspx" />
+    <Content Include="Agent\UpdateClientLimit.aspx" />
+    <Content Include="Agent\ViewCollectionEntry.aspx" />
+    <Content Include="Agent\ViewMatchReport.aspx" />
+    <Content Include="Agent\ViewSessionReport.aspx" />
+    <Content Include="Client\js\Homejs\BetDetailsCustom_v3.1.js" />
     <Content Include="Client\css\Home\mss_v1.css" />
     <Content Include="Client\images\InplayImg\avatar.png" />
     <Content Include="Client\images\InplayImg\mark1.png" />
@@ -163,10 +793,33 @@
     <Content Include="Client\images\LastBall\Timeout.jpg" />
     <Content Include="Client\images\LastBall\WIDE.jpg" />
     <Content Include="Client\images\LastBall\Wide4.jpg" />
+    <Content Include="Client\images\loginimg\bk.jpeg" />
+    <Content Include="Client\images\loginimg\bk1.jpeg" />
+    <Content Include="Client\images\loginimg\bk2.gif" />
+    <Content Include="Client\images\MainMenuImg\allGame %281%29.png" />
+    <Content Include="Client\images\MainMenuImg\AllGame.png" />
+    <Content Include="Client\images\MainMenuImg\CG1.jpg" />
+    <Content Include="Client\images\MainMenuImg\CL.png" />
+    <Content Include="Client\images\MainMenuImg\CP.png" />
+    <Content Include="Client\images\MainMenuImg\crick.png" />
     <Content Include="Client\images\MainMenuImg\game.png" />
+    <Content Include="Client\images\MainMenuImg\games.png" />
+    <Content Include="Client\images\MainMenuImg\HowTo.png" />
+    <Content Include="Client\images\MainMenuImg\Ledger.png" />
+    <Content Include="Client\images\MainMenuImg\Logout.png" />
+    <Content Include="Client\images\MainMenuImg\LogOutNow.png" />
     <Content Include="Client\images\MainMenuImg\password.png" />
     <Content Include="Client\images\MainMenuImg\play.png" />
+    <Content Include="Client\images\MainMenuImg\portfolio_img.jpg" />
+    <Content Include="Client\images\MainMenuImg\Profile.png" />
+    <Content Include="Client\images\MainMenuImg\ProfileTop.png" />
+    <Content Include="Client\images\MainMenuImg\Rules.png" />
+    <Content Include="Client\images\MainMenuImg\Settings.png" />
+    <Content Include="Client\images\MainMenuImg\TC.png" />
     <Content Include="Client\images\MainMenuImg\terms.png" />
+    <Content Include="Client\js\Homejs\BetDetailsCustom_v4.10.js" />
+    <Content Include="Client\js\Homejs\jsbn.js" />
+    <Content Include="Client\js\Homejs\money.js" />
     <Content Include="Client\js\Homejs\mss_v1.js" />
     <Content Include="PowerUser\AddfromDiamond.aspx" />
     <Content Include="PowerUser\AddFromLotus.aspx" />
@@ -683,8 +1336,7 @@
     <Content Include="PowerUser\css\style_responsive.css" />
     <Content Include="PowerUser\EditMatches.aspx" />
     <Content Include="admin\js\LiveMatch.js" />
-    <Content Include="admin\js\RunnerUpdate.js" />
-    <Content Include="admin\js\SessionUpdate.js" />
+    <Content Include="PowerUser\FancySession.aspx" />
     <Content Include="PowerUser\Homepage.aspx" />
     <Content Include="PowerUser\img\404.png" />
     <Content Include="PowerUser\img\500.png" />
@@ -726,8 +1378,10 @@
     <Content Include="PowerUser\img\submenu_border.png" />
     <Content Include="PowerUser\img\submenu_hover.png" />
     <Content Include="PowerUser\img\top-bg.jpg" />
+    <Content Include="PowerUser\js\datatables.min.js" />
     <Content Include="PowerUser\js\demo.gmaps.js" />
     <Content Include="PowerUser\js\excanvas.js" />
+    <Content Include="PowerUser\js\FancyRateUpdate_v2.13.js" />
     <Content Include="PowerUser\js\gmaps.js" />
     <Content Include="PowerUser\js\Homepage\bootstrap.min.js" />
     <Content Include="PowerUser\js\Homepage\jquery.min.js" />
@@ -737,13 +1391,17 @@
     <Content Include="PowerUser\js\jquery.cookie.js" />
     <Content Include="PowerUser\js\jquery.peity.min.js" />
     <Content Include="PowerUser\js\jquery.pulsate.min.js" />
+    <Content Include="PowerUser\js\jsbn.js" />
     <Content Include="PowerUser\js\LiveMatch.js" />
-    <Content Include="PowerUser\js\ManualMatch.js" />
+    <Content Include="PowerUser\js\ManualMatch_v2.5.js" />
+    <Content Include="PowerUser\js\minmaxUpdate.js" />
+    <Content Include="PowerUser\js\money.js" />
     <Content Include="PowerUser\js\mss_v1.js" />
     <Content Include="PowerUser\js\respond.js" />
-    <Content Include="PowerUser\js\RunnerUpdate.js" />
+    <Content Include="PowerUser\js\RunnerUpdate_v2.5.js" />
     <Content Include="PowerUser\js\scripts.js" />
-    <Content Include="PowerUser\js\SessionUpdate.js" />
+    <Content Include="PowerUser\js\SessionUpdateAutomatic.js" />
+    <Content Include="PowerUser\js\SessionUpdate_v2.13.js" />
     <Content Include="PowerUser\LiveTV.aspx" />
     <Content Include="PowerUser\Login.aspx" />
     <Content Include="PowerUser\ManuallyUpdation.aspx" />
@@ -751,8 +1409,10 @@
     <Content Include="PowerUser\MatchRates.aspx" />
     <Content Include="admin\ModifyAgent.aspx" />
     <Content Include="admin\ModifyClient.aspx" />
+    <Content Include="PowerUser\Minmax.aspx" />
     <Content Include="PowerUser\ModifyMatches.aspx" />
     <Content Include="PowerUser\ScoreBoard.aspx" />
+    <Content Include="PowerUser\sendmatchdetails.aspx" />
     <Content Include="PowerUser\SessionRate.aspx" />
     <Content Include="admin\SuperAgentLedger.aspx" />
     <Content Include="admin\SuperAgentLimitReport.aspx" />
@@ -1251,9 +1911,7 @@
     <Content Include="admin\assets\uniform\jquery.uniform.js" />
     <Content Include="admin\assets\uniform\jquery.uniform.min.js" />
     <Content Include="admin\ChangePassword.aspx" />
-    <Content Include="admin\CollectionDetail.aspx" />
     <Content Include="admin\CreateSuperAgent.aspx" />
-    <Content Include="admin\CreateNewCollection.aspx" />
     <Content Include="admin\css\Homepage\bootstrap.min.css" />
     <Content Include="admin\css\Homepage\style.css" />
     <Content Include="admin\css\style.css" />
@@ -1333,174 +1991,6 @@
     <Content Include="admin\ViewMatchReport.aspx" />
     <Content Include="admin\ViewSessionReport.aspx" />
     <Content Include="admin\WebForm1.aspx" />
-    <Content Include="Agent\AllClientLedger.aspx" />
-    <Content Include="Agent\assets\bootstrap\css\bootstrap-fileupload.css" />
-    <Content Include="Agent\assets\bootstrap\css\bootstrap-responsive.css" />
-    <Content Include="Agent\assets\bootstrap\css\bootstrap-responsive.min.css" />
-    <Content Include="Agent\assets\bootstrap\css\bootstrap.css" />
-    <Content Include="Agent\assets\bootstrap\css\bootstrap.min.css" />
-    <Content Include="Agent\assets\bootstrap\img\glyphicons-halflings-white.png" />
-    <Content Include="Agent\assets\bootstrap\img\glyphicons-halflings.png" />
-    <Content Include="Agent\assets\bootstrap\js\bootstrap-fileupload.js" />
-    <Content Include="Agent\assets\bootstrap\js\bootstrap.js" />
-    <Content Include="Agent\assets\bootstrap\js\bootstrap.min.js" />
-    <Content Include="Agent\assets\fancybox\source\blank.gif" />
-    <Content Include="Agent\assets\fancybox\source\fancybox_loading.gif" />
-    <Content Include="Agent\assets\fancybox\source\fancybox_overlay.png" />
-    <Content Include="Agent\assets\fancybox\source\fancybox_sprite.png" />
-    <Content Include="Agent\assets\fancybox\source\helpers\fancybox_buttons.png" />
-    <Content Include="Agent\assets\fancybox\source\helpers\jquery.fancybox-buttons.css" />
-    <Content Include="Agent\assets\fancybox\source\helpers\jquery.fancybox-buttons.js" />
-    <Content Include="Agent\assets\fancybox\source\helpers\jquery.fancybox-buttons_cdea843f.css" />
-    <Content Include="Agent\assets\fancybox\source\helpers\jquery.fancybox-buttons_cdea843f.js" />
-    <Content Include="Agent\assets\fancybox\source\helpers\jquery.fancybox-media.js" />
-    <Content Include="Agent\assets\fancybox\source\helpers\jquery.fancybox-media_cdea843f.js" />
-    <Content Include="Agent\assets\fancybox\source\helpers\jquery.fancybox-thumbs.css" />
-    <Content Include="Agent\assets\fancybox\source\helpers\jquery.fancybox-thumbs.js" />
-    <Content Include="Agent\assets\fancybox\source\helpers\jquery.fancybox-thumbs_cdea843d.css" />
-    <Content Include="Agent\assets\fancybox\source\helpers\jquery.fancybox-thumbs_cdea843d.js" />
-    <Content Include="Agent\assets\fancybox\source\jquery.fancybox.css" />
-    <Content Include="Agent\assets\fancybox\source\jquery.fancybox.js" />
-    <Content Include="Agent\assets\fancybox\source\jquery.fancybox.pack.js" />
-    <Content Include="Agent\assets\fancybox\source\jquery.fancybox_cdea77da.css" />
-    <Content Include="Agent\assets\fancybox\source\jquery.fancybox_cdea77db.js" />
-    <Content Include="Agent\assets\font-awesome\css\font-awesome-ie7.min.css" />
-    <Content Include="Agent\assets\font-awesome\css\font-awesome.css" />
-    <Content Include="Agent\assets\font-awesome\css\font-awesome.min.css" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\css\font-awesome-ie7.min.css" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\css\font-awesome.min.css" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\css\prettify.css" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\css\site.css" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\ico\favicon.ico" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\img\contribution-sample.png" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\js\backbone.min.js" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\js\bootstrap-222.min.js" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\js\index\index.js" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\js\jquery-1.7.1.min.js" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\js\prettify.min.js" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\js\underscore.min.js" />
-    <Content Include="Agent\assets\font-awesome\docs\design.html" />
-    <Content Include="Agent\assets\fullcalendar\fullcalendar\bootstrap-fullcalendar.css" />
-    <Content Include="Agent\assets\fullcalendar\fullcalendar\fullcalendar.css" />
-    <Content Include="Agent\assets\fullcalendar\fullcalendar\fullcalendar.js" />
-    <Content Include="Agent\assets\fullcalendar\fullcalendar\fullcalendar.min.js" />
-    <Content Include="Agent\assets\fullcalendar\fullcalendar\fullcalendar.print.css" />
-    <Content Include="Agent\assets\fullcalendar\fullcalendar\gcal.js" />
-    <Content Include="Agent\assets\jquery-knob\js\jquery.knob.js" />
-    <Content Include="Agent\assets\jquery-slimscroll\jquery-ui-1.9.2.custom.min.js" />
-    <Content Include="Agent\assets\jquery-slimscroll\jquery.slimscroll.js" />
-    <Content Include="Agent\assets\jquery-slimscroll\jquery.slimscroll.min.js" />
-    <Content Include="Agent\assets\jqvmap\jqvmap\data\jquery.vmap.sampledata.js" />
-    <Content Include="Agent\assets\jqvmap\jqvmap\jquery.vmap.js" />
-    <Content Include="Agent\assets\jqvmap\jqvmap\jquery.vmap.min.js" />
-    <Content Include="Agent\assets\jqvmap\jqvmap\jquery.vmap.packed.js" />
-    <Content Include="Agent\assets\jqvmap\jqvmap\jqvmap.css" />
-    <Content Include="Agent\assets\jqvmap\jqvmap\maps\jquery.vmap.europe.js" />
-    <Content Include="Agent\assets\jqvmap\jqvmap\maps\jquery.vmap.germany.js" />
-    <Content Include="Agent\assets\jqvmap\jqvmap\maps\jquery.vmap.russia.js" />
-    <Content Include="Agent\assets\jqvmap\jqvmap\maps\jquery.vmap.usa.js" />
-    <Content Include="Agent\assets\jqvmap\jqvmap\maps\jquery.vmap.world.js" />
-    <Content Include="Agent\assets\uniform\css\uniform.default.css" />
-    <Content Include="Agent\assets\uniform\demo\demo.html" />
-    <Content Include="Agent\assets\uniform\images\bg-input-focus.png" />
-    <Content Include="Agent\assets\uniform\images\bg-input.png" />
-    <Content Include="Agent\assets\uniform\images\sprite.png" />
-    <Content Include="Agent\assets\uniform\jquery.uniform.js" />
-    <Content Include="Agent\assets\uniform\jquery.uniform.min.js" />
-    <Content Include="Agent\ChangePassword.aspx" />
-    <Content Include="Agent\ClientLimitReport.aspx" />
-    <Content Include="Agent\Clientplusminus.aspx" />
-    <Content Include="Agent\CreateClient.aspx" />
-    <Content Include="Agent\ClientDetails.aspx" />
-    <Content Include="Agent\ClientLedger.aspx" />
-    <Content Include="Agent\CollectionDetails.aspx" />
-    <Content Include="Agent\CreateNewCollection.aspx" />
-    <Content Include="Agent\css\HomePage\bootstrap.min.css" />
-    <Content Include="Agent\css\HomePage\style.css" />
-    <Content Include="Agent\css\style.css" />
-    <Content Include="Agent\css\style.min.css" />
-    <Content Include="Agent\css\style_default.css" />
-    <Content Include="Agent\css\style_gray.css" />
-    <Content Include="Agent\css\style_navy-blue.css" />
-    <Content Include="Agent\css\style_purple.css" />
-    <Content Include="Agent\css\style_responsive.css" />
-    <Content Include="Agent\Dashboard.aspx" />
-    <Content Include="Agent\DashboardMaster.aspx" />
-    <Content Include="Agent\DateWiseReport.aspx" />
-    <Content Include="Agent\img\404.png" />
-    <Content Include="Agent\img\500.png" />
-    <Content Include="Agent\img\avatar-mini.png" />
-    <Content Include="Agent\img\avatar.png" />
-    <Content Include="Agent\img\avatar1.jpg" />
-    <Content Include="Agent\img\avatar1_small.jpg" />
-    <Content Include="Agent\img\avatar2.jpg" />
-    <Content Include="Agent\img\avatar3.jpg" />
-    <Content Include="Agent\img\avatar3_small.jpg" />
-    <Content Include="Agent\img\bg-default.jpg" />
-    <Content Include="Agent\img\bg-grey.jpg" />
-    <Content Include="Agent\img\bg-navy-blue.jpg" />
-    <Content Include="Agent\img\bg-purple.jpg" />
-    <Content Include="Agent\img\body-bg.png" />
-    <Content Include="Agent\img\box-bg.png" />
-    <Content Include="Agent\img\bread-crumb-bg.jpg" />
-    <Content Include="Agent\img\bread-crumb-divider.jpg" />
-    <Content Include="Agent\img\bread-crumb-last.jpg" />
-    <Content Include="Agent\img\header_line.png" />
-    <Content Include="Agent\img\Homepage\img1.jpg" />
-    <Content Include="Agent\img\Homepage\img2.jpg" />
-    <Content Include="Agent\img\Homepage\img3.jpg" />
-    <Content Include="Agent\img\Homepage\line_bg_repeat.jpg" />
-    <Content Include="Agent\img\Homepage\next.png" />
-    <Content Include="Agent\img\Homepage\pic1.jpg" />
-    <Content Include="Agent\img\Homepage\pic2.jpg" />
-    <Content Include="Agent\img\Homepage\prev.png" />
-    <Content Include="Agent\img\Homepage\slider.jpg" />
-    <Content Include="Agent\img\Homepage\slider1.jpg" />
-    <Content Include="Agent\img\loading.gif" />
-    <Content Include="Agent\img\login-btn.jpg" />
-    <Content Include="Agent\img\logo.png" />
-    <Content Include="Agent\img\menu-selected-bg.png" />
-    <Content Include="Agent\img\overlay-icon.png" />
-    <Content Include="Agent\img\photo.jpg" />
-    <Content Include="Agent\img\profile-pic.jpg" />
-    <Content Include="Agent\img\side-bar-list-bg.png" />
-    <Content Include="Agent\img\submenu_border.png" />
-    <Content Include="Agent\img\submenu_hover.png" />
-    <Content Include="Agent\img\top-bg.jpg" />
-    <Content Include="Agent\js\demo.gmaps.js" />
-    <Content Include="Agent\js\excanvas.js" />
-    <Content Include="Agent\js\gmaps.js" />
-    <Content Include="Agent\js\Homepage\bootstrap.min.js" />
-    <Content Include="Agent\js\Homepage\jquery.min.js" />
-    <Content Include="Agent\js\jquery-1.8.2.min.js" />
-    <Content Include="Agent\js\jquery-1.8.3.min.js" />
-    <Content Include="Agent\js\jquery.blockui.js" />
-    <Content Include="Agent\js\jquery.cookie.js" />
-    <Content Include="Agent\js\jquery.peity.min.js" />
-    <Content Include="Agent\js\jquery.pulsate.min.js" />
-    <Content Include="Agent\js\LiveMatch.js" />
-    <Content Include="admin\js\ManualMatch.js" />
-    <Content Include="Agent\js\respond.js" />
-    <Content Include="Agent\js\scripts.js" />
-    <Content Include="Agent\Ledger.aspx" />
-    <Content Include="Agent\Login.aspx" />
-    <Content Include="Agent\MasterDetails.aspx" />
-    <Content Include="Agent\MatchAndSessionPosition.aspx" />
-    <Content Include="Agent\MatchAndSessionSPosition.aspx" />
-    <Content Include="Agent\MatchPlusMinusSelect.aspx" />
-    <Content Include="Agent\MatchSessionPlusMinusDisplay.aspx" />
-    <Content Include="Agent\MatchSessionPlusMinusSelect.aspx" />
-    <Content Include="Agent\ModifyClient.aspx" />
-    <Content Include="Agent\My_Ledger.aspx" />
-    <Content Include="Agent\SecureCodeReport.aspx" />
-    <Content Include="Agent\SessionPlusMinusSelect.aspx" />
-    <Content Include="Agent\Settings.aspx" />
-    <Content Include="Agent\Sportsbetting.aspx" />
-    <Content Include="Agent\SportsDetails.aspx" />
-    <Content Include="Agent\TC.aspx" />
-    <Content Include="Agent\UpdateClientLimit.aspx" />
-    <Content Include="Agent\ViewMatchReport.aspx" />
-    <Content Include="Agent\ViewSessionReport.aspx" />
     <Content Include="Client\AllGamesList.aspx" />
     <Content Include="Client\BetDetails.aspx" />
     <Content Include="Client\BetDetails_Declare.aspx" />
@@ -1515,7 +2005,7 @@
     <Content Include="Client\css\Home\style.css" />
     <Content Include="Client\css\Home\subscribe-form.css" />
     <Content Include="Client\css\login\clndr.css" />
-    <Content Include="Client\css\login\style.css" />
+    <Content Include="Client\css\login\style_v1.css" />
     <Content Include="Client\fonts\arrows.woff" />
     <Content Include="Client\GenerateCaptcha.aspx" />
     <Content Include="Client\Homepage.aspx" />
@@ -1543,15 +2033,6 @@
     <Content Include="Client\images\loginimg\login-arrow-left.png" />
     <Content Include="Client\images\loginimg\login-arrow.png" />
     <Content Include="Client\images\loginimg\sprite.png" />
-    <Content Include="Client\images\MainMenuImg\AllGame.png" />
-    <Content Include="Client\images\MainMenuImg\games.png" />
-    <Content Include="Client\images\MainMenuImg\HowTo.png" />
-    <Content Include="Client\images\MainMenuImg\Ledger.png" />
-    <Content Include="Client\images\MainMenuImg\Logout.png" />
-    <Content Include="Client\images\MainMenuImg\portfolio_img.jpg" />
-    <Content Include="Client\images\MainMenuImg\Rules.png" />
-    <Content Include="Client\images\MainMenuImg\Settings.png" />
-    <Content Include="Client\images\MainMenuImg\TC.png" />
     <Content Include="Client\images\Teams_Image\CSK.png" />
     <Content Include="Client\images\Teams_Image\DD.png" />
     <Content Include="Client\images\Teams_Image\KKR.png" />
@@ -1573,7 +2054,6 @@
     <Content Include="Client\js\Homejs\jquery.rd-parallax.js" />
     <Content Include="Client\js\Homejs\jquery.simplr.smoothscroll.min.js" />
     <Content Include="Client\js\Homejs\jquery.ui.totop.js" />
-    <Content Include="Client\js\Homejs\BetDetailsCustom_v1.js" />
     <Content Include="Client\js\Homejs\owl.carousel.min.js" />
     <Content Include="Client\js\Homejs\script.js" />
     <Content Include="Client\js\Homejs\superfish.js" />
@@ -1587,7 +2067,7 @@
     <Content Include="Default.html" />
     <Content Include="PowerUser\ModifyMatch.aspx" />
     <Content Include="packages.config" />
-    <Content Include="Agent\DashBoard.Master" />
+    <Content Include="PowerUser\SessionRateAutomatic.aspx" />
     <Content Include="superagent\AgentDetails.aspx" />
     <Content Include="superagent\AgentLimitReport.aspx" />
     <Content Include="superagent\AgentPlusMinus.aspx" />
@@ -2086,10 +2566,11 @@
     <Content Include="superagent\assets\uniform\jquery.uniform.js" />
     <Content Include="superagent\assets\uniform\jquery.uniform.min.js" />
     <Content Include="superagent\Changepassword.aspx" />
-    <Content Include="superagent\CollectionDetail.aspx" />
     <Content Include="superagent\CollectionDetails.aspx" />
     <Content Include="superagent\CompanymatchplusminusDisplay.aspx" />
     <Content Include="superagent\CompanymatchPlusminusSelect.aspx" />
+    <Content Include="superagent\CreateNewCollection.aspx" />
+    <Content Include="superagent\css\style_session.css" />
     <Content Include="superagent\img\LastBall\1_Run.jpg" />
     <Content Include="superagent\img\LastBall\2_Run.jpg" />
     <Content Include="superagent\img\LastBall\3_Run.jpg" />
@@ -2114,7 +2595,6 @@
     <Content Include="superagent\CompanySessionPlusMinusDisplay.aspx" />
     <Content Include="superagent\CompanySessionPlusMinusSelect.aspx" />
     <Content Include="superagent\CreateAgent.aspx" />
-    <Content Include="superagent\CreateNewCollection.aspx" />
     <Content Include="superagent\css\Homepage\bootstrap.min.css" />
     <Content Include="superagent\css\Homepage\style.css" />
     <Content Include="superagent\css\style.css" />
@@ -2126,33 +2606,6 @@
     <Content Include="superagent\css\style_responsive.css" />
     <Content Include="superagent\DashBoard.Master" />
     <Content Include="Client\Menu.Master" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\font\fontawesome-webfont.eot" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\font\fontawesome-webfont.ttf" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\font\fontawesome-webfont.woff" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\font\fontawesome-webfont_162a16fe.eot" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\font\museo_slab_300-webfont.eot" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\font\museo_slab_300-webfont.ttf" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\font\museo_slab_300-webfont_162a16fe.eot" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\font\museo_slab_500-webfont.eot" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\font\museo_slab_500-webfont.ttf" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\font\museo_slab_500-webfont_162a16fe.eot" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\font\proximanova-sbold-webfont.eot" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\font\proximanova-sbold-webfont.ttf" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\font\proximanova-sbold-webfont_162a16fe.eot" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\font\proximanova-webfont.eot" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\font\proximanova-webfont.ttf" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\font\proximanova-webfont_162a16fe.eot" />
-    <Content Include="Agent\assets\font-awesome\docs\assets\img\icon-flag.pdf" />
-    <Content Include="Agent\assets\font-awesome\font\fontawesome-webfont.eot" />
-    <Content Include="Agent\assets\font-awesome\font\fontawesome-webfont.ttf" />
-    <Content Include="Agent\assets\font-awesome\font\fontawesome-webfont.woff" />
-    <Content Include="Agent\assets\font-awesome\font\fontawesome-webfont_162a16fe.eot" />
-    <Content Include="Agent\assets\font-awesome\font\FontAwesome.otf" />
-    <Content Include="Agent\assets\font-awesome\less\font-awesome-ie7.less" />
-    <Content Include="Agent\assets\font-awesome\less\font-awesome.less" />
-    <Content Include="Agent\assets\font-awesome\sass\font-awesome.sass" />
-    <Content Include="Agent\assets\font-awesome\sass\font-awesome.scss" />
-    <Content Include="Agent\assets\jquery-slimscroll\slimScroll.jquery.json" />
     <Content Include="superagent\assets\bootstrap-colorpicker\less\colorpicker.less" />
     <Content Include="superagent\assets\bootstrap-datepicker\less\datepicker.less" />
     <Content Include="superagent\assets\bootstrap-timepicker\less\timepicker.less" />
@@ -2263,9 +2716,7 @@
     <Content Include="admin\assets\font-awesome\sass\font-awesome.scss" />
     <Content Include="admin\assets\jquery-slimscroll\slimScroll.jquery.json" />
     <Content Include="Client\AddDataToRunner.ashx" />
-    <Content Include="Agent\Deleteclient.ashx" />
     <Content Include="Client\AddDataToSession.ashx" />
-    <Content Include="Agent\ChangeStatus.ashx" />
     <Content Include="admin\Deleteclient.ashx" />
     <Content Include="admin\DeleteAgent.ashx" />
     <Content Include="admin\DeleteSuperAgent.ashx" />
@@ -2327,7 +2778,6 @@
     <Content Include="PowerUser\assets\font-awesome\sass\font-awesome.sass" />
     <Content Include="PowerUser\assets\font-awesome\sass\font-awesome.scss" />
     <Content Include="PowerUser\assets\jquery-slimscroll\slimScroll.jquery.json" />
-    <Content Include="Agent\clientLimit.ashx" />
     <Content Include="PowerUser\Session.ashx" />
     <Content Include="admin\clientlimit.ashx" />
     <Content Include="admin\agentlimit.ashx" />
@@ -2336,11 +2786,53 @@
     <Content Include="admin\DeleteRunnerBets.ashx" />
     <Content Include="admin\DeleteSessionBets.ashx" />
     <Content Include="admin\UnDeclarematch.ashx" />
+    <Content Include="PowerUser\CancelSession.ashx" />
+    <Content Include="PowerUser\sessiondelete.ashx" />
+    <Content Include="admin\deletematch.ashx" />
+    <Content Include="admin\undeclaresessionpost.ashx" />
+    <Content Include="Agent\assets\bootstrap-colorpicker\less\colorpicker.less" />
+    <Content Include="Agent\assets\bootstrap-datepicker\less\datepicker.less" />
+    <Content Include="Agent\assets\bootstrap-timepicker\less\timepicker.less" />
+    <Content Include="Agent\assets\bootstrap-toggle-buttons\LICENSE" />
+    <Content Include="Agent\assets\bootstrap-toggle-buttons\static\config.rb" />
+    <Content Include="Agent\assets\bootstrap-toggle-buttons\static\sass\bootstrap-toggle-buttons.scss" />
+    <Content Include="Agent\assets\chosen-bootstrap\Cakefile" />
+    <Content Include="Agent\assets\chosen-bootstrap\chosen\lib\chosen.less" />
+    <Content Include="Agent\assets\chosen-bootstrap\coffee\chosen.jquery.coffee" />
+    <Content Include="Agent\assets\chosen-bootstrap\coffee\chosen.proto.coffee" />
+    <Content Include="Agent\assets\chosen-bootstrap\coffee\lib\abstract-chosen.coffee" />
+    <Content Include="Agent\assets\chosen-bootstrap\coffee\lib\select-parser.coffee" />
+    <Content Include="Agent\assets\chosen-bootstrap\LICENSE.md" />
+    <Content Include="Agent\assets\chosen-bootstrap\package.json" />
+    <Content Include="Agent\assets\chosen-bootstrap\VERSION" />
+    <Content Include="Agent\assets\ckeditor\CHANGES.md" />
+    <Content Include="Agent\assets\ckeditor\LICENSE.md" />
+    <Content Include="Agent\assets\ckeditor\plugins\scayt\LICENSE.md" />
+    <Content Include="Agent\assets\ckeditor\plugins\wsc\LICENSE.md" />
+    <Content Include="Agent\assets\ckeditor\README.md" />
+    <Content Include="Agent\assets\ckeditor\skins\moono\readme.md" />
+    <Content Include="Agent\assets\clockface\LICENSE-MIT" />
+    <Content Include="Agent\assets\fancybox\CHANGELOG.md" />
+    <Content Include="Agent\assets\flot\examples\data-eu-gdp-growth.json" />
+    <Content Include="Agent\assets\flot\examples\data-japan-gdp-growth.json" />
+    <Content Include="Agent\assets\flot\examples\data-usa-gdp-growth.json" />
+    <Content Include="Agent\assets\flot\Makefile" />
+    <Content Include="admin\sendsuperagentdetails.ashx" />
+    <Content Include="Agent\SendClientdetailssms.ashx" />
+    <Content Include="admin\sendpoweruserdetails.ashx" />
+    <Content Include="Agent\DeleteEntry.ashx" />
+    <Content Include="admin\DeleteEntry.ashx" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\Google.pubxml" />
     <Content Include="superagent\Agentlimit.ashx" />
     <Content Include="superagent\deleteagent.ashx" />
     <Content Include="superagent\Changestatus.ashx" />
+    <Content Include="superagent\ModifyClient.aspx" />
+    <Content Include="superagent\sendagentdetails.ashx" />
+    <Content Include="superagent\DeleteEntry.ashx" />
+    <Content Include="superagent\SingleSessionplusMinusDisplay.aspx" />
+    <Content Include="superagent\SingleSessionplusMinusSelect.aspx" />
+    <Content Include="superagent\updateclientlimits.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2350,7 +2842,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Agent\HomePage.aspx" />
     <Content Include="superagent\Dashboard.aspx" />
     <Content Include="superagent\DateWiseReport.aspx" />
     <Content Include="superagent\Homepage.aspx" />
@@ -2405,7 +2896,7 @@
     <Content Include="superagent\js\jquery.cookie.js" />
     <Content Include="superagent\js\jquery.peity.min.js" />
     <Content Include="superagent\js\jquery.pulsate.min.js" />
-    <Content Include="superagent\js\LiveMatch.js" />
+    <Content Include="superagent\js\LiveMatch_v1.js" />
     <Content Include="superagent\js\respond.js" />
     <Content Include="superagent\js\scripts.js" />
     <Content Include="superagent\Ledger.aspx" />
@@ -2429,6 +2920,9 @@
     <Content Include="superagent\SportsDetails.aspx" />
     <Content Include="superagent\TC.aspx" />
     <Content Include="superagent\UpdateAgentlimit.aspx" />
+    <Content Include="superagent\UpdateClientLimit.aspx" />
+    <Content Include="superagent\ViewClient.aspx" />
+    <Content Include="superagent\ViewCollectionEntry.aspx" />
     <Content Include="superagent\ViewMatchReport.aspx" />
     <Content Include="superagent\ViewSessionReport.aspx" />
     <Content Include="Web.config">
@@ -2470,6 +2964,20 @@
     <Compile Include="admin\clientlimit.ashx.cs">
       <DependentUpon>clientlimit.ashx</DependentUpon>
     </Compile>
+    <Compile Include="admin\CollectionDetails.aspx.cs">
+      <DependentUpon>CollectionDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\CollectionDetails.aspx.designer.cs">
+      <DependentUpon>CollectionDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\CreateNewCollection.aspx.cs">
+      <DependentUpon>CreateNewCollection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\CreateNewCollection.aspx.designer.cs">
+      <DependentUpon>CreateNewCollection.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\Createpoweruser.aspx.cs">
       <DependentUpon>Createpoweruser.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2483,6 +2991,12 @@
     </Compile>
     <Compile Include="admin\DeleteBets.aspx.designer.cs">
       <DependentUpon>DeleteBets.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\DeleteEntry.ashx.cs">
+      <DependentUpon>DeleteEntry.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\deletematch.ashx.cs">
+      <DependentUpon>deletematch.ashx</DependentUpon>
     </Compile>
     <Compile Include="admin\DeleteRunnerBets.ashx.cs">
       <DependentUpon>DeleteRunnerBets.ashx</DependentUpon>
@@ -2567,6 +3081,13 @@
     <Compile Include="admin\poweruserdetails.aspx.designer.cs">
       <DependentUpon>poweruserdetails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\sendpoweruserdetails.ashx.cs">
+      <DependentUpon>sendpoweruserdetails.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\sendSMS.cs" />
+    <Compile Include="admin\sendsuperagentdetails.ashx.cs">
+      <DependentUpon>sendsuperagentdetails.ashx</DependentUpon>
+    </Compile>
     <Compile Include="admin\SessionPlusMinusDisplay.aspx.cs">
       <DependentUpon>SessionPlusMinusDisplay.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2581,11 +3102,21 @@
     <Compile Include="admin\SessionPlusMinusSelect.aspx.designer.cs">
       <DependentUpon>SessionPlusMinusSelect.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\Sessionundeclare.aspx.cs">
+      <DependentUpon>Sessionundeclare.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Sessionundeclare.aspx.designer.cs">
+      <DependentUpon>Sessionundeclare.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\superagentlimit.ashx.cs">
       <DependentUpon>superagentlimit.ashx</DependentUpon>
     </Compile>
     <Compile Include="admin\UnDeclarematch.ashx.cs">
       <DependentUpon>UnDeclarematch.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\undeclaresessionpost.ashx.cs">
+      <DependentUpon>undeclaresessionpost.ashx</DependentUpon>
     </Compile>
     <Compile Include="admin\UpdateAgentlimit.aspx.cs">
       <DependentUpon>UpdateAgentlimit.aspx</DependentUpon>
@@ -2622,8 +3153,287 @@
     <Compile Include="admin\Updatesuperagentlimit.aspx.designer.cs">
       <DependentUpon>Updatesuperagentlimit.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\ViewCollectionEntry.aspx.cs">
+      <DependentUpon>ViewCollectionEntry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ViewCollectionEntry.aspx.designer.cs">
+      <DependentUpon>ViewCollectionEntry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\AllClientLedger.aspx.cs">
+      <DependentUpon>AllClientLedger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\AllClientLedger.aspx.designer.cs">
+      <DependentUpon>AllClientLedger.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\ChangeStatus.ashx.cs">
+      <DependentUpon>ChangeStatus.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\ClientDetails.aspx.cs">
+      <DependentUpon>ClientDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\ClientDetails.aspx.designer.cs">
+      <DependentUpon>ClientDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\ClientLedger.aspx.cs">
+      <DependentUpon>ClientLedger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\ClientLedger.aspx.designer.cs">
+      <DependentUpon>ClientLedger.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Agent\clientLimit.ashx.cs">
       <DependentUpon>clientLimit.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\ClientLimitReport.aspx.cs">
+      <DependentUpon>ClientLimitReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\ClientLimitReport.aspx.designer.cs">
+      <DependentUpon>ClientLimitReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\Clientplusminus.aspx.cs">
+      <DependentUpon>Clientplusminus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\Clientplusminus.aspx.designer.cs">
+      <DependentUpon>Clientplusminus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\CollectionDetails.aspx.cs">
+      <DependentUpon>CollectionDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\CollectionDetails.aspx.designer.cs">
+      <DependentUpon>CollectionDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\CreateClient.aspx.cs">
+      <DependentUpon>CreateClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\CreateClient.aspx.designer.cs">
+      <DependentUpon>CreateClient.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\CreateNewCollection.aspx.cs">
+      <DependentUpon>CreateNewCollection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\CreateNewCollection.aspx.designer.cs">
+      <DependentUpon>CreateNewCollection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\DashBoard.Master.cs">
+      <DependentUpon>DashBoard.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\DashBoard.Master.designer.cs">
+      <DependentUpon>DashBoard.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\DashboardMaster.aspx.cs">
+      <DependentUpon>DashboardMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\DashboardMaster.aspx.designer.cs">
+      <DependentUpon>DashboardMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\DateWiseReport.aspx.cs">
+      <DependentUpon>DateWiseReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\DateWiseReport.aspx.designer.cs">
+      <DependentUpon>DateWiseReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\Deleteclient.ashx.cs">
+      <DependentUpon>Deleteclient.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\DeleteEntry.ashx.cs">
+      <DependentUpon>DeleteEntry.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\HomePage.aspx.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\HomePage.aspx.designer.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\Ledger.aspx.cs">
+      <DependentUpon>Ledger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\Ledger.aspx.designer.cs">
+      <DependentUpon>Ledger.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\MasterDetails.aspx.cs">
+      <DependentUpon>MasterDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\MasterDetails.aspx.designer.cs">
+      <DependentUpon>MasterDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\MatchAndSessionPosition.aspx.cs">
+      <DependentUpon>MatchAndSessionPosition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\MatchAndSessionPosition.aspx.designer.cs">
+      <DependentUpon>MatchAndSessionPosition.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\MatchAndSessionSPosition.aspx.cs">
+      <DependentUpon>MatchAndSessionSPosition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\MatchAndSessionSPosition.aspx.designer.cs">
+      <DependentUpon>MatchAndSessionSPosition.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\MatchPlusMinusDisplay.aspx.cs">
+      <DependentUpon>MatchPlusMinusDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\MatchPlusMinusDisplay.aspx.designer.cs">
+      <DependentUpon>MatchPlusMinusDisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\MatchplusminusSelect.aspx.cs">
+      <DependentUpon>MatchplusminusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\MatchplusminusSelect.aspx.designer.cs">
+      <DependentUpon>MatchplusminusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\MatchSessionPlusMinusDisplay.aspx.cs">
+      <DependentUpon>MatchSessionPlusMinusDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\MatchSessionPlusMinusDisplay.aspx.designer.cs">
+      <DependentUpon>MatchSessionPlusMinusDisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\MatchSessionPlusMinusSelect.aspx.cs">
+      <DependentUpon>MatchSessionPlusMinusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\MatchSessionPlusMinusSelect.aspx.designer.cs">
+      <DependentUpon>MatchSessionPlusMinusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\ModifyClient.aspx.cs">
+      <DependentUpon>ModifyClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\ModifyClient.aspx.designer.cs">
+      <DependentUpon>ModifyClient.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\My_Ledger.aspx.cs">
+      <DependentUpon>My_Ledger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\My_Ledger.aspx.designer.cs">
+      <DependentUpon>My_Ledger.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\PlusMinusSelect.aspx.cs">
+      <DependentUpon>PlusMinusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\PlusMinusSelect.aspx.designer.cs">
+      <DependentUpon>PlusMinusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\SecureCodeReport.aspx.cs">
+      <DependentUpon>SecureCodeReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\SecureCodeReport.aspx.designer.cs">
+      <DependentUpon>SecureCodeReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\SendClientdetailssms.ashx.cs">
+      <DependentUpon>SendClientdetailssms.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\sendSMS.cs" />
+    <Compile Include="Agent\SessionPlusMinusDisplay.aspx.cs">
+      <DependentUpon>SessionPlusMinusDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\SessionPlusMinusDisplay.aspx.designer.cs">
+      <DependentUpon>SessionPlusMinusDisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\SessionPlusMinusSelect.aspx.cs">
+      <DependentUpon>SessionPlusMinusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\SessionPlusMinusSelect.aspx.designer.cs">
+      <DependentUpon>SessionPlusMinusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\Settings.aspx.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\Settings.aspx.designer.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\Sportsbetting.aspx.cs">
+      <DependentUpon>Sportsbetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\Sportsbetting.aspx.designer.cs">
+      <DependentUpon>Sportsbetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\SportsDetails.aspx.cs">
+      <DependentUpon>SportsDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\SportsDetails.aspx.designer.cs">
+      <DependentUpon>SportsDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\TC.aspx.cs">
+      <DependentUpon>TC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\TC.aspx.designer.cs">
+      <DependentUpon>TC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\UpdateClientLimit.aspx.cs">
+      <DependentUpon>UpdateClientLimit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\UpdateClientLimit.aspx.designer.cs">
+      <DependentUpon>UpdateClientLimit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\ViewCollectionEntry.aspx.cs">
+      <DependentUpon>ViewCollectionEntry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\ViewCollectionEntry.aspx.designer.cs">
+      <DependentUpon>ViewCollectionEntry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\ViewMatchReport.aspx.cs">
+      <DependentUpon>ViewMatchReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\ViewMatchReport.aspx.designer.cs">
+      <DependentUpon>ViewMatchReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agent\ViewSessionReport.aspx.cs">
+      <DependentUpon>ViewSessionReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agent\ViewSessionReport.aspx.designer.cs">
+      <DependentUpon>ViewSessionReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="PowerUser\AddfromDiamond.aspx.cs">
       <DependentUpon>AddfromDiamond.aspx</DependentUpon>
@@ -2690,6 +3500,9 @@
     <Compile Include="admin\CreateClient.aspx.designer.cs">
       <DependentUpon>CreateClient.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PowerUser\CancelSession.ashx.cs">
+      <DependentUpon>CancelSession.ashx</DependentUpon>
+    </Compile>
     <Compile Include="PowerUser\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2728,6 +3541,13 @@
       <DependentUpon>EditMatches.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\KeyEventArgs.cs" />
+    <Compile Include="PowerUser\FancySession.aspx.cs">
+      <DependentUpon>FancySession.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PowerUser\FancySession.aspx.designer.cs">
+      <DependentUpon>FancySession.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PowerUser\Homepage.aspx.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2784,6 +3604,13 @@
     <Compile Include="admin\ModifyClient.aspx.designer.cs">
       <DependentUpon>ModifyClient.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PowerUser\Minmax.aspx.cs">
+      <DependentUpon>Minmax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PowerUser\Minmax.aspx.designer.cs">
+      <DependentUpon>Minmax.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PowerUser\ModifyMatches.aspx.cs">
       <DependentUpon>ModifyMatches.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2801,8 +3628,19 @@
     <Compile Include="PowerUser\ScheduleMatch.ashx.cs">
       <DependentUpon>ScheduleMatch.ashx</DependentUpon>
     </Compile>
+    <Compile Include="PowerUser\sendmatchdetails.aspx.cs">
+      <DependentUpon>sendmatchdetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PowerUser\sendmatchdetails.aspx.designer.cs">
+      <DependentUpon>sendmatchdetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PowerUser\sendsms.cs" />
     <Compile Include="PowerUser\Session.ashx.cs">
       <DependentUpon>Session.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="PowerUser\sessiondelete.ashx.cs">
+      <DependentUpon>sessiondelete.ashx</DependentUpon>
     </Compile>
     <Compile Include="PowerUser\SessionRate.aspx.cs">
       <DependentUpon>SessionRate.aspx</DependentUpon>
@@ -2846,26 +3684,12 @@
     <Compile Include="admin\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\CollectionDetail.aspx.cs">
-      <DependentUpon>CollectionDetail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\CollectionDetail.aspx.designer.cs">
-      <DependentUpon>CollectionDetail.aspx</DependentUpon>
-    </Compile>
     <Compile Include="admin\CreateSuperAgent.aspx.cs">
       <DependentUpon>CreateSuperAgent.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\CreateSuperAgent.aspx.designer.cs">
       <DependentUpon>CreateSuperAgent.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\CreateNewCollection.aspx.cs">
-      <DependentUpon>CreateNewCollection.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\CreateNewCollection.aspx.designer.cs">
-      <DependentUpon>CreateNewCollection.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
@@ -2993,229 +3817,6 @@
     <Compile Include="admin\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Agent\AllClientLedger.aspx.cs">
-      <DependentUpon>AllClientLedger.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\AllClientLedger.aspx.designer.cs">
-      <DependentUpon>AllClientLedger.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\ChangePassword.aspx.cs">
-      <DependentUpon>ChangePassword.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\ChangePassword.aspx.designer.cs">
-      <DependentUpon>ChangePassword.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\ChangeStatus.ashx.cs">
-      <DependentUpon>ChangeStatus.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\ClientLimitReport.aspx.cs">
-      <DependentUpon>ClientLimitReport.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\ClientLimitReport.aspx.designer.cs">
-      <DependentUpon>ClientLimitReport.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\Clientplusminus.aspx.cs">
-      <DependentUpon>Clientplusminus.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\Clientplusminus.aspx.designer.cs">
-      <DependentUpon>Clientplusminus.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\CreateClient.aspx.cs">
-      <DependentUpon>CreateClient.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\CreateClient.aspx.designer.cs">
-      <DependentUpon>CreateClient.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\ClientDetails.aspx.cs">
-      <DependentUpon>ClientDetails.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\ClientDetails.aspx.designer.cs">
-      <DependentUpon>ClientDetails.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\ClientLedger.aspx.cs">
-      <DependentUpon>ClientLedger.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\ClientLedger.aspx.designer.cs">
-      <DependentUpon>ClientLedger.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\CollectionDetails.aspx.cs">
-      <DependentUpon>CollectionDetails.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\CollectionDetails.aspx.designer.cs">
-      <DependentUpon>CollectionDetails.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\CreateNewCollection.aspx.cs">
-      <DependentUpon>CreateNewCollection.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\CreateNewCollection.aspx.designer.cs">
-      <DependentUpon>CreateNewCollection.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\Dashboard.aspx.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\Dashboard.aspx.designer.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\DashBoard.Master.cs">
-      <DependentUpon>DashBoard.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\DashBoard.Master.designer.cs">
-      <DependentUpon>DashBoard.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\DashboardMaster.aspx.cs">
-      <DependentUpon>DashboardMaster.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\DashboardMaster.aspx.designer.cs">
-      <DependentUpon>DashboardMaster.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\DateWiseReport.aspx.cs">
-      <DependentUpon>DateWiseReport.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\DateWiseReport.aspx.designer.cs">
-      <DependentUpon>DateWiseReport.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\Deleteclient.ashx.cs">
-      <DependentUpon>Deleteclient.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\Ledger.aspx.cs">
-      <DependentUpon>Ledger.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\Ledger.aspx.designer.cs">
-      <DependentUpon>Ledger.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\MasterDetails.aspx.cs">
-      <DependentUpon>MasterDetails.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\MasterDetails.aspx.designer.cs">
-      <DependentUpon>MasterDetails.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\MatchAndSessionPosition.aspx.cs">
-      <DependentUpon>MatchAndSessionPosition.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\MatchAndSessionPosition.aspx.designer.cs">
-      <DependentUpon>MatchAndSessionPosition.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\MatchAndSessionSPosition.aspx.cs">
-      <DependentUpon>MatchAndSessionSPosition.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\MatchAndSessionSPosition.aspx.designer.cs">
-      <DependentUpon>MatchAndSessionSPosition.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\MatchPlusMinusSelect.aspx.cs">
-      <DependentUpon>MatchPlusMinusSelect.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\MatchPlusMinusSelect.aspx.designer.cs">
-      <DependentUpon>MatchPlusMinusSelect.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\MatchSessionPlusMinusDisplay.aspx.cs">
-      <DependentUpon>MatchSessionPlusMinusDisplay.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\MatchSessionPlusMinusDisplay.aspx.designer.cs">
-      <DependentUpon>MatchSessionPlusMinusDisplay.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\MatchSessionPlusMinusSelect.aspx.cs">
-      <DependentUpon>MatchSessionPlusMinusSelect.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\MatchSessionPlusMinusSelect.aspx.designer.cs">
-      <DependentUpon>MatchSessionPlusMinusSelect.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\ModifyClient.aspx.cs">
-      <DependentUpon>ModifyClient.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\ModifyClient.aspx.designer.cs">
-      <DependentUpon>ModifyClient.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\My_Ledger.aspx.cs">
-      <DependentUpon>My_Ledger.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\My_Ledger.aspx.designer.cs">
-      <DependentUpon>My_Ledger.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\SecureCodeReport.aspx.cs">
-      <DependentUpon>SecureCodeReport.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\SecureCodeReport.aspx.designer.cs">
-      <DependentUpon>SecureCodeReport.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\SessionPlusMinusSelect.aspx.cs">
-      <DependentUpon>SessionPlusMinusSelect.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\SessionPlusMinusSelect.aspx.designer.cs">
-      <DependentUpon>SessionPlusMinusSelect.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\Settings.aspx.cs">
-      <DependentUpon>Settings.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\Settings.aspx.designer.cs">
-      <DependentUpon>Settings.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\Sportsbetting.aspx.cs">
-      <DependentUpon>Sportsbetting.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\Sportsbetting.aspx.designer.cs">
-      <DependentUpon>Sportsbetting.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\SportsDetails.aspx.cs">
-      <DependentUpon>SportsDetails.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\SportsDetails.aspx.designer.cs">
-      <DependentUpon>SportsDetails.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\TC.aspx.cs">
-      <DependentUpon>TC.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\TC.aspx.designer.cs">
-      <DependentUpon>TC.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\UpdateClientLimit.aspx.cs">
-      <DependentUpon>UpdateClientLimit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\UpdateClientLimit.aspx.designer.cs">
-      <DependentUpon>UpdateClientLimit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\ViewMatchReport.aspx.cs">
-      <DependentUpon>ViewMatchReport.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\ViewMatchReport.aspx.designer.cs">
-      <DependentUpon>ViewMatchReport.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\ViewSessionReport.aspx.cs">
-      <DependentUpon>ViewSessionReport.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\ViewSessionReport.aspx.designer.cs">
-      <DependentUpon>ViewSessionReport.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Client\AddDataToRunner.ashx.cs">
       <DependentUpon>AddDataToRunner.ashx</DependentUpon>
     </Compile>
@@ -3309,20 +3910,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Agent\HomePage.aspx.cs">
-      <DependentUpon>HomePage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\HomePage.aspx.designer.cs">
-      <DependentUpon>HomePage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Agent\Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Agent\Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Client\Homepage.aspx.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3337,7 +3924,15 @@
     <Compile Include="PowerUser\ModifyMatch.aspx.designer.cs">
       <DependentUpon>ModifyMatch.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PowerUser\SessionRateAutomatic.aspx.cs">
+      <DependentUpon>SessionRateAutomatic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PowerUser\SessionRateAutomatic.aspx.designer.cs">
+      <DependentUpon>SessionRateAutomatic.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sendSMS.cs" />
     <Compile Include="superagent\AgentDetails.aspx.cs">
       <DependentUpon>AgentDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3386,13 +3981,6 @@
     <Compile Include="superagent\Changestatus.ashx.cs">
       <DependentUpon>Changestatus.ashx</DependentUpon>
     </Compile>
-    <Compile Include="superagent\CollectionDetail.aspx.cs">
-      <DependentUpon>CollectionDetail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="superagent\CollectionDetail.aspx.designer.cs">
-      <DependentUpon>CollectionDetail.aspx</DependentUpon>
-    </Compile>
     <Compile Include="superagent\CollectionDetails.aspx.cs">
       <DependentUpon>CollectionDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3413,6 +4001,16 @@
     </Compile>
     <Compile Include="superagent\CompanymatchPlusminusSelect.aspx.designer.cs">
       <DependentUpon>CompanymatchPlusminusSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\CreateNewCollection.aspx.cs">
+      <DependentUpon>CreateNewCollection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\CreateNewCollection.aspx.designer.cs">
+      <DependentUpon>CreateNewCollection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\DeleteEntry.ashx.cs">
+      <DependentUpon>DeleteEntry.ashx</DependentUpon>
     </Compile>
     <Compile Include="superagent\MatchSessionPlusminusDisplay.aspx.cs">
       <DependentUpon>MatchSessionPlusminusDisplay.aspx</DependentUpon>
@@ -3455,13 +4053,6 @@
     </Compile>
     <Compile Include="superagent\CreateAgent.aspx.designer.cs">
       <DependentUpon>CreateAgent.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="superagent\CreateNewCollection.aspx.cs">
-      <DependentUpon>CreateNewCollection.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="superagent\CreateNewCollection.aspx.designer.cs">
-      <DependentUpon>CreateNewCollection.aspx</DependentUpon>
     </Compile>
     <Compile Include="superagent\DashBoard.Master.cs">
       <DependentUpon>DashBoard.Master</DependentUpon>
@@ -3564,6 +4155,13 @@
     <Compile Include="superagent\ModifyAgent.aspx.designer.cs">
       <DependentUpon>ModifyAgent.aspx</DependentUpon>
     </Compile>
+    <Compile Include="superagent\ModifyClient.aspx.cs">
+      <DependentUpon>ModifyClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\ModifyClient.aspx.designer.cs">
+      <DependentUpon>ModifyClient.aspx</DependentUpon>
+    </Compile>
     <Compile Include="superagent\My_Ledger.aspx.cs">
       <DependentUpon>My_Ledger.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3592,6 +4190,10 @@
     <Compile Include="superagent\SecureCodeReport.aspx.designer.cs">
       <DependentUpon>SecureCodeReport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="superagent\sendagentdetails.ashx.cs">
+      <DependentUpon>sendagentdetails.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\sendSMS.cs" />
     <Compile Include="superagent\SessionPlusMinusDisplay.aspx.cs">
       <DependentUpon>SessionPlusMinusDisplay.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3612,6 +4214,20 @@
     </Compile>
     <Compile Include="superagent\Settings.aspx.designer.cs">
       <DependentUpon>Settings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\SingleSessionplusMinusDisplay.aspx.cs">
+      <DependentUpon>SingleSessionplusMinusDisplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\SingleSessionplusMinusDisplay.aspx.designer.cs">
+      <DependentUpon>SingleSessionplusMinusDisplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\SingleSessionplusMinusSelect.aspx.cs">
+      <DependentUpon>SingleSessionplusMinusSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\SingleSessionplusMinusSelect.aspx.designer.cs">
+      <DependentUpon>SingleSessionplusMinusSelect.aspx</DependentUpon>
     </Compile>
     <Compile Include="superagent\SportsBetting.aspx.cs">
       <DependentUpon>SportsBetting.aspx</DependentUpon>
@@ -3640,6 +4256,30 @@
     </Compile>
     <Compile Include="superagent\UpdateAgentlimit.aspx.designer.cs">
       <DependentUpon>UpdateAgentlimit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\UpdateClientLimit.aspx.cs">
+      <DependentUpon>UpdateClientLimit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\UpdateClientLimit.aspx.designer.cs">
+      <DependentUpon>UpdateClientLimit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\updateclientlimits.ashx.cs">
+      <DependentUpon>updateclientlimits.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\ViewClient.aspx.cs">
+      <DependentUpon>ViewClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\ViewClient.aspx.designer.cs">
+      <DependentUpon>ViewClient.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="superagent\ViewCollectionEntry.aspx.cs">
+      <DependentUpon>ViewCollectionEntry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superagent\ViewCollectionEntry.aspx.designer.cs">
+      <DependentUpon>ViewCollectionEntry.aspx</DependentUpon>
     </Compile>
     <Compile Include="superagent\ViewMatchReport.aspx.cs">
       <DependentUpon>ViewMatchReport.aspx</DependentUpon>

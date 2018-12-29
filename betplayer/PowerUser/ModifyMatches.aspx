@@ -43,6 +43,8 @@
                                         <td width="70" align="left" class="TableHeading">Date</td>
                                         <td width="110" align="left" class="TableHeading">Time</td>
                                         <td width="110" align="left" class="TableHeading">Match Type </td>
+                                        <td width="110" align="left" class="TableHeading">Declare </td>
+                                        <td width="110" align="left" class="TableHeading">Won by</td>
 
                                     </tr>
                                     <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
@@ -68,6 +70,9 @@
                                         <td align="left" class="FontText"><%: toDateString(row["DateTime"])%></td>
                                         <td width="110" align="left" class="FontText"><%: toTime(row["DateTime"]) %></td>
                                         <td width="110" align="left" class="FontText"><%:row["Type"] %></td>
+                                        <td width="100" align="left" class="FontText"><%if (Convert.ToInt16(row["Declear"]) == 1){%>Yes<% }else{%>No<% } %></td>
+                                        <td width="92" align="left" class="FontText"><%: row["WinnerTeam"] %></td>
+                                        
 
                                     </tr>
                                     <% } //foreach %>

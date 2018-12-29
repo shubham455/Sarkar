@@ -57,6 +57,7 @@
                                                 <asp:ListItem  Text="Match" Value="1"></asp:ListItem>
                                                 <asp:ListItem  Text="Session" Value="2"></asp:ListItem>
                                                 <asp:ListItem Selected="True" Text="Both" Value="3"></asp:ListItem>
+                                                <asp:ListItem  Text="For Single Session" Value="4"></asp:ListItem>
                                             </asp:DropDownList></td>
                                         <td width="584" align="left" style="vertical-align: middle;">&nbsp;
 		                	                  <asp:Button ID="btnshow" runat="server" class="btn btn-success" Text="Show" OnClick="btnshow_Click" />

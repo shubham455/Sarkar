@@ -32,7 +32,7 @@ namespace betplayer.admin
                 else
                 {
                     rdr.Close();
-                    string s = "insert into SuperAgentMaster(Name,ContactNo,Password,Agentlimit,Currentlimit,FixLimit,myshare,AgentShare,mymobAmount,SessionCommisionType,Status,CreatedBy,Date,Mode,MatchCommision,SessionCommision) values (@Name,@Contact_No,@Password,@Agentlimit,@Currentlimit,@FixLimit,@Agentshare,@Agentshare,@MobileAppAmount,@SessionType,@Status,@CreatedBy,@Date,@Mode,@MatchCommision,@SessionCommision); SELECT LAST_INSERT_ID()";
+                    string s = "insert into SuperAgentMaster(Name,ContactNo,Password,Agentlimit,Currentlimit,FixLimit,myshare,mymobAmount,SessionCommisionType,Status,CreatedBy,Date,Mode,MatchCommision,SessionCommision) values (@Name,@Contact_No,@Password,@Agentlimit,@Currentlimit,@FixLimit,@Agentshare,@MobileAppAmount,@SessionType,@Status,@CreatedBy,@Date,@Mode,@MatchCommision,@SessionCommision); SELECT LAST_INSERT_ID()";
                     MySqlCommand cmd = new MySqlCommand(s, cn);
 
                     cmd.Parameters.AddWithValue("@Name", txtname.Text);

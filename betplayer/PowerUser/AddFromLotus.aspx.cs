@@ -23,7 +23,7 @@ namespace betplayer.PowerUser
         {
            
                 string html = string.Empty;
-                string url = @"https://www.lotusbook.com/api/exchange/eventType/4";
+                string url = @"https://www.lotusbook.com/api/exchange/odds/eventType/4";
 
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
                 request.AutomaticDecompression = DecompressionMethods.GZip;
@@ -65,7 +65,7 @@ namespace betplayer.PowerUser
             {
                 cn.Open();
 
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://betplayer-197014.firebaseio.com/currentMatches.json");
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://sarkar-73a30.firebaseio.com/currentMatches.json");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
 
@@ -81,6 +81,12 @@ namespace betplayer.PowerUser
                         maxBet = "200000",
                         sessionMinBet = "1000",
                         sessionMaxBet = "200000",
+                        fancyminbet = "500",
+                        fancymaxbet = "20000",
+                        lastBall = new
+                        {
+                            @event = "Bet Open"
+                        },
                         livetv = new
                         {
                             enabled = false,
@@ -142,7 +148,7 @@ namespace betplayer.PowerUser
 
 
 
-                string insert = " insert into Matches (TeamA,TeamB,TeamC,ApiID,DateTime,LotusmatchID,firebasekey,Apitype,AutoSession,Active) values (@TeamA,@TeamB,@TeamC,@LotusmatchID,@DateTime,@LotusmatchID,@fk,@ApiType,@AutoSession,@Active)";
+                string insert = " insert into Matches (TeamA,TeamB,TeamC,ApiID,DateTime,LotusmatchID,firebasekey,Apitype,AutoSession,Active,Status) values (@TeamA,@TeamB,@TeamC,@LotusmatchID,@DateTime,@LotusmatchID,@fk,@ApiType,@AutoSession,@Active,@Status)";
                 MySqlCommand cmd = new MySqlCommand(insert, cn);
                 cmd.Parameters.AddWithValue("@TeamA", team1name);
                 cmd.Parameters.AddWithValue("@TeamB", team2name);
@@ -153,6 +159,7 @@ namespace betplayer.PowerUser
                 cmd.Parameters.AddWithValue("@ApiType", "LOTUS");
                 cmd.Parameters.AddWithValue("@AutoSession", 1);
                 cmd.Parameters.AddWithValue("@Active", 1);
+                cmd.Parameters.AddWithValue("@Status", 1);
                 cmd.ExecuteNonQuery();
 
             }

@@ -47,12 +47,12 @@ namespace betplayer.admin
         public string toTime(object DateTimefromDB)
         {
             DateTime oDate = DateTime.Parse(DateTimefromDB.ToString());
-            return oDate.TimeOfDay.ToString();
+            return oDate.ToString("hh:mm:ss tt");
         }
         public string toDateString(object date)
         {
            DateTime rowDate = DateTime.Parse(date.ToString());
-            return rowDate.Date.ToString("yyyy-MM-dd");
+            return rowDate.Date.ToString("dd-MM-yyyy");
         }
     }
 }

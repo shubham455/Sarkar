@@ -264,7 +264,7 @@ namespace betplayer.superagent
 
                     row["Name"] = CodeName;
 
-                    
+
                     row["MatchAmount"] = 0;
 
                     string s2 = "Select TotalAmount From SessionCalculation where ClientID = '" + ID + "' and MatchID = '" + MatchID + "'";
@@ -290,7 +290,7 @@ namespace betplayer.superagent
                     double SessionTotalAmountvalue = double.Parse(SessionTotalAmount.ToString());
                     row["SessionAmount"] = SessionTotalAmountvalue;
 
-                    Decimal TotalMatch =  SessionTotalAmount;
+                    Decimal TotalMatch = SessionTotalAmount;
                     double TotalMatchvalue = double.Parse(TotalMatch.ToString());
                     row["TotalAmount"] = TotalMatchvalue;
 
@@ -315,54 +315,67 @@ namespace betplayer.superagent
                             TotalAmount = TotalAmount + Amount;
                         }
                     }
-
+                    Decimal TotalHalfAmount = 0;
+                    Decimal TotalNetAmouunt = 0;
                     string s55 = "Select * from sharetable where MatchID = '" + MatchID + "' && ClientID = '" + ID + "'";
                     MySqlCommand cmd55 = new MySqlCommand(s55, cn);
                     MySqlDataAdapter adp55 = new MySqlDataAdapter(cmd55);
                     DataTable dt55 = new DataTable();
                     adp55.Fill(dt55);
 
-
-
-
-                    Decimal SessionCommision1 = Convert.ToDecimal(dt55.Rows[0]["AgentSessionComm"]);
-                    Decimal SessionCommision2 = SessionCommision1 / 100;
-                    Decimal SessionCommision = TotalAmount * SessionCommision2;
-                    double SessionCommisionvalue = double.Parse(SessionCommision.ToString());
-                    row["SessionCommision"] = SessionCommisionvalue;
-                   
-                    
-                     row["MatchCommision"] = 0; 
-                    decimal totalcommision = SessionCommision;
-                    double totalcommisionvalue = double.Parse(totalcommision.ToString());
-                    row["TotalCommisionAmount"] = totalcommisionvalue;
-
-                    Decimal Match =  SessionTotalAmount;
-                    Decimal Commision = SessionCommision ;
-                    Decimal To = 0;
-
-                    if (Match > 0)
+                    if (dt55.Rows.Count > 0)
                     {
-                        To = Match - Commision;
+                        Decimal SessionCommision1 = Convert.ToDecimal(dt55.Rows[0]["AgentSessionComm"]);
+                        Decimal SessionCommision2 = SessionCommision1 / 100;
+                        Decimal SessionCommision = TotalAmount * SessionCommision2;
+                        double SessionCommisionvalue = double.Parse(SessionCommision.ToString());
+                        row["SessionCommision"] = SessionCommisionvalue;
+
+
+                        row["MatchCommision"] = 0;
+                        decimal totalcommision = SessionCommision;
+                        double totalcommisionvalue = double.Parse(totalcommision.ToString());
+                        row["TotalCommisionAmount"] = totalcommisionvalue;
+
+                        Decimal Match = SessionTotalAmount;
+                        Decimal Commision = SessionCommision;
+                        Decimal To = 0;
+
+                        if (Match > 0)
+                        {
+                            To = Match - Commision;
+                        }
+                        else if (Match < 0)
+                        {
+                            To = Match + Commision;
+                        }
+                        else
+                        {
+                            To = Commision * -1;
+                        }
+                         TotalNetAmouunt = To;
+
+                        decimal ClientShare1 = Convert.ToDecimal(dt55.Rows[0]["Clientshare"]);
+                        decimal ClientMaster2 = ClientShare1 / 100;
+                        TotalHalfAmount = TotalNetAmouunt * ClientMaster2;
+
+                        double TotalNetAmouuntvalue = double.Parse(TotalNetAmouunt.ToString());
+                        row["TotalNetAmount"] = TotalNetAmouuntvalue;
+
+                        double TotalHalfAmountvalue = double.Parse(TotalHalfAmount.ToString());
+                        row["TotalHalfAmount"] = TotalHalfAmountvalue;
+
+
                     }
-                    else if (Match < 0)
+                    else
                     {
-                        To = Match + Commision;
+                        row["SessionCommision"] = 0;
+                        row["MatchCommision"] = 0;
+                        row["TotalCommisionAmount"] = 0;
+                        row["TotalNetAmount"] = 0;
+                        row["TotalHalfAmount"] = 0;
+                        row["SAAgentShare"] = 0;
                     }
-
-                    Decimal TotalNetAmouunt = To;
-
-                    decimal ClientShare1 = Convert.ToDecimal(dt55.Rows[i]["Clientshare"]);
-                    decimal ClientMaster2 = ClientShare1 / 100;
-                    Decimal TotalHalfAmount = TotalNetAmouunt * ClientMaster2;
-
-                    double TotalNetAmouuntvalue = double.Parse(TotalNetAmouunt.ToString());
-                    row["TotalNetAmount"] = TotalNetAmouuntvalue;
-
-                    double TotalHalfAmountvalue = double.Parse(TotalHalfAmount.ToString());
-                    row["TotalHalfAmount"] = TotalHalfAmountvalue;
-
-
 
                     Decimal MobileAppAmount = 0;
 
@@ -379,7 +392,7 @@ namespace betplayer.superagent
                     double MobileAppAmountvalue = double.Parse(MobileAppAmount.ToString());
                     row["MOBAppAmount"] = MobileAppAmountvalue;
 
-                    decimal finalamount = TotalHalfAmount + MobileAppAmount;
+                    decimal finalamount = (TotalNetAmouunt - TotalHalfAmount) + MobileAppAmount;
                     double finalamountvalue = double.Parse(finalamount.ToString());
                     row["FinalAmount"] = finalamountvalue;
 

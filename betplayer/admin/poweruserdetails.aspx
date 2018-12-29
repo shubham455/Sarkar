@@ -109,7 +109,7 @@
                                                             <ul class="dropdown-menu">
                                                                 <li><a href="ModifyPoweruser.aspx?id=<%:row["PoweruserID"] %>"><i class="icon-pencil"></i>Edit</a></li>
                                                                 <li><a onclick="CallHandler('<%:row["PoweruserID"] %>');"><i class="icon-trash"></i>Delete</a></li>
-                                                                <li><a href="javascript:SendLoginDetails('118');"><i class="icon-film"></i>Send Mobile Login Details</a></li>
+                                                                <li><a onclick="SendLoginDetails('<%:row["PoweruserID"] %>');"><i class="icon-film"></i>Send Mobile Login Details</a></li>
                                                             </ul>
                                                         </div>
                                                     </td>
@@ -174,6 +174,38 @@
             }).then(function (data) {
                 if (data.status) alert("User with ID: " + data.userDeletedId + " Successfully Deleted.");
                 else alert("User Delete Failed!!!" + "\r\n" + data.error);
+            }).then(function () {
+                location.reload();
+            }).catch(function (err) {
+                console.log(err);
+            });
+        }
+    </script>
+     <script>
+        function SendLoginDetails(userId) {
+            var params = {
+                userId: userId
+            };
+
+            var formBody = [];
+            for (var property in params) {
+                var encodedKey = encodeURIComponent(property);
+                var encodedValue = encodeURIComponent(params[property]);
+                formBody.push(encodedKey + "=" + encodedValue);
+            }
+            formBody = formBody.join("&");
+
+            fetch('/Admin/sendpoweruserdetails.ashx', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                },
+                body: formBody
+            }).then(function (responce) {
+                return responce.json();
+            }).then(function (data) {
+                if (data.status) alert("message sent with ID: " + data.userDeletedId + " Successfully.");
+                else alert("message sent  Failed!!!" + "\r\n" + data.error);
             }).then(function () {
                 location.reload();
             }).catch(function (err) {

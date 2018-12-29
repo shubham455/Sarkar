@@ -33,6 +33,7 @@ namespace betplayer.Agent
             runtable.Columns.Add(new DataColumn("TotalCommisionAmount"));
             runtable.Columns.Add(new DataColumn("TotalNetAmount"));
             runtable.Columns.Add(new DataColumn("TotalHalfAmount"));
+            runtable.Columns.Add(new DataColumn("ClientShare"));
             runtable.Columns.Add(new DataColumn("MOBAppAmount"));
             runtable.Columns.Add(new DataColumn("FinalAmount"));
 
@@ -158,108 +159,125 @@ namespace betplayer.Agent
 
                         }
                     }
-
-                    string s55 = "Select * from sharetable where MatchID = '" + MatchID + "'";
+                    Decimal TotalHalfAmount = 0, TotalNetAmouunt = 0;
+                    string s55 = "Select * from sharetable where MatchID = '" + MatchID + "' And ClientID = '" + ID + "'";
                     MySqlCommand cmd55 = new MySqlCommand(s55, cn);
                     MySqlDataAdapter adp55 = new MySqlDataAdapter(cmd55);
                     DataTable dt55 = new DataTable();
                     adp55.Fill(dt55);
-
-                    string s5 = "Select Name  From AgentMaster where AgentID = '" + Session["AgentID"] + "' ";
-                    MySqlCommand cmd5 = new MySqlCommand(s5, cn);
-                    MySqlDataAdapter adp5 = new MySqlDataAdapter(cmd5);
-                    DataTable dt5 = new DataTable();
-                    adp5.Fill(dt5);
-                    lblAgentName.Text = dt5.Rows[0]["Name"].ToString();
-                    Decimal SessionCommision1 = Convert.ToDecimal(dt55.Rows[0]["AgentSessionComm"]);
-                    Decimal SessionCommision2 = SessionCommision1 / 100;
-                    Decimal SessionCommision = TotalAmount * SessionCommision2;
-
-                    double Sessioncommisionvalue = double.Parse(SessionCommision.ToString());
-                    row["SessionCommision"] = Sessioncommisionvalue;
-
-
-                    decimal TotalMatchCommision1 = 0;
-                    Decimal MatchCommision = Convert.ToDecimal(dt55.Rows[0]["AgentMatchComm"]);
-                    Decimal MatchCommision1 = MatchCommision / 100;
-
-                    string s6 = "Select Amount From MatchCalculation where MatchID = '" + MatchID + "' && ClientID = '" + ID + "'";
-                    MySqlCommand cmd6 = new MySqlCommand(s6, cn);
-                    MySqlDataAdapter adp6 = new MySqlDataAdapter(cmd6);
-                    DataTable dt6 = new DataTable();
-                    adp6.Fill(dt6);
-
-                    if (dt6.Rows.Count > 0)
+                    if (dt55.Rows.Count > 0)
                     {
 
-                        Decimal MatchAmount = Convert.ToDecimal(dt6.Rows[0]["Amount"]);
-                        if (MatchAmount > 0)
+                        string s5 = "Select Name  From AgentMaster where AgentID = '" + Session["AgentID"] + "' ";
+                        MySqlCommand cmd5 = new MySqlCommand(s5, cn);
+                        MySqlDataAdapter adp5 = new MySqlDataAdapter(cmd5);
+                        DataTable dt5 = new DataTable();
+                        adp5.Fill(dt5);
+                        lblAgentName.Text = dt5.Rows[0]["Name"].ToString();
+                        Decimal SessionCommision1 = Convert.ToDecimal(dt55.Rows[0]["AgentSessionComm"]);
+                        Decimal SessionCommision2 = SessionCommision1 / 100;
+                        Decimal SessionCommision = TotalAmount * SessionCommision2;
+
+                        double Sessioncommisionvalue = double.Parse(SessionCommision.ToString());
+                        row["SessionCommision"] = Sessioncommisionvalue;
+
+
+                        decimal TotalMatchCommision1 = 0;
+                        Decimal MatchCommision = Convert.ToDecimal(dt55.Rows[0]["AgentMatchComm"]);
+                        Decimal MatchCommision1 = MatchCommision / 100;
+
+                        string s6 = "Select Amount From MatchCalculation where MatchID = '" + MatchID + "' && ClientID = '" + ID + "'";
+                        MySqlCommand cmd6 = new MySqlCommand(s6, cn);
+                        MySqlDataAdapter adp6 = new MySqlDataAdapter(cmd6);
+                        DataTable dt6 = new DataTable();
+                        adp6.Fill(dt6);
+
+                        if (dt6.Rows.Count > 0)
                         {
-                            MatchAmount = MatchAmount * -1;
-                            double TotalMatchCommisionvalue = double.Parse(TotalMatchCommision1.ToString());
-                            row["MatchCommision"] = TotalMatchCommisionvalue;
-                        }
-                        else if (MatchAmount < 0)
-                        {
-                            MatchAmount = MatchAmount * -1;
-                            TotalMatchCommision1 = MatchCommision1 * MatchAmount;
-                            double TotalMatchCommisionvalue1 = double.Parse(TotalMatchCommision1.ToString());
-                            row["MatchCommision"] = TotalMatchCommisionvalue1;
+
+                            Decimal MatchAmount = Convert.ToDecimal(dt6.Rows[0]["Amount"]);
+                            if (MatchAmount > 0)
+                            {
+                                MatchAmount = MatchAmount * -1;
+                                double TotalMatchCommisionvalue = double.Parse(TotalMatchCommision1.ToString());
+                                row["MatchCommision"] = TotalMatchCommisionvalue;
+                            }
+                            else if (MatchAmount < 0)
+                            {
+                                MatchAmount = MatchAmount * -1;
+                                TotalMatchCommision1 = MatchCommision1 * MatchAmount;
+                                double TotalMatchCommisionvalue1 = double.Parse(TotalMatchCommision1.ToString());
+                                row["MatchCommision"] = TotalMatchCommisionvalue1;
+                            }
+                            else
+                            {
+                                row["MatchCommision"] = 0;
+                            }
+
+
+                            
                         }
                         else
                         {
                             row["MatchCommision"] = 0;
+                            row["TotalCommisionAmount"] = 0;
                         }
-
-
                         decimal totalcommision = TotalMatchCommision1 + SessionCommision;
                         double totalcommisionvalue = double.Parse(totalcommision.ToString());
 
                         row["TotalCommisionAmount"] = totalcommisionvalue;
+
+                        Decimal Match = MatchTotalAmount + SessionTotalAmount;
+                        Decimal Commision = SessionCommision + TotalMatchCommision1;
+                        Decimal To = 0;
+
+                        if (Match > 0)
+                        {
+
+                            To = Match - Commision;
+
+                        }
+                        else if (Match < 0)
+                        {
+
+                            To = Match - Commision;
+
+                        }
+                        else
+                        {
+                            To = Commision *-1;
+                        }
+
+                        TotalNetAmouunt = To;
+
+                        string share = "Select Agent_Share  from ClientMaster where ClientID = '" + ID + "'";
+                        MySqlCommand sharecmd = new MySqlCommand(share, cn);
+                        MySqlDataAdapter shareadp = new MySqlDataAdapter(sharecmd);
+                        DataTable sharedt = new DataTable();
+                        shareadp.Fill(sharedt);
+
+                        decimal clientshare = Convert.ToDecimal(dt55.Rows[0]["ClientShare"]);
+                        decimal clientshare1 = clientshare / 100;
+
+
+                        TotalHalfAmount = TotalNetAmouunt * clientshare1;
+
+                        double TotalNetAmouuntvalue = double.Parse(TotalNetAmouunt.ToString());
+                        row["TotalNetAmount"] = TotalNetAmouuntvalue;
+                        double TotalHalfAmountvalue = double.Parse(TotalHalfAmount.ToString());
+                        row["TotalHalfAmount"] = TotalHalfAmountvalue;
+                        row["ClientShare"] = clientshare + "%";
+
+
                     }
                     else
                     {
+                        row["SessionCommision"] = 0;
                         row["MatchCommision"] = 0;
                         row["TotalCommisionAmount"] = 0;
+                        row["TotalNetAmount"] = 0;
+                        row["TotalHalfAmount"] = 0;
                     }
-                    Decimal Match = MatchTotalAmount + SessionTotalAmount;
-                    Decimal Commision = SessionCommision + TotalMatchCommision1;
-                    Decimal To = 0;
-
-                    if (Match > 0)
-                    {
-
-                        To = Match - Commision;
-
-                    }
-                    else if (Match < 0)
-                    {
-
-                        To = Match - Commision;
-
-                    }
-
-                    Decimal TotalNetAmouunt = To;
-
-                    string share = "Select Agent_Share  from ClientMaster where ClientID = '" + ID + "'";
-                    MySqlCommand sharecmd = new MySqlCommand(share, cn);
-                    MySqlDataAdapter shareadp = new MySqlDataAdapter(sharecmd);
-                    DataTable sharedt = new DataTable();
-                    shareadp.Fill(sharedt);
-
-                    decimal clientshare = Convert.ToDecimal(sharedt.Rows[0]["Agent_Share"]);
-                    decimal clientshare1 = clientshare / 100;
-
-
-                    Decimal TotalHalfAmount = TotalNetAmouunt * clientshare1;
-
-                    double TotalNetAmouuntvalue = double.Parse(TotalNetAmouunt.ToString());
-                    row["TotalNetAmount"] = TotalNetAmouuntvalue;
-                    double TotalHalfAmountvalue = double.Parse(TotalHalfAmount.ToString());
-                    row["TotalHalfAmount"] = TotalHalfAmountvalue;
-
-
-
 
 
                     string s8 = "Select * From AgentMaster where  AgentID = '" + Session["AgentID"] + "'";
@@ -271,8 +289,7 @@ namespace betplayer.Agent
 
                     Decimal MobileAppAmount = 0;
                     String MobileApp = dt8.Rows[0]["Mobapp"].ToString();
-                    Decimal AgentShare = Convert.ToDecimal(dt55.Rows[0]["ClientShare"]);
-                    decimal AgentShare1 = AgentShare / 100;
+                    
 
                     MobileAppAmount = Convert.ToDecimal(MobileApp);
                     double MobileAppAmountvalue = double.Parse(MobileAppAmount.ToString());
@@ -285,6 +302,7 @@ namespace betplayer.Agent
 
                     runTable.Rows.Add(row.ItemArray);
                 }
+
 
 
 
@@ -401,7 +419,7 @@ namespace betplayer.Agent
 
                     if (TotalFinalAmount1 < 0)
                     {
-                        Dabit = TotalFinalAmount1 *-1;
+                        Dabit = TotalFinalAmount1 * -1;
                         Remark = "Agent Plus";
 
                     }
@@ -424,10 +442,10 @@ namespace betplayer.Agent
                         adp10.Fill(dt10);
 
                         decimal Amount = Convert.ToDecimal(dt10.Rows[0]["Amount"]);
-                        if(Amount != TotalFinalAmount1)
+                        if (Amount != TotalFinalAmount1)
                         {
-                            
-                            string s11 = "update Agentledger set Amount = @Amount,Dabit =@Dabit,Credit=@Credit,Remark=@Remark  where AgentID = '" + Session["AgentID"] + "' && matchID = '"+MatchID+"'";
+
+                            string s11 = "update Agentledger set Amount = @Amount,Dabit =@Dabit,Credit=@Credit,Remark=@Remark  where AgentID = '" + Session["AgentID"] + "' && matchID = '" + MatchID + "'";
                             MySqlCommand cmd11 = new MySqlCommand(s11, cn);
                             cmd11.Parameters.AddWithValue("@Amount", TotalFinalAmount1);
                             cmd11.Parameters.AddWithValue("@Dabit", Dabit);
@@ -463,14 +481,12 @@ namespace betplayer.Agent
 
 
                         string s11 = "update AgentMaster set CurrentLimit = '" + finalcurrentlimit + "' where AgentID = '" + Session["AgentID"] + "'";
-                        MySqlCommand cmd11 = new MySqlCommand(s11,cn);
+                        MySqlCommand cmd11 = new MySqlCommand(s11, cn);
                         cmd11.ExecuteNonQuery();
                     }
                 }
 
                 runtable1.Rows.Add(row1.ItemArray);
-
-
             }
         }
     }

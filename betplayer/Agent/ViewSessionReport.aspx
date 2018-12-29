@@ -42,7 +42,9 @@
                                         <tr class="MainHeading">
                                             <td width="103" height="35" align="left" valign="middle" class="MainHeading1 textTeamHead"><strong>CLIENT</strong></td>
                                             <td width="220" align="left" valign="middle" class="MainHeading1 textTeamHead">
-                                                <asp:DropDownList ID="DropDownClient" runat="server"></asp:DropDownList>
+                                                <asp:DropDownList ID="DropDownClient" runat="server" AppendDataBoundItems="true">
+                                                    <asp:ListItem Text="All Client" Selected="True"></asp:ListItem>
+                                                </asp:DropDownList>
                                             </td>
 
                                             <td width="100" height="35" align="left" valign="middle" class="MainHeading1 textTeamHead">&nbsp;</td>
@@ -57,7 +59,7 @@
                                             <td align="center" valign="middle" style="text-align: center">
                                                 <asp:Button ID="btnview" runat="server" class="btn btn-success" OnClick="btnview_Click" Text="View" />
                                             </td>
-                                            <td width="17" align="center" valign="middle" class="MainHeading1 textTeamHead" style="color: #F00"><strong>0.00</strong></td>
+                                            <td width="17" align="center" valign="middle" class="MainHeading1 textTeamHead" style="color: #F00"><strong><asp:Label ID="lblrate" runat="server"></asp:Label></strong></td>
 
                                         </tr>
                                     </tbody>
@@ -82,11 +84,11 @@
                                                             <td align="right" class="TableHeading"><strong>Yes</strong></td>
                                                             <td align="left" class="TableHeading"><strong>Date &amp; Time</strong></td>
                                                         </tr>
-
+                                                        <%int i = 1; %>
                                                         <% foreach (System.Data.DataRow row in MatchesDataTable.Rows)
                                                             { %>
                                                         <tr>
-                                                            <td align="left" class="TableHeading"><strong><%: row["SessionID"] %></strong></td>
+                                                            <td align="left" class="TableHeading"><strong><%=i %></strong></td>
                                                             <td height="25" align="left" class="TableHeading"><strong><%: row["Session"] %></strong></td>
                                                             <td align="left" class="TableHeading"><strong> <%: row["ClientID"] %> <%: row["Name"] %></strong></td>
                                                             <td align="left" class="TableHeading"><strong><%: row["rate"] %></strong></td>
@@ -98,6 +100,7 @@
                                                             
                                                             <td align="left" class="TableHeading"><strong><%: row["DateTime"] %></strong></td>
                                                         </tr>
+                                                        <% i++; %>
                                                         <% } //foreach %>
                                                     </tbody>
                                                 </table>

@@ -34,12 +34,13 @@ namespace betplayer.poweruser
                 txtTime.Text = dt.Rows[0]["DateTime"].ToString();
                 txtMatchType.Text = dt.Rows[0]["Type"].ToString();
 
+                
+
                 string html = string.Empty;
-                string url = @"https://www.lotusbook.com/api/exchange/eventType/4";
+                string url = @"https://www.lotusbook.com/api/exchange/odds/eventType/4";
 
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-                request.AutomaticDecompression = DecompressionMethods.GZip;
-
+                
                 using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
                 using (Stream stream = response.GetResponseStream())
                 using (StreamReader reader = new StreamReader(stream))
@@ -86,7 +87,7 @@ namespace betplayer.poweruser
                 cn.Open();
                 string matchId = matchdropdown.SelectedItem.Value;
 
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://betplayer-197014.firebaseio.com/currentMatches.json");
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://sarkar-73a30.firebaseio.com/currentMatches.json");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
 
@@ -102,7 +103,13 @@ namespace betplayer.poweruser
                         maxBet = "200000",
                         sessionMinBet = "1000",
                         sessionMaxBet = "200000",
-                        livetv= new {
+                        fancyminbet = "500",
+                        fancymaxbet = "20000",
+                        lastBall = new
+                        {
+                            @event = "Bet Open"
+                        },
+                        livetv = new {
                             enabled = false,
                             channel = ""
                         },
@@ -167,10 +174,11 @@ namespace betplayer.poweruser
 
                 if (matchId == "")
                 {
-                    string s = "Update Matches set Firebasekey  = @Firebasekey, Active = @Active where matchesID = @MatchID";
+                    string s = "Update Matches set Firebasekey  = @Firebasekey, Active = @Active,Status = @Status where matchesID = @MatchID";
 
                     MySqlCommand cmd = new MySqlCommand(s, cn);
                     cmd.Parameters.AddWithValue("@Active", '1');
+                    cmd.Parameters.AddWithValue("@Status", '1');
                     cmd.Parameters.AddWithValue("@MatchID", id);
                     cmd.Parameters.AddWithValue("@Firebasekey", fkey);
                     cmd.ExecuteNonQuery();
@@ -179,10 +187,11 @@ namespace betplayer.poweruser
                 }
                 else
                 {
-                    string s = "Update Matches set Firebasekey  = @Firebasekey, lotusmatchid = @lotusmatchId,AutoSession = @Autosession, Active = @Active,Apitype = @Apitype where matchesID = @MatchID";
+                    string s = "Update Matches set Firebasekey  = @Firebasekey, lotusmatchid = @lotusmatchId,AutoSession = @Autosession, Active = @Active,Status = @Status,Apitype = @Apitype where matchesID = @MatchID";
 
                     MySqlCommand cmd = new MySqlCommand(s, cn);
                     cmd.Parameters.AddWithValue("@Active", '1');
+                    cmd.Parameters.AddWithValue("@Status", '1');
                     cmd.Parameters.AddWithValue("@MatchID", id);
                     cmd.Parameters.AddWithValue("@lotusmatchId", matchId);
                     cmd.Parameters.AddWithValue("@Firebasekey", fkey);

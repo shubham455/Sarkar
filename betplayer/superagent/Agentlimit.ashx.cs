@@ -77,13 +77,13 @@ namespace betplayer.superagent
                     DataTable dt = new DataTable();
                     adp.Fill(dt);
 
-                    int AgentLimit = Convert.ToInt32(dt.Rows[0]["CurrentLimit"]);
+                    decimal AgentLimit = Convert.ToDecimal(dt.Rows[0]["CurrentLimit"]);
 
 
-                    int Total = 0;
+                    Decimal Total = 0;
                     foreach (Object client in agentValues)
                     {
-                        int AgentCurrentLimit = Convert.ToInt32(client.GetType().GetProperty("AgentLimit").GetValue(client, null));
+                        Decimal AgentCurrentLimit = Convert.ToDecimal(client.GetType().GetProperty("AgentLimit").GetValue(client, null));
 
                         Total = Total + AgentCurrentLimit;
                     }

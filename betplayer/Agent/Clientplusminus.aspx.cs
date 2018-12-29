@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+using System.Configuration;
+using MySql.Data.MySqlClient;
 
 namespace betplayer.Agent
 {
@@ -11,6 +14,7 @@ namespace betplayer.Agent
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
 
         }
     }

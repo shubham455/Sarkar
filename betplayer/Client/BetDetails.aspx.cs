@@ -41,6 +41,7 @@ namespace betplayer.Client
             dt6.Columns.Add(new DataColumn("Amount"));
             dt6.Columns.Add(new DataColumn("Runs"));
             dt6.Columns.Add(new DataColumn("Mode"));
+            dt6.Columns.Add(new DataColumn("DateTime"));
             dt6.Columns.Add(new DataColumn("Dec"));
 
             DataRow Clientrow = dt6.NewRow();
@@ -58,10 +59,6 @@ namespace betplayer.Client
                 using (MySqlConnection cn = new MySqlConnection(CN))
                 {
                     cn.Open();
-
-
-
-
                     string SELECT = "Select * from Matches Where apiID = '" + apiID.Value + "'";
                     MySqlCommand cmd = new MySqlCommand(SELECT, cn);
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
@@ -95,7 +92,7 @@ namespace betplayer.Client
                         if (rdr1.Read())
                         {
                             rdr1.Close();
-                            string selectSession1 = "select Session.SessionID, Session.session,Session.rate , Session.Amount,Session.Runs,Session.Mode,DeclaredSession.DeclareRun from Session inner join declaredSession on Session.Session = DeclaredSession.Session where Session.Session = '" + Sessionname + "' && Session.MatchID = '" + apiID.Value + "' && Session.ClientID = '" + Session["ClientID"] + "'";
+                            string selectSession1 = "select Session.SessionID, Session.session,Session.rate,Session.Amount,Session.Runs,Session.Mode,Session.DateTime,DeclaredSession.DeclareRun from Session inner join declaredSession on Session.Session = DeclaredSession.Session && Session.MatchID  = DeclaredSession.MatchID where Session.Session = '" + Sessionname + "' && declaredsession.MatchID = '" + apiID.Value + "' && Session.ClientID = '" + Session["ClientID"] + "'";
                             MySqlCommand selectSessioncmd1 = new MySqlCommand(selectSession1, cn);
                             MySqlDataAdapter selectSessionadp1 = new MySqlDataAdapter(selectSessioncmd1);
                             dt5 = new DataTable();
@@ -105,7 +102,7 @@ namespace betplayer.Client
                         else
                         {
                             rdr1.Close();
-                            string Session = "Select Session.SessionID, Session.session,Session.rate , Session.Amount,Session.Runs,Session.Mode from Session where ClientID  = @ClientID && MatchID = @MatchID && Session.session = '" + Sessionname + "'   order by DateTime DESC";
+                            string Session = "Select Session.SessionID, Session.session,Session.rate, Session.Amount,Session.Runs,Session.Mode,Session.DateTime from Session where ClientID  = @ClientID && MatchID = @MatchID && Session.session = '" + Sessionname + "'   order by DateTime DESC";
                             MySqlCommand Sessioncmd = new MySqlCommand(Session, cn);
                             Sessioncmd.Parameters.AddWithValue("@MatchID", apiID.Value);
                             Sessioncmd.Parameters.AddWithValue("@ClientID", ClientID);
@@ -199,15 +196,16 @@ namespace betplayer.Client
                             int Isview = Convert.ToInt16(dt4.Rows[0]["Isview"]);
                             if (Isview == 0)
                             {
-                                string coinDeduct = "Select Client_limit From ClientMaster where ClientID = '" + ClientID + "'";
+                                string coinDeduct = "Select Client_limit,CurrentLimit,MobileAppAmount From ClientMaster where ClientID = '" + ClientID + "'";
                                 MySqlCommand cmd5 = new MySqlCommand(coinDeduct, cn);
                                 MySqlDataAdapter adp5 = new MySqlDataAdapter(cmd5);
                                 DataTable dt = new DataTable();
                                 adp5.Fill(dt);
-                                int clientlimit = Convert.ToInt32(dt.Rows[0]["Client_Limit"]);
-                                int Deductdlimit = clientlimit - 100;
+                                decimal clientlimit = Convert.ToDecimal(dt.Rows[0]["CurrentLimit"]);
+                                int MobileAppAmount = Convert.ToInt32(dt.Rows[0]["MobileAppAmount"]);
+                                decimal Deductdlimit = clientlimit - MobileAppAmount;
 
-                                string update = "update clientmaster set client_Limit =@Deductdlimit where clientID = @ClientID";
+                                string update = "update clientmaster set Currentlimit =@Deductdlimit where clientID = @ClientID";
                                 MySqlCommand cmd6 = new MySqlCommand(update, cn);
                                 cmd6.Parameters.AddWithValue("@Deductdlimit", Deductdlimit);
                                 cmd6.Parameters.AddWithValue("@ClientID", ClientID);
