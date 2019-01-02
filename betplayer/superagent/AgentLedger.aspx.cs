@@ -116,7 +116,7 @@ namespace betplayer.Super_Agent
                         int ID = Convert.ToInt32(dt1.Rows[i]["agentledgerID"]);
                         string DateFromDB = dt1.Rows[i]["DateTime"].ToString();
                         DateTime oDate = DateTime.Parse(DateFromDB);
-                        string datetime = oDate.Date.ToString().Substring(0, 10);
+                        string datetime = oDate.Date.ToString();
 
                         string TeamA = dt1.Rows[i]["TeamA"].ToString();
                         string TeamB = dt1.Rows[i]["TeamB"].ToString();
@@ -166,7 +166,7 @@ namespace betplayer.Super_Agent
                     int CollectionID = Convert.ToInt32(dt.Rows[j]["CollectionID"]);
                     string CollectionDate = dt.Rows[j]["Date"].ToString();
                     DateTime date = DateTime.Parse(CollectionDate);
-                    string Date1 = date.Date.ToString().Substring(0, 10);
+                    string Date1 = date.Date.ToString();
 
 
                     string CollectionName = dt.Rows[j]["CollectionType"].ToString();
@@ -209,7 +209,7 @@ namespace betplayer.Super_Agent
                 for (int l = 0; l < LedgerTableOrdered.Rows.Count; l++)
                 {
                     DateTime date = DateTime.Parse(LedgerTableOrdered.Rows[0]["Date"].ToString());
-                    LedgerTableOrdered.Rows[0]["Date"] = date.Date.ToString().Substring(0, 10);
+                    LedgerTableOrdered.Rows[0]["Date"] = date.Date.ToString();
                     if (l > 0)
                     {
                         LedgerTableOrdered.Rows[l]["Balance"] = Convert.ToDecimal(LedgerTableOrdered.Rows[l - 1]["Balance"]) + Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Dabit"]) + Convert.ToDecimal(LedgerTableOrdered.Rows[l]["Credit"]);
