@@ -61,7 +61,7 @@ namespace betplayer.Client
 
                     string DateFromDB = dt1.Rows[i]["DateTime"].ToString();
                     DateTime oDate = DateTime.Parse(DateFromDB);
-                    string datetime = oDate.Date.ToString().Substring(0, 10);
+                    string datetime = oDate.Date.ToString();
 
                     string TeamA = dt1.Rows[i]["TeamA"].ToString();
                     string TeamB = dt1.Rows[i]["TeamB"].ToString();
@@ -110,7 +110,7 @@ namespace betplayer.Client
 
                     string CollectionDate = dt.Rows[j]["Date"].ToString();
                     DateTime date = DateTime.Parse(CollectionDate);
-                    string Date1 = date.Date.ToString().Substring(0, 10);
+                    string Date1 = date.Date.ToString();
 
 
                     string CollectionName = dt.Rows[j]["CollectionType"].ToString();
@@ -148,7 +148,7 @@ namespace betplayer.Client
                     for (int l = 0; l < LedgerTableOrdered.Rows.Count; l++)
                     {
                         DateTime date = DateTime.Parse(LedgerTableOrdered.Rows[0]["Date"].ToString());
-                        LedgerTableOrdered.Rows[0]["Date"] = date.Date.ToString().Substring(0, 10);
+                        LedgerTableOrdered.Rows[0]["Date"] = date.Date.ToString();
                         if (l > 0)
                         {
                             LedgerTableOrdered.Rows[l]["Balance"] = Convert.ToInt32(LedgerTableOrdered.Rows[l - 1]["Balance"]) + Convert.ToInt32(LedgerTableOrdered.Rows[l]["Dabit"]) + Convert.ToInt32(LedgerTableOrdered.Rows[l]["Credit"]);
